@@ -1,4 +1,8 @@
+import 'package:accounts_protector/core/theming/colors.dart';
+import 'package:accounts_protector/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class AccountsProtectorApp extends StatelessWidget {
 
@@ -6,19 +10,20 @@ class AccountsProtectorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Accounts Protector',
-      theme: ThemeData(
-        primaryColor: Colors.blue,
+    ScreenUtil.init(context);
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
+
+        debugShowCheckedModeBanner: false,
+        title: 'Accounts Protector',
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: AppColors.darkViolet,
+          textTheme:ThemeData.dark().textTheme
+        ),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Accounts Protector'),
-        ),
-        body: const Center(
-          child: Text('Welcome to Accounts Protector'),
-        ),
-      )
     );
   }
 }
