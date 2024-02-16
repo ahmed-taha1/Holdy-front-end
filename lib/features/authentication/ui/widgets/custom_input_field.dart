@@ -70,6 +70,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
               });
               return error;
             }
+
             return null;
           },
           textAlignVertical: TextAlignVertical.center,
