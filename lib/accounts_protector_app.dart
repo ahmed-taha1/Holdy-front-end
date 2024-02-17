@@ -1,5 +1,5 @@
-import 'package:accounts_protector/core/theming/colors.dart';
-import 'package:accounts_protector/core/utils/app_router.dart';
+import 'package:accounts_protector/core/theming/app_colors.dart';
+import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,9 +19,11 @@ class AccountsProtectorApp extends StatelessWidget {
 
         debugShowCheckedModeBanner: false,
         title: 'Accounts Protector',
-        theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: AppColors.darkViolet,
-          textTheme:ThemeData.dark().textTheme
+        theme: ThemeData(
+          fontFamily: 'KinesisPro',
+          scaffoldBackgroundColor: AppColors.white,
+          primaryColor: AppColors.navyBlue,
+          textTheme:ThemeData.light().textTheme,
         ),
       ),
     );

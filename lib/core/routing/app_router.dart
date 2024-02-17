@@ -12,12 +12,12 @@ abstract class AppRouter {
       GoRoute(
         path: kHomeView,
         builder: (BuildContext context, GoRouterState state) =>
-        const HomeView(),
+            const HomeView(),
       ),
       GoRoute(
         path: kLoginView,
         builder: (BuildContext context, GoRouterState state) =>
-        const LoginView(),
+            const LoginView(),
       ),
     ],
     initialLocation: kLoginView,
