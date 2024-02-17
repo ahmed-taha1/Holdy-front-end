@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextStyles {
-  static TextStyle font30DarkGreenBold = TextStyle(
+  static TextStyle font30NavyBlueBold = TextStyle(
     fontSize: 30.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.navyBlue,

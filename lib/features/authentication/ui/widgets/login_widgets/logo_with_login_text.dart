@@ -22,7 +22,7 @@ class LogoWithLoginText extends StatelessWidget {
             children: [
               Text(
                 'Login',
-                style: TextStyles.font30DarkGreenBold,
+                style: TextStyles.font30NavyBlueBold,
               ),
               verticalSpace(10.h),
               Text(

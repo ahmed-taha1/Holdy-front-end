@@ -23,6 +23,7 @@ class AccountsProtectorApp extends StatelessWidget {
           fontFamily: 'KinesisPro',
           scaffoldBackgroundColor: AppColors.white,
           primaryColor: AppColors.navyBlue,
+          primarySwatch: Colors.grey,
           textTheme:ThemeData.light().textTheme,
         ),
       ),

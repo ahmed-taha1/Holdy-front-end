@@ -1,8 +1,10 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -54,7 +56,7 @@ class LoginViewBody extends StatelessWidget {
               CustomTextButton(
                 text: 'Forgot Password?',
                 textStyle: TextStyles.font14SemiLightGreenBold,
-                onPressed: () {},
+                onPressed: () {context.push(AppRouter.kForgotPasswordView);},
               ),
               verticalSpace(106),
               Row(
