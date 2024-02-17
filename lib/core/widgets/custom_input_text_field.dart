@@ -119,11 +119,11 @@ class _CustomInputFieldState extends State<CustomInputField> {
             ),
             borderSide: BorderSide.none,
           ),
-          contentPadding: const EdgeInsets.only(
-            top: 5,
-            left: 10,
-            right: 10,
-            bottom: 20,
+          contentPadding: EdgeInsets.only(
+            top: 5.h,
+            left: 10.w,
+            right: 10.w,
+            bottom: 20.h,
           ),
           suffixIcon: widget.suffixIcon ??
               (widget.isPassword

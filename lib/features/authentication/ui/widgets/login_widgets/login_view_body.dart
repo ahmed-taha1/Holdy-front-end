@@ -22,12 +22,12 @@ class LoginViewBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 5.h),
           child: Column(
             children: [
-              const LogoWithLoginText(),
-              verticalSpace(33),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
                 child: Column(
                   children: [
+                    const LogoWithLoginText(),
+                    verticalSpace(33),
                     CustomInputField(
                       controller: emailController,
                       hintText: 'EMAIL',

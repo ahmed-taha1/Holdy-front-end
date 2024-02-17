@@ -15,24 +15,21 @@ class LogoWithLoginText extends StatelessWidget {
         SvgPicture.asset("assets/svgs/light-logo.svg",
             height: 174.h, width: 174.w),
         verticalSpace(50.h),
-        Padding(
-          padding: EdgeInsets.only(left: 42.w),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Login',
-                  style: TextStyles.font30DarkGreenBold,
-                ),
-                verticalSpace(10.h),
-                Text(
-                  'Please sign in to continue',
-                  style: TextStyles.font15DarkGreySemiBold,
-                ),
-              ],
-            ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Login',
+                style: TextStyles.font30DarkGreenBold,
+              ),
+              verticalSpace(10.h),
+              Text(
+                'Please sign in to continue',
+                style: TextStyles.font15DarkGreySemiBold,
+              ),
+            ],
           ),
         ),
       ],
