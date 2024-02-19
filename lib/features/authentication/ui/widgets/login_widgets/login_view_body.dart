@@ -9,7 +9,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_button.dart';
-import 'logo_with_login_text.dart';
+import '../../../../../core/widgets/logo_with_login_text.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -28,7 +28,11 @@ class LoginViewBody extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
                 child: Column(
                   children: [
-                    const LogoWithLoginText(),
+                    const DefaultAuthTest(
+                      mainText: 'Login',
+                      subText: 'Please sign in to continue',
+                      photo: true, horizontalSpace: 83,
+                    ),
                     verticalSpace(33),
                     CustomInputField(
                       controller: emailController,
@@ -56,9 +60,11 @@ class LoginViewBody extends StatelessWidget {
               CustomTextButton(
                 text: 'Forgot Password?',
                 textStyle: TextStyles.font14SemiLightGreenBold,
-                onPressed: () {context.push(AppRouter.kForgotPasswordView);},
+                onPressed: () {
+                  context.push(AppRouter.kForgotPasswordView);
+                },
               ),
-              verticalSpace(106),
+              verticalSpace(50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -69,7 +75,9 @@ class LoginViewBody extends StatelessWidget {
                   CustomTextButton(
                     text: " Register",
                     textStyle: TextStyles.font14SemiLightGreenBold,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.push(AppRouter.kRegisterView);
+                    },
                   ),
                 ],
               ),
