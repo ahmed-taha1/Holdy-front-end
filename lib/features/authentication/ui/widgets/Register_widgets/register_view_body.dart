@@ -78,6 +78,7 @@ class RegisterViewBody extends StatelessWidget {
                     hintText: 'Password',
                     controller: passwordController,
                     keyboardType: TextInputType.text,
+                    isPassword: true,
                   ),
                   verticalSpace(11),
                   CustomInputField(
@@ -85,6 +86,7 @@ class RegisterViewBody extends StatelessWidget {
                     hintText: 'Confirm Paswword',
                     controller: rePasswordController,
                     keyboardType: TextInputType.text,
+                    isPassword: true,
                   ),
                 ],
               ),
