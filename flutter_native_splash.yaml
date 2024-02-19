@@ -1,0 +1,11 @@
+flutter_native_splash:
+  # IOS & Android below 12,
+  image: assets/images/splash_screen.png
+  color: "#ffffff"
+
+  android_12:
+    image: assets/images/android12_splash.png
+    color: "#ffffff"
+
+# command for generating splash screen
+#  dart run flutter_native_splash:create --path=flutter_native_splash.yaml

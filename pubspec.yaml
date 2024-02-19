@@ -6,7 +6,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
+# followed by an optional build number separated by a +. 
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # In Android, build-name is used as versionName while build-number used as versionCode.
@@ -44,6 +44,7 @@ dependencies:
   go_router: ^12.0.0
   font_awesome_flutter: ^10.6.0
   equatable: ^2.0.5
+  flutter_native_splash: ^2.3.5
 
 
 dev_dependencies:
@@ -69,9 +70,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    # - assets/svgs
+    - assets/svgs/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -84,11 +86,24 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Kinetika
+      fonts:
+        - asset: assets/fonts/Kinetika-Black.ttf
+        - asset: assets/fonts/Kinetika-BlackItalic.ttf
+        - asset: assets/fonts/Kinetika-Bold.ttf
+        - asset: assets/fonts/Kinetika-Book.ttf
+        - asset: assets/fonts/Kinetika-BookItalic.ttf
+        - asset: assets/fonts/Kinetika-Heavy.ttf
+        - asset: assets/fonts/Kinetika-Light.ttf
+        - asset: assets/fonts/Kinetika-Medium.ttf
+        - asset: assets/fonts/Kinetika-Regular.ttf
+        - asset: assets/fonts/Kinetika-SemiBold.ttf
+        - asset: assets/fonts/Kinetika-Thin.ttf
+        - asset: assets/fonts/Kinetika-Ultra.ttf
+        - asset: assets/fonts/Kinetika-Black.ttf
+        - asset: assets/fonts/Kinetika-Black.ttf
+        - asset: assets/fonts/Kinetika-Black.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
