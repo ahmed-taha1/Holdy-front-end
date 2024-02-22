@@ -4,8 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import '../helper/spacing.dart';
 import '../theming/styles.dart';
 
-class DefaultAuthTest extends StatelessWidget {
-  const DefaultAuthTest({super.key, required this.mainText, required this.subText, required this.photo, required this.horizontalSpace});
+class DefaultAuthText extends StatelessWidget {
+  const DefaultAuthText({super.key, required this.mainText, required this.subText, required this.photo, required this.horizontalSpace});
   final String mainText;
   final String subText;
   final bool photo;

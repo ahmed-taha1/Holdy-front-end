@@ -17,7 +17,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        scrolledUnderElevation: 5,
+        // scrolledUnderElevation: 5,
         toolbarHeight: 40.h,
       ),
       body: SafeArea(
@@ -29,7 +29,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
               const IconWithTopText(),
               verticalSpace(30),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 26.w),
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
                 child: CustomInputField(
                   icon: Icons.email_outlined,
                   hintText: 'EMAIL',

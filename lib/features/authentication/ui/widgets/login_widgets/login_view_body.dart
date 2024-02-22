@@ -28,10 +28,13 @@ class LoginViewBody extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
                 child: Column(
                   children: [
-                    const DefaultAuthTest(
-                      mainText: 'Login',
-                      subText: 'Please sign in to continue',
-                      photo: true, horizontalSpace: 83,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: const DefaultAuthText(
+                        mainText: 'Login',
+                        subText: 'Please sign in to continue',
+                        photo: true, horizontalSpace: 83,
+                      ),
                     ),
                     verticalSpace(33),
                     CustomInputField(
