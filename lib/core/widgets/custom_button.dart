@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.lightGreen,
+          backgroundColor: AppColors.purple,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32),
           ),
@@ -40,7 +40,7 @@ class CustomButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 8.h),
           child: Text(
             text,
-            style: TextStyles.font17navyBlueBold,
+            style: TextStyles.font17WhiteBold,
           ),
         ),
       ),

@@ -1,10 +1,10 @@
 flutter_native_splash:
   # IOS & Android below 12,
-  image: assets/images/splash_screen.png
+  image: assets/images/app_splash.png
   color: "#ffffff"
 
   android_12:
-    image: assets/images/android12_splash.png
+    image: assets/images/app_splash_12.png
     color: "#ffffff"
 
 # command for generating splash screen

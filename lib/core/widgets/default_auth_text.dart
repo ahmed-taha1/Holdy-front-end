@@ -5,18 +5,34 @@ import '../helper/spacing.dart';
 import '../theming/styles.dart';
 
 class DefaultAuthText extends StatelessWidget {
-  const DefaultAuthText({super.key, required this.mainText, required this.subText, required this.photo, required this.horizontalSpace});
+  const DefaultAuthText(
+      {super.key,
+      required this.mainText,
+      required this.subText,
+      this.isLogoIncluded,
+      this.iconPath});
+
   final String mainText;
   final String subText;
-  final bool photo;
-  final double horizontalSpace;
+  final bool? isLogoIncluded;
+  final String? iconPath;
+
+
+
   @override
   Widget build(BuildContext context) {
+    Widget firstWidget;
+    if(isLogoIncluded != null && isLogoIncluded ==  true){
+      firstWidget = SvgPicture.asset("assets/svgs/app_logo.svg", height: 174.h, width: 174.w);
+    } else if(iconPath != null){
+      firstWidget = SvgPicture.asset(iconPath!, height: 204.h, width: 204.w);
+    } else {
+      firstWidget = const Padding(padding: EdgeInsets.all(0));
+    }
+
     return Column(
       children: [
-        verticalSpace(horizontalSpace.h),
-        photo?SvgPicture.asset("assets/svgs/light-logo.svg",
-            height: 174.h, width: 174.w):const Padding(padding: EdgeInsets.all(0)),
+        firstWidget,
         verticalSpace(53.h),
         Align(
           alignment: Alignment.centerLeft,
@@ -25,7 +41,7 @@ class DefaultAuthText extends StatelessWidget {
             children: [
               Text(
                 mainText,
-                style: TextStyles.font30NavyBlueBold,
+                style: TextStyles.font30BlackPurpleBold,
               ),
               verticalSpace(11.h),
               Text(

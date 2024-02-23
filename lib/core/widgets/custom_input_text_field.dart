@@ -101,16 +101,15 @@ class _CustomInputFieldState extends State<CustomInputField> {
         controller: widget.controller,
         focusNode: _focusNode,
         keyboardType: widget.keyboardType,
-        style: TextStyles.font17navyBlueBold,
+        style: TextStyles.font17BlackPurpleBold,
         decoration: InputDecoration(
           prefixIcon: Icon(
             widget.icon,
-            color: _isFocused ? AppColors.navyBlue : AppColors.lightGrey,
+            color: _isFocused ? AppColors.blackPurple : AppColors.lightGrey,
           ),
           labelText: widget.hintText,
           labelStyle: TextStyles.font11LightGreyBold,
-          floatingLabelStyle:
-              TextStyles.font15DarkGreySemiBold,
+          floatingLabelStyle: TextStyles.font15DarkGreySemiBold,
           filled: true,
           fillColor: _isFocused ? AppColors.lightCyan : Colors.transparent,
           border: const UnderlineInputBorder(
@@ -120,7 +119,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             borderSide: BorderSide.none,
           ),
           contentPadding: EdgeInsets.only(
-            top: 5.h,
+            top: 15.h,
             left: 10.w,
             right: 10.w,
             bottom: 20.h,
@@ -138,7 +137,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                             ? Icons.visibility
                             : Icons.visibility_off,
                         color: _isFocused
-                            ? AppColors.navyBlue
+                            ? AppColors.blackPurple
                             : AppColors.lightGrey,
                       ),
                     )

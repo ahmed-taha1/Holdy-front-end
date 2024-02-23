@@ -1,13 +1,13 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
-import 'package:accounts_protector/core/theming/font_weight_helper.dart';
+import 'package:accounts_protector/core/helper/font_weight_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextStyles {
-  static TextStyle font30NavyBlueBold = TextStyle(
+  static TextStyle font30BlackPurpleBold = TextStyle(
     fontSize: 30.sp,
     fontWeight: FontWeight.bold,
-    color: AppColors.navyBlue,
+    color: AppColors.blackPurple,
   );
 
   static TextStyle font15DarkGreySemiBold = TextStyle(
@@ -16,10 +16,16 @@ class TextStyles {
     color: AppColors.darkGrey,
   );
 
-  static TextStyle font17navyBlueBold = TextStyle(
+  static TextStyle font17BlackPurpleBold = TextStyle(
     fontSize: 17.sp,
     fontWeight: FontWeight.bold,
-    color: AppColors.navyBlue,
+    color: AppColors.blackPurple,
+  );
+
+  static TextStyle font17WhiteBold = TextStyle(
+    fontSize: 17.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white,
   );
 
   static TextStyle font11LightGreyBold = TextStyle(
@@ -28,9 +34,9 @@ class TextStyles {
     color: AppColors.lightGrey,
   );
 
-  static TextStyle font14SemiLightGreenBold = TextStyle(
+  static TextStyle font14SemiLightBlueBold = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.bold,
-    color: AppColors.semiLightGreen,
+    color: AppColors.lightBlue,
   );
 }

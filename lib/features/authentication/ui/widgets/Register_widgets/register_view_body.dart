@@ -1,5 +1,5 @@
 import 'package:accounts_protector/core/routing/app_router.dart';
-import 'package:accounts_protector/core/widgets/logo_with_login_text.dart';
+import 'package:accounts_protector/core/widgets/default_auth_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -26,7 +26,7 @@ class RegisterViewBody extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        scrolledUnderElevation: 5,
+        // scrolledUnderElevation: 5,
         toolbarHeight: 33.h,
       ),
       body: SingleChildScrollView(
@@ -39,8 +39,6 @@ class RegisterViewBody extends StatelessWidget {
                 child: const DefaultAuthText(
                   mainText: 'Create Account',
                   subText: 'Please fill the input below here',
-                  photo: false,
-                  horizontalSpace: 0.5,
                 ),
               ),
               verticalSpace(54),
@@ -104,7 +102,7 @@ class RegisterViewBody extends StatelessWidget {
                   ),
                   CustomTextButton(
                     text: " Login",
-                    textStyle: TextStyles.font14SemiLightGreenBold,
+                    textStyle: TextStyles.font14SemiLightBlueBold,
                     onPressed: () {
                       context.go(AppRouter.kLoginView);
                     },

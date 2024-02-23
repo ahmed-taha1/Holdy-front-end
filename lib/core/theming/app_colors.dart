@@ -8,15 +8,15 @@ class AppColors{
   static const Color lightViolet = Color(0XFF3A344E);
 
   // primary fonts at white theme like ("Login") at light mode
-  static const Color navyBlue = Color(0XFF002333);
+  static const Color blackPurple = Color(0XFF11152E);
   // secondary fonts like ("Please Sign in to continue") at light mode
   static const Color darkGrey = Color(0XFF515A62);
-  // background color for text field when focused at light mode
-  static const Color lightCyan = Color(0XFFDBF1F1);
+  // background color for text field when   at light mode
+  static const Color lightCyan = Color(0XFFD2F4FF);
   // for out of focus text field icons, text at light mode
   static const Color lightGrey = Color(0XFF697885);
-  // for buttons back ground
-  static const Color lightGreen = Color(0XFF5DE3A4);
+  // for buttons back ground mainly
+  static const Color purple = Color(0XFF6962D5);
 
-  static const Color semiLightGreen = Color(0XFF55D297);
+  static const Color lightBlue = Color(0XFF4B90FF);
 }
