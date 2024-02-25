@@ -2,6 +2,7 @@ import 'package:accounts_protector/features/authentication/ui/views/login_view.d
 import 'package:accounts_protector/features/authentication/ui/views/otp_validation_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/register_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/reset_password_view.dart';
+import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_body.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/ui/views/forgot_password_view.dart';
 import '../../features/home/ui/views/home_view.dart';
@@ -13,6 +14,7 @@ abstract class AppRouter {
   static const kRegisterView = '/registerView';
   static const kOtpValidationView = '/otpValidationView';
   static const kResetPasswordView = '/ResetPasswordView';
+  static const kPlatformsView = '/Platforms';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -28,6 +30,7 @@ abstract class AppRouter {
       ),
       GoRoute(path: kOtpValidationView, builder: (context, state) => const OtpValidationView()),
       GoRoute(path: kResetPasswordView, builder: (context, state) => const ResetPasswordView()),
+      GoRoute(path: kPlatformsView, builder: (context, state) => const PlatformsViewBody()),
     ],
     initialLocation: kLoginView,
   );
