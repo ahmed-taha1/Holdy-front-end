@@ -1,8 +1,8 @@
-import 'package:accounts_protector/features/platforms/ui/widgets/platforms_grid_view.dart';
+import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/bottom/platforms_grid_view.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/styles.dart';
+import '../../../../../../core/theming/app_colors.dart';
+import '../../../../../../core/theming/styles.dart';
 
 class BottomPart extends StatelessWidget {
   const BottomPart({
@@ -34,19 +34,18 @@ class BottomPart extends StatelessWidget {
                     ],
                   ),
                   IconButton(
-                      onPressed: () {
-                        print("add clicked");
-                      },
-                      icon: const Icon(
-                        Icons.add,
-                        color: AppColors.blackPurple,
-                      ))
+                    onPressed: () {
+                      print("add clicked");
+                    },
+                    icon: const Icon(
+                      Icons.add,
+                      color: AppColors.blackPurple,
+                    ),
+                  ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            verticalSpace(10),
             const PlatformsGridView(),
           ],
         ),

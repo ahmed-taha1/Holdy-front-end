@@ -1,13 +1,12 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
-import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
 import 'package:accounts_protector/core/widgets/default_auth_text.dart';
-import 'package:accounts_protector/features/authentication/ui/views/reset_password_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/custom_text_button.dart';
 
@@ -52,9 +51,11 @@ class OtpValidationViewBody extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(18),
-                CustomButton(text: 'Proceed', onPressed: () {
-                  context.push(AppRouter.kResetPasswordView);
-                }),
+                CustomButton(
+                    text: 'Proceed',
+                    onPressed: () {
+                      context.push(Routes.resetPasswordView.path);
+                    }),
                 verticalSpace(14),
                 CustomTextButton(
                   text: 'Resend OTP',

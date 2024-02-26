@@ -32,7 +32,8 @@ class ResetPasswordViewBody extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 42.w),
                   child: const DefaultAuthText(
                     mainText: 'Reset Password',
-                    subText: 'Please fill the input blow here to reset your password',
+                    subText:
+                        'Please fill the input blow here to reset your password',
                     iconPath: 'assets/svgs/reset_password_icon.svg',
                   ),
                 ),
@@ -59,8 +60,7 @@ class ResetPasswordViewBody extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(18),
-                CustomButton(text: 'Reset', onPressed: () {
-                }),
+                CustomButton(text: 'Reset', onPressed: () {}),
               ],
             ),
           ),

@@ -17,14 +17,13 @@ class DefaultAuthText extends StatelessWidget {
   final bool? isLogoIncluded;
   final String? iconPath;
 
-
-
   @override
   Widget build(BuildContext context) {
     Widget firstWidget;
-    if(isLogoIncluded != null && isLogoIncluded ==  true){
-      firstWidget = SvgPicture.asset("assets/svgs/app_logo.svg", height: 174.h, width: 174.w);
-    } else if(iconPath != null){
+    if (isLogoIncluded != null && isLogoIncluded == true) {
+      firstWidget = SvgPicture.asset("assets/svgs/app_logo.svg",
+          height: 174.h, width: 174.w);
+    } else if (iconPath != null) {
       firstWidget = SvgPicture.asset(iconPath!, height: 204.h, width: 204.w);
     } else {
       firstWidget = const Padding(padding: EdgeInsets.all(0));

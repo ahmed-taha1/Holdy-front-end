@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColors{
+class AppColors {
   static const Color grey = Color(0xFF6B6877);
   static const Color darkViolet = Color(0XFF1F1B31);
   static const Color cyan = Color(0XFF5CF5E3);
@@ -17,6 +17,8 @@ class AppColors{
   static const Color lightGrey = Color(0XFF697885);
   // for buttons back ground mainly
   static const Color purple = Color(0XFF6962D5);
-
+  // for some search text fields background like in platforms view
+  static const Color lightPurple = Color(0XFFB0ABFF);
+  // for text buttons
   static const Color lightBlue = Color(0XFF4B90FF);
 }

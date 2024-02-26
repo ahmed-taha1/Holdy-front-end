@@ -1,11 +1,12 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
-import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
 import 'package:accounts_protector/core/widgets/default_auth_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../../core/routing/routes.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {
   const ForgotPasswordViewBody({super.key});
@@ -37,7 +38,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
                     iconPath: 'assets/svgs/forgot_password_icon.svg',
                   ),
                 ),
-                 verticalSpace(30),
+                verticalSpace(30),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25.w),
                   child: CustomInputField(
@@ -48,9 +49,11 @@ class ForgotPasswordViewBody extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(18),
-                CustomButton(text: 'Send', onPressed: () {
-                  context.push(AppRouter.kOtpValidationView);
-                }),
+                CustomButton(
+                    text: 'Send',
+                    onPressed: () {
+                      context.push(Routes.otpValidationView.path);
+                    }),
               ],
             ),
           ),

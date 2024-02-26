@@ -1,10 +1,10 @@
-import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/core/widgets/default_auth_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/helper/spacing.dart';
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_input_text_field.dart';
@@ -88,7 +88,7 @@ class RegisterViewBody extends StatelessWidget {
               verticalSpace(18),
               CustomButton(
                 onPressed: () {
-                  context.go(AppRouter.kLoginView);
+                  context.go(Routes.loginView.path);
                 },
                 text: 'REGISTER',
               ),
@@ -104,7 +104,7 @@ class RegisterViewBody extends StatelessWidget {
                     text: " Login",
                     textStyle: TextStyles.font14SemiLightBlueBold,
                     onPressed: () {
-                      context.go(AppRouter.kLoginView);
+                      context.go(Routes.loginView.path);
                     },
                   ),
                 ],

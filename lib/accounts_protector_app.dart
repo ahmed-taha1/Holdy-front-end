@@ -3,10 +3,8 @@ import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class AccountsProtectorApp extends StatelessWidget {
-
-    const AccountsProtectorApp({super.key});
+  const AccountsProtectorApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,6 @@ class AccountsProtectorApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
-
         debugShowCheckedModeBanner: false,
         title: 'Accounts Protector',
         theme: ThemeData(
@@ -26,7 +23,7 @@ class AccountsProtectorApp extends StatelessWidget {
           primarySwatch: Colors.grey,
           // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           // useMaterial3: true,
-          textTheme:ThemeData.light().textTheme,
+          textTheme: ThemeData.light().textTheme,
         ),
       ),
     );

@@ -82,4 +82,9 @@ class TextStyles {
     color: AppColors.white,
   );
 
+  static TextStyle font26WhiteBold = TextStyle(
+    fontSize: 26.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white,
+  );
 }
