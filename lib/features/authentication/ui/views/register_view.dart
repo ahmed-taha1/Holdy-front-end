@@ -2,19 +2,16 @@ import 'package:accounts_protector/features/authentication/ui/widgets/Register_w
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/widgets/custom_app_app_bar_with_back.dart';
+
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // scrolledUnderElevation: 5,
-        toolbarHeight: 33.h,
-      ),
-      body: const RegisterViewBody(),
+    return const Scaffold(
+      appBar: CustomAppBarWithBack(),
+      body: RegisterViewBody(),
     );
   }
 }

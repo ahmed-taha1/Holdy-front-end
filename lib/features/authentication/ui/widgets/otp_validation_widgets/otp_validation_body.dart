@@ -21,6 +21,7 @@ class OtpValidationViewBody extends StatelessWidget {
       child: SizedBox(
         height: double.infinity,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               verticalSpace(50),

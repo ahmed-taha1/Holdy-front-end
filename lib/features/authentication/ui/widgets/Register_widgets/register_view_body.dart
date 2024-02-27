@@ -23,6 +23,7 @@ class RegisterViewBody extends StatelessWidget {
     TextEditingController rePasswordController = TextEditingController();
 
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 25.w),
         child: Column(

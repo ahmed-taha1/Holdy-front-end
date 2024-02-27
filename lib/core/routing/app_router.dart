@@ -29,6 +29,6 @@ abstract class AppRouter {
           path: Routes.platformsView.path,
           builder: (context, state) => const PlatformsView()),
     ],
-    initialLocation: Routes.platformsView.path,
+    initialLocation: Routes.loginView.path,
   );
 }
