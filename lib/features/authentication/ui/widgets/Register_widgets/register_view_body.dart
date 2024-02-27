@@ -22,96 +22,88 @@ class RegisterViewBody extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     TextEditingController rePasswordController = TextEditingController();
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // scrolledUnderElevation: 5,
-        toolbarHeight: 33.h,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25.w),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: const DefaultAuthText(
-                  mainText: 'Create Account',
-                  subText: 'Please fill the input below here',
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 25.w),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: const DefaultAuthText(
+                mainText: 'Create Account',
+                subText: 'Please fill the input below here',
+              ),
+            ),
+            verticalSpace(54),
+            CustomInputField(
+              icon: Icons.person,
+              hintText: 'FIRST NAME',
+              controller: firstNameController,
+              keyboardType: TextInputType.text,
+            ),
+            verticalSpace(11),
+            CustomInputField(
+              icon: Icons.person,
+              hintText: 'LAST NAME',
+              controller: lastNameController,
+              keyboardType: TextInputType.text,
+            ),
+            verticalSpace(11),
+            CustomInputField(
+              icon: Icons.email_outlined,
+              hintText: 'EMAIL',
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+            ),
+            verticalSpace(11),
+            CustomInputField(
+              icon: Icons.phone,
+              hintText: 'PHONE',
+              controller: phoneController,
+              keyboardType: TextInputType.phone,
+            ),
+            verticalSpace(11),
+            CustomInputField(
+              icon: Icons.lock_outline,
+              hintText: 'PASSWORD',
+              controller: passwordController,
+              keyboardType: TextInputType.text,
+              isPassword: true,
+            ),
+            verticalSpace(11),
+            CustomInputField(
+              icon: Icons.lock_outline,
+              hintText: 'CONFIRM PASSWORD',
+              controller: rePasswordController,
+              keyboardType: TextInputType.text,
+              isPassword: true,
+            ),
+            verticalSpace(18),
+            CustomButton(
+              onPressed: () {
+                context.go(Routes.loginView.path);
+              },
+              text: 'REGISTER',
+            ),
+            verticalSpace(29),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Already have an account? ",
+                  style: TextStyles.font15DarkGreySemiBold,
                 ),
-              ),
-              verticalSpace(54),
-              CustomInputField(
-                icon: Icons.person,
-                hintText: 'FIRST NAME',
-                controller: firstNameController,
-                keyboardType: TextInputType.text,
-              ),
-              verticalSpace(11),
-              CustomInputField(
-                icon: Icons.person,
-                hintText: 'LAST NAME',
-                controller: lastNameController,
-                keyboardType: TextInputType.text,
-              ),
-              verticalSpace(11),
-              CustomInputField(
-                icon: Icons.email_outlined,
-                hintText: 'EMAIL',
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-              ),
-              verticalSpace(11),
-              CustomInputField(
-                icon: Icons.phone,
-                hintText: 'PHONE',
-                controller: phoneController,
-                keyboardType: TextInputType.phone,
-              ),
-              verticalSpace(11),
-              CustomInputField(
-                icon: Icons.lock_outline,
-                hintText: 'PASSWORD',
-                controller: passwordController,
-                keyboardType: TextInputType.text,
-                isPassword: true,
-              ),
-              verticalSpace(11),
-              CustomInputField(
-                icon: Icons.lock_outline,
-                hintText: 'CONFIRM PASSWORD',
-                controller: rePasswordController,
-                keyboardType: TextInputType.text,
-                isPassword: true,
-              ),
-              verticalSpace(18),
-              CustomButton(
-                onPressed: () {
-                  context.go(Routes.loginView.path);
-                },
-                text: 'REGISTER',
-              ),
-              verticalSpace(29),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Already have an account? ",
-                    style: TextStyles.font15DarkGreySemiBold,
-                  ),
-                  CustomTextButton(
-                    text: " Login",
-                    textStyle: TextStyles.font14SemiLightBlueBold,
-                    onPressed: () {
-                      context.go(Routes.loginView.path);
-                    },
-                  ),
-                ],
-              ),
-              verticalSpace(15),
-            ],
-          ),
+                CustomTextButton(
+                  text: " Login",
+                  textStyle: TextStyles.font14SemiLightBlueBold,
+                  onPressed: () {
+                    context.go(Routes.loginView.path);
+                  },
+                ),
+              ],
+            ),
+            verticalSpace(15),
+          ],
         ),
       ),
     );

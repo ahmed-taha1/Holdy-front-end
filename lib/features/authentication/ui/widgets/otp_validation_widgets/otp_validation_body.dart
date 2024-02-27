@@ -17,61 +17,52 @@ class OtpValidationViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController otpController = TextEditingController();
 
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // scrolledUnderElevation: 5,
-        toolbarHeight: 40.h,
-      ),
-      body: SafeArea(
-        child: SizedBox(
-          height: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                verticalSpace(50),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 42.w),
-                  child: const DefaultAuthText(
-                    mainText: 'OTP Validation',
-                    subText: 'Please enter the OTP',
-                    iconPath: 'assets/svgs/verify_otp_icon.svg',
-                  ),
+    return SafeArea(
+      child: SizedBox(
+        height: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              verticalSpace(50),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 42.w),
+                child: const DefaultAuthText(
+                  mainText: 'OTP Validation',
+                  subText: 'Please enter the OTP',
+                  iconPath: 'assets/svgs/verify_otp_icon.svg',
                 ),
-                verticalSpace(30),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.w),
-                  child: CustomInputField(
-                    icon: Icons.key,
-                    hintText: 'OTP',
-                    controller: otpController,
-                    keyboardType: TextInputType.number,
-                  ),
+              ),
+              verticalSpace(30),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
+                child: CustomInputField(
+                  icon: Icons.key,
+                  hintText: 'OTP',
+                  controller: otpController,
+                  keyboardType: TextInputType.number,
                 ),
-                verticalSpace(18),
-                CustomButton(
-                    text: 'Proceed',
-                    onPressed: () {
-                      context.push(Routes.resetPasswordView.path);
-                    }),
-                verticalSpace(14),
-                CustomTextButton(
-                  text: 'Resend OTP',
-                  textStyle: TextStyles.font14SemiLightBlueBold,
+              ),
+              verticalSpace(18),
+              CustomButton(
+                  text: 'Proceed',
                   onPressed: () {
-                    // context.push();
-                  },
-                ),
-                verticalSpace(130.h),
-                Text(
-                  'Note: the OTP is valid for 5 minutes only.',
-                  style: TextStyles.font15DarkGreySemiBold,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+                    context.push(Routes.resetPasswordView.path);
+                  }),
+              verticalSpace(14),
+              CustomTextButton(
+                text: 'Resend OTP',
+                textStyle: TextStyles.font14SemiLightBlueBold,
+                onPressed: () {
+                  // context.push();
+                },
+              ),
+              verticalSpace(130.h),
+              Text(
+                'Note: the OTP is valid for 5 minutes only.',
+                style: TextStyles.font15DarkGreySemiBold,
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         ),
       ),

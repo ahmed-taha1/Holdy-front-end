@@ -15,47 +15,38 @@ class ForgotPasswordViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
 
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // scrolledUnderElevation: 5,
-        toolbarHeight: 40.h,
-      ),
-      body: SafeArea(
-        child: SizedBox(
-          height: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                verticalSpace(50),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 42.w),
-                  child: const DefaultAuthText(
-                    mainText: 'Forgot Password',
-                    subText: 'Please enter your email to receive OTP',
-                    iconPath: 'assets/svgs/forgot_password_icon.svg',
-                  ),
+    return SafeArea(
+      child: SizedBox(
+        height: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              verticalSpace(50),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 42.w),
+                child: const DefaultAuthText(
+                  mainText: 'Forgot Password',
+                  subText: 'Please enter your email to receive OTP',
+                  iconPath: 'assets/svgs/forgot_password_icon.svg',
                 ),
-                verticalSpace(30),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.w),
-                  child: CustomInputField(
-                    icon: Icons.email_outlined,
-                    hintText: 'EMAIL',
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                  ),
+              ),
+              verticalSpace(30),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
+                child: CustomInputField(
+                  icon: Icons.email_outlined,
+                  hintText: 'EMAIL',
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
                 ),
-                verticalSpace(18),
-                CustomButton(
-                    text: 'Send',
-                    onPressed: () {
-                      context.push(Routes.otpValidationView.path);
-                    }),
-              ],
-            ),
+              ),
+              verticalSpace(18),
+              CustomButton(
+                  text: 'Send',
+                  onPressed: () {
+                    context.push(Routes.otpValidationView.path);
+                  }),
+            ],
           ),
         ),
       ),

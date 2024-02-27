@@ -13,56 +13,47 @@ class ResetPasswordViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController passwordController = TextEditingController();
     TextEditingController rePasswordController = TextEditingController();
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // scrolledUnderElevation: 5,
-        toolbarHeight: 40.h,
-      ),
-      body: SafeArea(
-        child: SizedBox(
-          height: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                verticalSpace(50),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 42.w),
-                  child: const DefaultAuthText(
-                    mainText: 'Reset Password',
-                    subText:
-                        'Please fill the input blow here to reset your password',
-                    iconPath: 'assets/svgs/reset_password_icon.svg',
-                  ),
+    return SafeArea(
+      child: SizedBox(
+        height: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              verticalSpace(50),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 42.w),
+                child: const DefaultAuthText(
+                  mainText: 'Reset Password',
+                  subText:
+                      'Please fill the input blow here to reset your password',
+                  iconPath: 'assets/svgs/reset_password_icon.svg',
                 ),
-                verticalSpace(30),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.w),
-                  child: Column(
-                    children: [
-                      CustomInputField(
-                        icon: Icons.lock,
-                        hintText: 'NEW PASSWORD',
-                        controller: passwordController,
-                        keyboardType: TextInputType.text,
-                        isPassword: true,
-                      ),
-                      CustomInputField(
-                        icon: Icons.lock,
-                        hintText: 'RE-ENTER NEW PASSWORD',
-                        controller: rePasswordController,
-                        keyboardType: TextInputType.text,
-                        isPassword: true,
-                      ),
-                    ],
-                  ),
+              ),
+              verticalSpace(30),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
+                child: Column(
+                  children: [
+                    CustomInputField(
+                      icon: Icons.lock,
+                      hintText: 'NEW PASSWORD',
+                      controller: passwordController,
+                      keyboardType: TextInputType.text,
+                      isPassword: true,
+                    ),
+                    CustomInputField(
+                      icon: Icons.lock,
+                      hintText: 'RE-ENTER NEW PASSWORD',
+                      controller: rePasswordController,
+                      keyboardType: TextInputType.text,
+                      isPassword: true,
+                    ),
+                  ],
                 ),
-                verticalSpace(18),
-                CustomButton(text: 'Reset', onPressed: () {}),
-              ],
-            ),
+              ),
+              verticalSpace(18),
+              CustomButton(text: 'Reset', onPressed: () {}),
+            ],
           ),
         ),
       ),
