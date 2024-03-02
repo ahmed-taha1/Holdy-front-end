@@ -46,7 +46,7 @@ dependencies:
   font_awesome_flutter: ^10.6.0
   equatable: ^2.0.5
   flutter_native_splash: ^2.3.5
-
+  flex_color_picker: ^3.3.0
 
 dev_dependencies:
   flutter_test:

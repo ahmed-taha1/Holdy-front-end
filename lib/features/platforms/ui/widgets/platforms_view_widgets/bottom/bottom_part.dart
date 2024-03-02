@@ -1,4 +1,6 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/core/routing/app_router.dart';
+import 'package:accounts_protector/core/routing/routes.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/bottom/platforms_grid_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../core/theming/app_colors.dart';
@@ -35,7 +37,7 @@ class BottomPart extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      print("add clicked");
+                      AppRouter.router.push(Routes.addPlatformView.path);
                     },
                     icon: const Icon(
                       Icons.add,

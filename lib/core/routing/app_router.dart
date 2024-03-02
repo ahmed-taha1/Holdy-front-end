@@ -3,6 +3,7 @@ import 'package:accounts_protector/features/authentication/ui/views/login_view.d
 import 'package:accounts_protector/features/authentication/ui/views/otp_validation_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/register_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/reset_password_view.dart';
+import 'package:accounts_protector/features/platforms/ui/views/add_platform_view.dart';
 import 'package:accounts_protector/features/platforms/ui/views/platforms_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/ui/views/forgot_password_view.dart';
@@ -28,6 +29,9 @@ abstract class AppRouter {
       GoRoute(
           path: Routes.platformsView.path,
           builder: (context, state) => const PlatformsView()),
+      GoRoute(
+          path: Routes.addPlatformView.path,
+          builder: (context, state) => const AddPlatformView()),
     ],
     initialLocation: Routes.loginView.path,
   );
