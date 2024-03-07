@@ -56,7 +56,9 @@ class LoginViewBody extends StatelessWidget {
             ),
             verticalSpace(18),
             CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                context.go(Routes.platformsView.path);
+              },
               text: 'LOGIN',
             ),
             verticalSpace(14),

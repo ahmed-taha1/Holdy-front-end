@@ -3,6 +3,7 @@ import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/core/routing/routes.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/bottom/platforms_grid_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../../core/theming/app_colors.dart';
 import '../../../../../../core/theming/styles.dart';
 
@@ -14,7 +15,7 @@ class BottomPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 5,
+      flex: 4,
       child: Container(
         decoration: const BoxDecoration(
             color: Colors.white,
@@ -37,7 +38,7 @@ class BottomPart extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      AppRouter.router.push(Routes.addPlatformView.path);
+                      context.push(Routes.addPlatformView.path);
                     },
                     icon: const Icon(
                       Icons.add,

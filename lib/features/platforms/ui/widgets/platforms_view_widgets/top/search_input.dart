@@ -27,13 +27,19 @@ class SearchInput extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(6).add(EdgeInsets.only(left: 8.h)),
           child: const TextField(
-            cursorColor: AppColors.blackPurple,
+            style: TextStyle(
+              color: AppColors.white,
+            ),
+            cursorColor: AppColors.white,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: "Search",
+              hintStyle: TextStyle(
+                color: AppColors.white,
+              ),
               icon: Icon(
                 Icons.search,
-                color: AppColors.blackPurple,
+                color: AppColors.white,
               ),
             ),
           ),

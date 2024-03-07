@@ -1,3 +1,4 @@
+import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/top/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,6 +49,7 @@ class TopPart extends StatelessWidget {
               ],
             ),
           ),
+          verticalSpace(20),
           const SearchInput(),
         ],
       ),

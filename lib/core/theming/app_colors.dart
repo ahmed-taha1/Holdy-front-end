@@ -18,7 +18,7 @@ class AppColors {
   // for buttons back ground mainly
   static const Color purple = Color(0XFF6962D5);
   // for some search text fields background like in platforms view
-  static const Color lightPurple = Color(0XFFB0ABFF);
+  static const Color lightPurple = Color(0XFF847CFF);
   // for text buttons
   static const Color lightBlue = Color(0XFF4B90FF);
 }

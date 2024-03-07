@@ -15,41 +15,44 @@ class AddPlatformViewBody extends StatelessWidget {
     TextEditingController platformNameInputController = TextEditingController();
 
     return AnnotatedRegion(
-        value: const SystemUiOverlayStyle(statusBarColor: AppColors.white),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 42),
-              child: Container(
-                width: double.infinity,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const DefaultAddPlatformText(
-                        mainText: "Add Platform",
-                        subText: "Please fill the input below here",
-                        iconPath: "assets/svgs/platforms.svg",
-                      ),
-                      verticalSpace(33),
-                      CustomInputField(
-                        controller: platformNameInputController,
-                        hintText: 'Platform Name',
-                        icon: Icons.person,
-                        keyboardType: TextInputType.text,
-                      ),
-                      verticalSpace(33),
-                      const PlatformColorPicker(),
-                      verticalSpace(33),
-                      CustomButton(
-                          text: "Create",
-                          onPressed: () {
-                            print("create clicked");
-                          })
-                    ]),
+      value: const SystemUiOverlayStyle(statusBarColor: AppColors.white),
+      child: SafeArea(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 42),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const DefaultAddPlatformText(
+                    mainText: "Add Platform",
+                    subText: "Please fill the input below here",
+                    iconPath: "assets/svgs/platforms.svg",
+                  ),
+                  verticalSpace(33),
+                  CustomInputField(
+                    controller: platformNameInputController,
+                    hintText: 'Platform Name',
+                    icon: Icons.person,
+                    keyboardType: TextInputType.text,
+                  ),
+                  verticalSpace(33),
+                  const PlatformColorPicker(),
+                  verticalSpace(33),
+                  CustomButton(
+                    text: "Create",
+                    onPressed: () {
+                      print("create clicked");
+                    },
+                  ),
+                ],
               ),
             ),
           ),
         ),
+      ),
     );
   }
 }

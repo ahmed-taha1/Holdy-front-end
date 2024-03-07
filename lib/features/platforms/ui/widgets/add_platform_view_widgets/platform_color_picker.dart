@@ -15,17 +15,22 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+    return SizedBox(
+      width: double.infinity,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
           GestureDetector(
             onTap: _openColorPicker,
             child: Container(
               decoration: BoxDecoration(
-                  color: selectedColor,
-                  borderRadius: const BorderRadius.all(Radius.circular(20))),
-              width: 40,
-              height: 40,
+                color: selectedColor,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              width: 35,
+              height: 35,
             ),
           ),
           horizontalSpace(10),
@@ -33,7 +38,9 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
             "Icon Color",
             style: TextStyles.font15BlackPurpleMedium,
           ),
-        ]));
+        ],
+      ),
+    );
   }
 
   Future<void> _openColorPicker() async {

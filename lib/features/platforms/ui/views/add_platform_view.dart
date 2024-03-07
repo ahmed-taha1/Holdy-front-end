@@ -3,6 +3,8 @@ import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/add_platform_view_widgets/add_platform_view_body.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/widgets/custom_app_app_bar_with_back.dart';
+
 class AddPlatformView extends StatelessWidget {
   const AddPlatformView({super.key});
 
@@ -11,14 +13,7 @@ class AddPlatformView extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.white,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            AppRouter.router.pop();
-          },
-        ),
-      ),
+      appBar: CustomAppBarWithBack(),
       body: AddPlatformViewBody(),
     );
   }
