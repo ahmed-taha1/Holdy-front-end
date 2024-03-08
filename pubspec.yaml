@@ -64,6 +64,25 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: Kinetika
+      fonts:
+        - asset: assets/fonts/kinetika/KinetikaBold.ttf
+          weight: 700
+#        - asset: assets/fonts/kinetika/KinetikaBlack.ttf
+#        - asset: assets/fonts/kinetika/KinetikaBlackItalic.ttf
+#        - asset: assets/fonts/kinetika/KinetikaBook.ttf
+#        - asset: assets/fonts/kinetika/KinetikaBookItalic.ttf
+#        - asset: assets/fonts/kinetika/KinetikaHeavy.ttf
+#        - asset: assets/fonts/kinetika/KinetikaLight.ttf
+        - asset: assets/fonts/kinetika/KinetikaMedium.ttf
+          weight: 500
+        - asset: assets/fonts/kinetika/KinetikaRegular.ttf
+          weight: 400
+        - asset: assets/fonts/kinetika/KinetikaSemiBold.ttf
+          weight: 600
+#        - asset: assets/fonts/kinetika/KinetikaThin.ttf
+#        - asset: assets/fonts/kinetika/KinetikaUltra.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -87,24 +106,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Kinetika
-      fonts:
-        - asset: assets/fonts/Kinetika-Black.ttf
-        - asset: assets/fonts/Kinetika-BlackItalic.ttf
-        - asset: assets/fonts/Kinetika-Bold.ttf
-        - asset: assets/fonts/Kinetika-Book.ttf
-        - asset: assets/fonts/Kinetika-BookItalic.ttf
-        - asset: assets/fonts/Kinetika-Heavy.ttf
-        - asset: assets/fonts/Kinetika-Light.ttf
-        - asset: assets/fonts/Kinetika-Medium.ttf
-        - asset: assets/fonts/Kinetika-Regular.ttf
-        - asset: assets/fonts/Kinetika-SemiBold.ttf
-        - asset: assets/fonts/Kinetika-Thin.ttf
-        - asset: assets/fonts/Kinetika-Ultra.ttf
-        - asset: assets/fonts/Kinetika-Black.ttf
-        - asset: assets/fonts/Kinetika-Black.ttf
-        - asset: assets/fonts/Kinetika-Black.ttf
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
