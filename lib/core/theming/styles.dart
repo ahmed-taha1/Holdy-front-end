@@ -6,31 +6,31 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class TextStyles {
   static TextStyle font30BlackPurpleBold = TextStyle(
     fontSize: 30.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.blackPurple,
   );
 
   static TextStyle font20BlackPurpleBold = TextStyle(
     fontSize: 20.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.blackPurple,
   );
 
   static TextStyle font20WhiteBold = TextStyle(
     fontSize: 20.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.white,
   );
 
   static TextStyle font17BlackPurpleBold = TextStyle(
     fontSize: 17.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.blackPurple,
   );
 
   static TextStyle font17WhiteBold = TextStyle(
     fontSize: 17.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.white,
   );
 
@@ -54,7 +54,7 @@ class TextStyles {
 
   static TextStyle font14SemiLightBlueBold = TextStyle(
     fontSize: 14.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.lightBlue,
   );
 
@@ -66,7 +66,7 @@ class TextStyles {
 
   static TextStyle font11LightGreyBold = TextStyle(
     fontSize: 11.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.lightGrey,
   );
 
@@ -84,7 +84,7 @@ class TextStyles {
 
   static TextStyle font26WhiteBold = TextStyle(
     fontSize: 26.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.white,
   );
 }
