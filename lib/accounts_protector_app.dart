@@ -17,7 +17,7 @@ class AccountsProtectorApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Accounts Protector',
         theme: ThemeData(
-          fontFamily: 'Kinetika',
+          fontFamily: 'KinetikaBold',
           scaffoldBackgroundColor: AppColors.white,
           // primaryColor: AppColors.blackPurple,
           // primarySwatch: Colors.grey,

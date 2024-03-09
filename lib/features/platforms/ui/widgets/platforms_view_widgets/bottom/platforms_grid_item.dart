@@ -1,3 +1,4 @@
+import 'package:accounts_protector/core/helper/font_weight_helper.dart';
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../core/theming/styles.dart';
@@ -42,7 +43,9 @@ class PlatformsGridItem extends StatelessWidget {
                 ),
               ),
               verticalSpace(10),
-              Text(platformName, style: TextStyles.font15BlackPurpleMedium),
+              Text(platformName,
+                  style: TextStyles.font15BlackPurpleMedium
+                      .copyWith(fontFamily: FontWeightHelper.semiBold)),
               Text("3 Accounts", style: TextStyles.font11DarkGreyRegular),
             ],
           ),

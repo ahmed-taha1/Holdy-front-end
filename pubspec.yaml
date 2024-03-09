@@ -65,16 +65,25 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   fonts:
-    - family: Kinetika
+    - family: KinetikaBold
       fonts:
-#        - asset: assets/fonts/kinetika/KinetikaSemiBold.ttf
-#        - asset: assets/fonts/kinetika/Kinetika-Bold.ttf
-#        - asset: assets/fonts/kinetika/KinetikaBlack.ttf
-#        - asset: assets/fonts/kinetika/KinetikaBook.ttf
-#        - asset: assets/fonts/kinetika/KinetikaLight.ttf
-#        - asset: assets/fonts/kinetika/KinetikaMedium.ttf
+        - asset: assets/fonts/kinetika/KinetikaBold.ttf
+
+    - family: KinetikaRegular
+      fonts:
         - asset: assets/fonts/kinetika/KinetikaRegular.ttf
 
+    - family: KinetikaMedium
+      fonts:
+        - asset: assets/fonts/kinetika/KinetikaMedium.ttf
+
+    - family: KinetikaSemiBold
+      fonts:
+        - asset: assets/fonts/kinetika/KinetikaSemiBold.ttf
+
+    - family: KinetikaBlack
+      fonts:
+        - asset: assets/fonts/kinetika/KinetikaBlack.ttf
 
 
   # The following line ensures that the Material Icons font is
