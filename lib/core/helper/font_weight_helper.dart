@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class FontWeightHelper {
   static const String regular = "KinetikaRegular";
   static const String medium = "KinetikaMedium";

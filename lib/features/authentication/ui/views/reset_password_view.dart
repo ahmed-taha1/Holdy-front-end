@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/custom_app_app_bar_with_back.dart';
 import '../widgets/reset_password_widgets/reset_password_view_body.dart';
 

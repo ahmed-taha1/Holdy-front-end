@@ -1,7 +1,5 @@
 import 'package:accounts_protector/features/authentication/ui/widgets/Register_widgets/register_view_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/widgets/custom_app_app_bar_with_back.dart';
 
 class RegisterView extends StatelessWidget {
