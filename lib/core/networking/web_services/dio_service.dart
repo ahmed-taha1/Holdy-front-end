@@ -9,14 +9,17 @@ class DioService {
   // Private constructor
   DioService._() {
     _dio = Dio(); // Initialize Dio instance
-    BaseOptions baseOptions=BaseOptions(
-      baseUrl: baseUrl,
+    BaseOptions baseOptions = BaseOptions(
+      baseUrl: Urls.baseUrl,
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       headers: {
         'Content-Type': 'application/json',
+        'Host': 'accountsprotector.somee.com'
       },
+      followRedirects: true,
+      maxRedirects: 100,
     );
     _dio.options = baseOptions;
   }

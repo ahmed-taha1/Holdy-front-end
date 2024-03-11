@@ -1,10 +1,5 @@
-String baseUrl='http://accountsprotector.somee.com/api/';
-
-enum EndPoints{
-  Register('User/Register'),
-  Login('User/Login');
-
-
-  final String path;
-  const EndPoints(this.path);
+class Urls {
+  static const String baseUrl = 'http://accountsprotector.somee.com/api/';
+  static const String register = 'User/Register';
+  static const String login = 'User/Login';
 }
