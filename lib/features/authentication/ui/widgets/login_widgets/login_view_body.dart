@@ -58,8 +58,7 @@ class LoginViewBody extends StatelessWidget {
             verticalSpace(18),
             CustomButton(
               onPressed: () async{
-                await ApiService().login(email: emailController.text, password: passwordController.text);
-                // context.go(Routes.platformsView.path);
+                context.go(Routes.platformsView.path);
               },
               text: 'LOGIN',
             ),

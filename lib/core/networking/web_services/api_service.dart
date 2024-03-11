@@ -1,49 +1,32 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:accounts_protector/core/networking/urls.dart';
 import 'package:dio/dio.dart';
-import 'dio_service.dart'; // Import the DioService class
+import 'dio_service.dart';
 
 class ApiService {
-  final Dio _dio = DioService.dio; // Access Dio instance from DioService
+  final Dio _dio = DioService.dio;
 
   // Method to perform GET request
-  Future<Response> get(String path, {Map<String, dynamic>? queryParameters, bool? addAuth}) async {
-    _dio.options.headers['Authorization'] = 'Bearer ' + 'token'; // Add authorization header
+  Future<Response> get({required String path, bool? addAuth}) async {
+    _dio.options.method = 'GET';
+    _dio.options.headers['Authorization'] = 'Bearer ' + 'token';
+
     try {
-      final response = await _dio.get(path, queryParameters: queryParameters);
+      final response = await _dio.get(path);
       return response;
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<dynamic> login({required String email, required String password}) async {
-    try {
-      Response response = await _dio.post(
-        '${Urls.baseUrl}${Urls.login}',
-        data: {
-          'email': email,
-          'password': password
-        },
-      );
-      //returns the successful user data json object
-      return response.data;
-    }  catch (e) {
-      print({e});
-      return e.toString();
-    }
-  }
-
-
-
-
   // Method to perform POST request
-  Future<Response> post(String path, dynamic data) async {
+  Future<Response> post(
+      {required String path, dynamic body, bool? addAuth}) async {
     _dio.options.method = 'POST';
-    String bodyJson = jsonEncode(data);
-    _dio.options.headers['Content-Length'] = '${utf8.encode(bodyJson).length}';
+    _dio.options.headers['Authorization'] = 'Bearer ' + 'token';
+
+    String bodyJson = jsonEncode(body);
     try {
       final response = await _dio.post(path, data: bodyJson);
       return response;
@@ -53,9 +36,13 @@ class ApiService {
   }
 
   // Method to perform PUT request
-  Future<Response> put(String path, dynamic data) async {
+  Future<Response> put(
+      {required String path, dynamic body, bool? addAuth}) async {
+    _dio.options.method = 'PUT';
+    _dio.options.headers['Authorization'] = 'Bearer ' + 'token';
+
     try {
-      final response = await _dio.put(path, data: data);
+      final response = await _dio.put(path, data: body);
       return response;
     } catch (e) {
       rethrow;
@@ -63,9 +50,13 @@ class ApiService {
   }
 
   // Method to perform DELETE request
-  Future<Response> delete(String path) async {
+  Future<Response> delete(
+      {required String path, dynamic body, bool? addAuth}) async {
+    _dio.options.method = 'DELETE';
+    _dio.options.headers['Authorization'] = 'Bearer ' + 'token';
+
     try {
-      final response = await _dio.delete(path);
+      final response = await _dio.delete(path, data: body);
       return response;
     } catch (e) {
       rethrow;

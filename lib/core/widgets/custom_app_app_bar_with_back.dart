@@ -8,13 +8,15 @@ class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidge
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: GestureDetector(
-        onTap: () {
-          context.pop();
-        },
-        child: const Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black,
+      leading: Center(
+        child: GestureDetector(
+          onTap: () {
+            context.pop();
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
         ),
       ),
       backgroundColor: Colors.transparent,

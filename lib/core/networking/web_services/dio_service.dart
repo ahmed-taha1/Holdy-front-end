@@ -18,8 +18,9 @@ class DioService {
         'Content-Type': 'application/json',
         'Host': 'accountsprotector.somee.com'
       },
-      followRedirects: true,
-      maxRedirects: 100,
+      validateStatus: (status) {
+        return status! < 500;
+      },
     );
     _dio.options = baseOptions;
   }
