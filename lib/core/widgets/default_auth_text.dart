@@ -10,12 +10,14 @@ class DefaultAuthText extends StatelessWidget {
       required this.mainText,
       required this.subText,
       this.isLogoIncluded,
-      this.iconPath});
+      this.iconPath,
+      this.vSpace = 53});
 
   final String mainText;
   final String subText;
   final bool? isLogoIncluded;
   final String? iconPath;
+  final int vSpace;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class DefaultAuthText extends StatelessWidget {
     return Column(
       children: [
         firstWidget,
-        verticalSpace(53.h),
+        verticalSpace(vSpace.h),
         Align(
           alignment: Alignment.centerLeft,
           child: Column(

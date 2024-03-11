@@ -1,6 +1,9 @@
+import 'package:accounts_protector/core/routing/app_router.dart';
+import 'package:accounts_protector/core/routing/routes.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/top/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../../../../core/theming/app_colors.dart';
 import '../../../../../../core/theming/styles.dart';
@@ -38,6 +41,7 @@ class TopPart extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
+                    context.go(Routes.loginView.path);
                     print("settings clicked");
                   },
                   icon: const Icon(

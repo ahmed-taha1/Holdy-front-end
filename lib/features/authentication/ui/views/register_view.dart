@@ -1,5 +1,6 @@
 import 'package:accounts_protector/features/authentication/ui/widgets/Register_widgets/register_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/custom_app_app_bar_with_back.dart';
 
 class RegisterView extends StatelessWidget {
@@ -7,9 +8,12 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBarWithBack(),
-      body: RegisterViewBody(),
+    return  Scaffold(
+      appBar: PreferredSize(preferredSize:  Size.fromHeight(40.h),
+      child: const CustomAppBarWithBack()),
+      body: const SingleChildScrollView(
+        child: RegisterViewBody(),
+      ),
     );
   }
 }

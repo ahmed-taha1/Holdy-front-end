@@ -20,8 +20,8 @@ class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidge
         ),
       ),
       backgroundColor: Colors.transparent,
-      elevation: 0,
-      toolbarHeight: 40.h,
+      // elevation: 0,
+
     );
   }
 
