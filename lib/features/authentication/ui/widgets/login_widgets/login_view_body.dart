@@ -1,4 +1,5 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/core/networking/web_services/api_service.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,8 +57,9 @@ class LoginViewBody extends StatelessWidget {
             ),
             verticalSpace(18),
             CustomButton(
-              onPressed: () {
-                context.go(Routes.platformsView.path);
+              onPressed: () async{
+                await ApiService().login(email: emailController.text, password: passwordController.text);
+                // context.go(Routes.platformsView.path);
               },
               text: 'LOGIN',
             ),

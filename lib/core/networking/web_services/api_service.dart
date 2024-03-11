@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:html';
 
+import 'package:accounts_protector/core/networking/urls.dart';
 import 'package:dio/dio.dart';
 import 'dio_service.dart'; // Import the DioService class
 
@@ -16,6 +18,26 @@ class ApiService {
       rethrow;
     }
   }
+
+  Future<dynamic> login({required String email, required String password}) async {
+    try {
+      Response response = await _dio.post(
+        '${Urls.baseUrl}${Urls.login}',
+        data: {
+          'email': email,
+          'password': password
+        },
+      );
+      //returns the successful user data json object
+      return response.data;
+    }  catch (e) {
+      print({e});
+      return e.toString();
+    }
+  }
+
+
+
 
   // Method to perform POST request
   Future<Response> post(String path, dynamic data) async {
