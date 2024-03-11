@@ -3,6 +3,8 @@ import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/helper/font_weight_helper.dart';
+
 class AccountsProtectorApp extends StatelessWidget {
   const AccountsProtectorApp({super.key});
 
@@ -17,13 +19,13 @@ class AccountsProtectorApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Accounts Protector',
         theme: ThemeData(
-          fontFamily: 'KinetikaBold',
+          fontFamily: FontWeightHelper.regular,
           scaffoldBackgroundColor: AppColors.white,
-          // primaryColor: AppColors.blackPurple,
-          // primarySwatch: Colors.grey,
-          // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          // useMaterial3: true,
-          // textTheme: ThemeData.light().textTheme,
+          primaryColor: AppColors.blackPurple,
+          primarySwatch: Colors.grey,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          useMaterial3: true,
+          textTheme: ThemeData.light().textTheme,
         ),
       ),
     );
