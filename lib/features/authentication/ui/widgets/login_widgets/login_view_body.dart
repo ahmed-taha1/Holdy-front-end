@@ -63,13 +63,21 @@ class LoginViewBody extends StatelessWidget {
                 CustomButton(
                   onPressed: () async {
                     await context.read<LoginCubit>().login(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
-                    if (context
-                        .read<LoginCubit>()
-                        .state is LoginSuccessState) {
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+                    if (context.read<LoginCubit>().state is LoginSuccessState) {
                       context.go(Routes.platformsView.path);
+                    }
+                    else if(context.read<LoginCubit>().state is LoginFailureState){
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.redAccent,
+                          content: Text(
+                            (context.read<LoginCubit>().state as LoginFailureState).errorMassage,
+                          ),
+                        ),
+                      );
                     }
                   },
                   text: 'LOGIN',

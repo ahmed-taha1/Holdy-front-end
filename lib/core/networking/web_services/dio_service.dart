@@ -18,9 +18,6 @@ class DioService {
         'Content-Type': 'application/json',
         'Host': 'accountsprotector.somee.com'
       },
-      validateStatus: (status) {
-        return status! < 500;
-      },
     );
     _dio.options = baseOptions;
   }

@@ -37,13 +37,18 @@ class ServerFailure extends Failure {
     }
   }
 
-  factory ServerFailure.fromResponse(int statusCode, dynamic responce) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(responce['error']['message']);
+  factory ServerFailure.fromResponse(int statusCode, dynamic response) {
+    if (statusCode == 400 || statusCode == 403) {
+      List<dynamic> errors = response['errors'] ?? [];
+      String errorMessage =
+          errors.isNotEmpty ? errors.join('\n') : 'Unknown error';
+      return ServerFailure(errorMessage);
     } else if (statusCode == 404) {
       return ServerFailure('Your Request Not found, please try again later!');
     } else if (statusCode == 500) {
       return ServerFailure('Server error, please try again later!');
+    } else if (statusCode == 401) {
+      return ServerFailure('Unauthorized, please try again later!');
     } else {
       return ServerFailure('Something Went Wrong, Please try again');
     }

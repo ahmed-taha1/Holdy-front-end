@@ -1,6 +1,20 @@
+import 'package:accounts_protector/core/networking/web_services/api_service.dart';
+import 'package:accounts_protector/features/authentication/data/repo/i_auth_repo.dart';
+import '../../../../core/networking/urls.dart';
 
-abstract class AuthRepo{
-  Future<void> login({required String email,required String password});
-
-
+class AuthRepo extends IAuthRepo {
+  @override
+  Future<void> login({required String email, required String password}) async {
+    try {
+      var response = await ApiService().post(
+        path: Urls.login,
+        body: {
+          'email': email,
+          'password': password,
+        },
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

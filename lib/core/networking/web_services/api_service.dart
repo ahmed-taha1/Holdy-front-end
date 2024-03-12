@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:accounts_protector/core/networking/urls.dart';
 import 'package:dio/dio.dart';
+import '../../errors/failures.dart';
 import 'dio_service.dart';
 
 class ApiService {
@@ -15,8 +16,12 @@ class ApiService {
     try {
       final response = await _dio.get(path);
       return response;
-    } catch (e) {
-      rethrow;
+    } catch (dioError) {
+      if (dioError is DioException) {
+        throw ServerFailure.fromDioError(dioError);
+      } else {
+        rethrow;
+      }
     }
   }
 
@@ -30,8 +35,12 @@ class ApiService {
     try {
       final response = await _dio.post(path, data: bodyJson);
       return response;
-    } catch (e) {
-      rethrow;
+    } catch (dioError) {
+      if (dioError is DioException) {
+        throw ServerFailure.fromDioError(dioError);
+      } else {
+        rethrow;
+      }
     }
   }
 
@@ -44,8 +53,12 @@ class ApiService {
     try {
       final response = await _dio.put(path, data: body);
       return response;
-    } catch (e) {
-      rethrow;
+    } catch (dioError) {
+      if (dioError is DioException) {
+        throw ServerFailure.fromDioError(dioError);
+      } else {
+        rethrow;
+      }
     }
   }
 
@@ -58,8 +71,12 @@ class ApiService {
     try {
       final response = await _dio.delete(path, data: body);
       return response;
-    } catch (e) {
-      rethrow;
+    } catch (dioError) {
+      if (dioError is DioException) {
+        throw ServerFailure.fromDioError(dioError);
+      } else {
+        rethrow;
+      }
     }
   }
 }
