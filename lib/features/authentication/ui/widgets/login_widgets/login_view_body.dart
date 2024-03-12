@@ -19,7 +19,8 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
-    return BlocBuilder<LoginCubit, LoginStates>(
+    bool isLoginButtonEnabled = false;
+    return BlocConsumer<LoginCubit, LoginStates>(
       builder: (context, state) {
         return SizedBox(
           height: double.infinity,
@@ -61,24 +62,12 @@ class LoginViewBody extends StatelessWidget {
                 ),
                 verticalSpace(18),
                 CustomButton(
-                  onPressed: () async {
-                    await context.read<LoginCubit>().login(
+                  isEnabled: isLoginButtonEnabled,
+                  onPressed: () {
+                    context.read<LoginCubit>().login(
                           email: emailController.text,
                           password: passwordController.text,
                         );
-                    if (context.read<LoginCubit>().state is LoginSuccessState) {
-                      context.go(Routes.platformsView.path);
-                    }
-                    else if(context.read<LoginCubit>().state is LoginFailureState){
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          backgroundColor: Colors.redAccent,
-                          content: Text(
-                            (context.read<LoginCubit>().state as LoginFailureState).errorMassage,
-                          ),
-                        ),
-                      );
-                    }
                   },
                   text: 'LOGIN',
                 ),
@@ -111,6 +100,22 @@ class LoginViewBody extends StatelessWidget {
             ),
           ),
         );
+      },
+
+      listener: (context, state) {
+        if (state is LoginLoadingState) {
+          isLoginButtonEnabled = true;
+        } else if (state is LoginSuccessState) {
+          context.go(Routes.platformsView.path);
+        } else if (state is LoginFailureState) {
+          isLoginButtonEnabled = false;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.redAccent,
+              content: Text(state.errorMassage),
+            ),
+          );
+        }
       },
     );
   }

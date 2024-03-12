@@ -8,8 +8,10 @@ class CustomButton extends StatelessWidget {
     Key? key,
     required this.text,
     required this.onPressed,
+    this.isEnabled = false,
   }) : super(key: key);
 
+  final bool isEnabled;
   final String text;
   final VoidCallback onPressed;
 
@@ -29,7 +31,7 @@ class CustomButton extends StatelessWidget {
         ],
       ),
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: isEnabled ? (){} : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.purple,
           shape: RoundedRectangleBorder(
@@ -38,7 +40,9 @@ class CustomButton extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 8.h),
-          child: Text(
+          child: isEnabled ? const CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
+          ) : Text(
             text,
             style: TextStyles.font17WhiteBold,
           ),
