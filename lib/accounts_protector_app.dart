@@ -26,7 +26,7 @@ class AccountsProtectorApp extends StatelessWidget {
           title: 'Accounts Protector',
           theme: ThemeData(
             fontFamily: FontWeightHelper.regular,
-            scaffoldBackgroundColor: AppColors.white,
+            // scaffoldBackgroundColor: AppColors.white,
             primaryColor: AppColors.blackPurple,
             primarySwatch: Colors.grey,
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),

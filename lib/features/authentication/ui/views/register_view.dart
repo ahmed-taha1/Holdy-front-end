@@ -1,3 +1,4 @@
+import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/features/authentication/ui/widgets/Register_widgets/register_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,11 +10,10 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: AppColors.purple,
       appBar: PreferredSize(preferredSize:  Size.fromHeight(40.h),
       child: const CustomAppBarWithBack()),
-      body: const SingleChildScrollView(
-        child: RegisterViewBody(),
-      ),
+      body: const RegisterViewBody(),
     );
   }
 }
