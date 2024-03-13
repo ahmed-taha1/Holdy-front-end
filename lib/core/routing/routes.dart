@@ -4,7 +4,8 @@ enum Routes{
   registerView('/registerView'),
   otpValidationView('/otpValidationView'),
   resetPasswordView('/ResetPasswordView'),
-  platformsView('/Platforms');
+  platformsView('/Platforms'),
+  pinView('/PinView');
 
   final String path;
   const Routes(this.path);

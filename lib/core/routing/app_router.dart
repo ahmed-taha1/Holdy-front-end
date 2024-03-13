@@ -6,11 +6,14 @@ import 'package:accounts_protector/features/authentication/ui/views/reset_passwo
 import 'package:accounts_protector/features/platforms/ui/views/platforms_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/ui/views/forgot_password_view.dart';
+import '../../features/pin/ui/pin_view.dart';
 
 abstract class AppRouter {
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
-      GoRoute(path: Routes.loginView.path, builder: (context, state) => const LoginView()),
+      GoRoute(
+          path: Routes.loginView.path,
+          builder: (context, state) => const LoginView()),
       GoRoute(
         path: Routes.forgotPasswordView.path,
         builder: (context, state) => const ForgotPasswordView(),
@@ -28,7 +31,11 @@ abstract class AppRouter {
       GoRoute(
           path: Routes.platformsView.path,
           builder: (context, state) => const PlatformsView()),
+      GoRoute(
+          path: Routes.pinView.path,
+          builder: (context, state) => const PinView()),
     ],
-    initialLocation: Routes.loginView.path,
+    // initialLocation: Routes.loginView.path,
+    initialLocation: Routes.pinView.path,
   );
 }

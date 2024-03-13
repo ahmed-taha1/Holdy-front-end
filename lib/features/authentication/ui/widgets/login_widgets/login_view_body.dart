@@ -21,6 +21,23 @@ class LoginViewBody extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     bool isLoginButtonEnabled = false;
     return BlocConsumer<LoginCubit, LoginStates>(
+
+      listener: (context, state) {
+        if (state is LoginLoadingState) {
+          isLoginButtonEnabled = true;
+        } else if (state is LoginSuccessState) {
+          context.go(Routes.platformsView.path);
+        } else if (state is LoginFailureState) {
+          isLoginButtonEnabled = false;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.redAccent,
+              content: Text(state.errorMassage),
+            ),
+          );
+        }
+      },
+
       builder: (context, state) {
         return SizedBox(
           height: double.infinity,
@@ -102,21 +119,7 @@ class LoginViewBody extends StatelessWidget {
         );
       },
 
-      listener: (context, state) {
-        if (state is LoginLoadingState) {
-          isLoginButtonEnabled = true;
-        } else if (state is LoginSuccessState) {
-          context.go(Routes.platformsView.path);
-        } else if (state is LoginFailureState) {
-          isLoginButtonEnabled = false;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.redAccent,
-              content: Text(state.errorMassage),
-            ),
-          );
-        }
-      },
+
     );
   }
 }

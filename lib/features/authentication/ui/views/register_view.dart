@@ -9,10 +9,10 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: AppColors.purple,
-      appBar: PreferredSize(preferredSize:  Size.fromHeight(40.h),
-      child: const CustomAppBarWithBack()),
+    return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.h),
+          child: const CustomAppBarWithBack()),
       body: const RegisterViewBody(),
     );
   }

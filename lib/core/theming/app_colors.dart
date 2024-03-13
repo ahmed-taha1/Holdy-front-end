@@ -21,4 +21,6 @@ class AppColors {
   static const Color lightPurple = Color(0XFFB0ABFF);
   // for text buttons
   static const Color lightBlue = Color(0XFF4B90FF);
+  // for warnings
+  static const Color red = Color(0XFFE00000);
 }

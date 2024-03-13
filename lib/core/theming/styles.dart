@@ -101,4 +101,11 @@ class TextStyles {
     // fontWeight: FontWeightHelper.bold,
     color: AppColors.white,
   );
+
+  static TextStyle font12RedBold = TextStyle(
+    fontSize: 13.sp,
+    fontFamily: FontWeightHelper.bold,
+    // fontWeight: FontWeightHelper.bold,
+    color: AppColors.red,
+  );
 }
