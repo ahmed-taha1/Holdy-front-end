@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../../logic/pin_cubit.dart';
 import 'number_button.dart';
 
@@ -29,12 +31,23 @@ class NumbersGrid extends StatelessWidget {
         return NumberButton(
           number: _numbers[index],
           onPressed: () {
-            if(_numbers[index] != -1){
-              context.read<PinCubit>().addNumber(_numbers[index]);
-              print(context.read<PinCubit>().currentPinLength);
-            } /*else {
+            if (_numbers[index] != -1) {
+              if (context.read<PinCubit>().confirmPin == '') {
+                context.read<PinCubit>().addNumber(_numbers[index]);
+                debugPrint(
+                    context.read<PinCubit>().currentPinLength.toString());
+              } else {
+                context.read<PinCubit>().addConfirmPinNumber(_numbers[index]);
+                debugPrint(
+                    context.read<PinCubit>().currentPinLength.toString());
+              }
+
+              if (context.read<PinCubit>().isConfirm) {
+                context.go(Routes.loginView.path);
+              }
+            } else {
               context.read<PinCubit>().removeNumber();
-            }*/
+            }
           },
         );
       },
