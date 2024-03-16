@@ -35,7 +35,7 @@ abstract class AppRouter {
           path: Routes.pinView.path,
           builder: (context, state) => const PinView()),
     ],
-    // initialLocation: Routes.loginView.path,
-    initialLocation: Routes.pinView.path,
+    initialLocation: Routes.loginView.path,
+    // initialLocation: Routes.pinView.path,
   );
 }

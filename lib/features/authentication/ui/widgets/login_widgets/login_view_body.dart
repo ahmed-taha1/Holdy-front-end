@@ -79,7 +79,7 @@ class LoginViewBody extends StatelessWidget {
                 ),
                 verticalSpace(18),
                 CustomButton(
-                  isEnabled: isLoginButtonEnabled,
+                  isLoading: isLoginButtonEnabled,
                   onPressed: () {
                     context.read<LoginCubit>().login(
                           email: emailController.text,

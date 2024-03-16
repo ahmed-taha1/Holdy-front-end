@@ -1,6 +1,7 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/features/authentication/logic/login_cubit.dart';
+import 'package:accounts_protector/features/authentication/logic/register/register_cubit.dart';
 import 'package:accounts_protector/features/pin/logic/pin_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,7 @@ class AccountsProtectorApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => LoginCubit()),
           BlocProvider(create: (context) => PinCubit()),
+          BlocProvider(create: (context) => RegisterCubit()),
         ],
         child: MaterialApp.router(
           routerConfig: AppRouter.router,

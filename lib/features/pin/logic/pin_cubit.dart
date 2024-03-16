@@ -1,3 +1,5 @@
+import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
+import 'package:accounts_protector/features/authentication/data/repo/auth_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -11,7 +13,6 @@ class PinCubit extends Cubit<PinState> {
   static const pinLength = 6;
   bool isConfirm = false;
   bool isReenter = false;
-
 
   void addNumber(int number) {
     if (currentPinLength < pinLength) {
@@ -35,19 +36,22 @@ class PinCubit extends Cubit<PinState> {
       emit(AddNumberState(currentPinLength));
       if (currentPinLength == pinLength && pin == confirmPin) {
         isConfirm = true;
-        currentPinLength = 0;
+        // TODO maybe added here await
+        AuthRepo().setPin(
+          pinRequestDto: PinRequestDto(
+            pin: pin,
+            pinConfirmation: confirmPin,
+          ),
+        );
         emit(PinSuccessState());
-      }
-      else if(currentPinLength == pinLength && pin != confirmPin){
+      } else if (currentPinLength == pinLength && pin != confirmPin) {
         pin = '';
         currentPinLength = 0;
-        confirmPin='';
+        confirmPin = '';
         isReenter = false;
         emit(const PinFailureState('Pin not match'));
       }
-
     }
-
   }
 
   void removeNumber() {
@@ -57,5 +61,4 @@ class PinCubit extends Cubit<PinState> {
       emit(RemoveNumberState(currentPinLength));
     }
   }
-
 }

@@ -6,16 +6,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'accounts_protector_app.dart';
+import 'core/helper/cache_helper.dart';
 import 'core/networking/urls.dart';
 
 void main() async {
   // setupGetIT();
   // to fix .sp font bug in flutter screentil in release mode
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
   //   statusBarColor: AppColors.purple,
   //   statusBarIconBrightness: Brightness.light,
   // ));
+  await CacheHelper.init();
   await ScreenUtil.ensureScreenSize();
   runApp(const AccountsProtectorApp());
 }

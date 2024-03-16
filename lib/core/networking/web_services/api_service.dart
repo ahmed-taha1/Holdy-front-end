@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/core/networking/urls.dart';
 import 'package:dio/dio.dart';
 import '../../errors/failures.dart';
@@ -11,7 +12,9 @@ class ApiService {
   // Method to perform GET request
   Future<Response> get({required String path, bool? addAuth}) async {
     _dio.options.method = 'GET';
-    _dio.options.headers['Authorization'] = 'Bearer ' + 'token';
+    if(addAuth == true){
+      _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+    }
 
     try {
       final response = await _dio.get(path);
@@ -29,7 +32,9 @@ class ApiService {
   Future<Response> post(
       {required String path, dynamic body, bool? addAuth}) async {
     _dio.options.method = 'POST';
-    _dio.options.headers['Authorization'] = 'Bearer ' + 'token';
+    if(addAuth == true){
+      _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+    }
 
     String bodyJson = jsonEncode(body);
     try {
@@ -48,8 +53,9 @@ class ApiService {
   Future<Response> put(
       {required String path, dynamic body, bool? addAuth}) async {
     _dio.options.method = 'PUT';
-    _dio.options.headers['Authorization'] = 'Bearer ' + 'token';
-
+    if(addAuth == true){
+      _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+    }
     try {
       final response = await _dio.put(path, data: body);
       return response;
@@ -66,8 +72,9 @@ class ApiService {
   Future<Response> delete(
       {required String path, dynamic body, bool? addAuth}) async {
     _dio.options.method = 'DELETE';
-    _dio.options.headers['Authorization'] = 'Bearer ' + 'token';
-
+    if(addAuth == true){
+      _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+    }
     try {
       final response = await _dio.delete(path, data: body);
       return response;

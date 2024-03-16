@@ -19,4 +19,30 @@ class AuthRepo extends IAuthRepo {
       rethrow;
     }
   }
+
+  @override
+  Future<RegisterResponseDto> register({required RegisterRequestDto registerRequestDto}) async {
+    try{
+      var response = await ApiService().post(
+        path: Urls.register,
+        body: registerRequestDto.toJson(),
+      );
+      return RegisterResponseDto.fromJson(response.data);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> setPin({required PinRequestDto pinRequestDto}) async {
+    try{
+      var response = await ApiService().post(
+        path: Urls.setPin,
+        body: pinRequestDto.toJson(),
+        addAuth: true,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
