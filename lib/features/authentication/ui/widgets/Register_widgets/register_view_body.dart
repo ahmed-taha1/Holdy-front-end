@@ -28,7 +28,7 @@ class RegisterViewBody extends StatelessWidget {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if(state is RegisterSuccessState){
-          context.go(Routes.pinView.path);
+          context.go(Routes.createPinView.path);
         }
         else if(state is RegisterFailureState){
           ScaffoldMessenger.of(context).showSnackBar(

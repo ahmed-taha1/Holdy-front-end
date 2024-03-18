@@ -5,6 +5,7 @@ enum Routes{
   otpValidationView('/otpValidationView'),
   resetPasswordView('/ResetPasswordView'),
   platformsView('/Platforms'),
+  createPinView('/CreatePinView'),
   pinView('/PinView');
 
   final String path;

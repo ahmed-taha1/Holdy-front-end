@@ -18,7 +18,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     isLoadingState = true;
     try {
       var response = await AuthRepo().register(registerRequestDto: registerRequestDto);
-      CacheHelper.putData(key: 'token', value: response.token);
+      CacheHelper.putData(key: CacheHelperConstants.tempPinToken, value: response.token);
       isLoadingState = false;
       emit(RegisterSuccessState());
     } catch (e) {

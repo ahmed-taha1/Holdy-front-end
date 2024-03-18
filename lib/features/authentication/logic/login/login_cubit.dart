@@ -2,8 +2,9 @@ import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
 import 'package:accounts_protector/features/authentication/data/repo/auth_repo.dart';
-import 'package:accounts_protector/features/authentication/logic/login_states.dart';
 import 'package:bloc/bloc.dart';
+
+import 'login_states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitialState());
@@ -13,9 +14,17 @@ class LoginCubit extends Cubit<LoginStates> {
     emit(LoginLoadingState());
     try{
       loginResponseDto = await AuthRepo().login(email: email, password: password);
-      CacheHelper.putData(key: 'key', value: loginResponseDto!.pinHash);
-      CacheHelper.putData(key: 'token', value: loginResponseDto!.token);
-      emit(LoginSuccessState());
+      if(loginResponseDto!.pinHash == null || loginResponseDto!.pinHash == ''){
+        CacheHelper.putData(key: CacheHelperConstants.tempPinToken, value: loginResponseDto!.token);
+        emit(NoPinState());
+        return;
+      }
+      else {
+        CacheHelper.putData(key: CacheHelperConstants.token, value: loginResponseDto!.token);
+        CacheHelper.putData(key: CacheHelperConstants.pinHash, value: loginResponseDto!.pinHash);
+        CacheHelper.putData(key: CacheHelperConstants.isLogged, value: true);
+        emit(LoginSuccessState());
+      }
     }catch(e){
       if(e is ServerFailure) {
         emit(LoginFailureState(e.errorMassage));

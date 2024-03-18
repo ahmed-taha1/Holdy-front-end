@@ -1,3 +1,4 @@
+import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class NumberButton extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         child: number == -1
-            ? const Icon(Icons.backspace_outlined)
+            ? const Icon(Icons.backspace_outlined, color: AppColors.blackPurple,)
             : Text(number.toString(), style: TextStyles.font30BlackPurpleBold),
       ),
     );

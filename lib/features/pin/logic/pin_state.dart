@@ -1,4 +1,4 @@
-part of 'pin_cubit.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class PinState extends Equatable {
   const PinState();

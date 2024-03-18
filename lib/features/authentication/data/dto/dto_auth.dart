@@ -1,6 +1,6 @@
 class LoginResponseDto {
   final String? token;
-  final bool? pinHash;
+  final String? pinHash;
   final String? email;
   final String? firstName;
   final String? lastName;

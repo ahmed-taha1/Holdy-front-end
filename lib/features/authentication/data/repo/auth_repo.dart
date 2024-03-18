@@ -1,3 +1,4 @@
+import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/core/networking/web_services/api_service.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
 import 'package:accounts_protector/features/authentication/data/repo/i_auth_repo.dart';
@@ -39,7 +40,7 @@ class AuthRepo extends IAuthRepo {
       var response = await ApiService().post(
         path: Urls.setPin,
         body: pinRequestDto.toJson(),
-        addAuth: true,
+        token: CacheHelper.getData(key: CacheHelperConstants.tempPinToken),
       );
     } catch (e) {
       rethrow;

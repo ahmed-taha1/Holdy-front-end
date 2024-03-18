@@ -1,7 +1,6 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
-import 'package:accounts_protector/features/authentication/logic/login_cubit.dart';
-import 'package:accounts_protector/features/authentication/logic/login_states.dart';
+import 'package:accounts_protector/features/authentication/logic/login/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +10,7 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_button.dart';
 import '../../../../../core/widgets/default_auth_text.dart';
+import '../../../logic/login/login_states.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -26,7 +26,7 @@ class LoginViewBody extends StatelessWidget {
         if (state is LoginLoadingState) {
           isLoginButtonEnabled = true;
         } else if (state is LoginSuccessState) {
-          context.go(Routes.platformsView.path);
+          context.go(Routes.pinView.path);
         } else if (state is LoginFailureState) {
           isLoginButtonEnabled = false;
           ScaffoldMessenger.of(context).showSnackBar(
@@ -35,6 +35,9 @@ class LoginViewBody extends StatelessWidget {
               content: Text(state.errorMassage),
             ),
           );
+        }
+        else if(state is NoPinState){
+          context.go(Routes.pinView.path);
         }
       },
 

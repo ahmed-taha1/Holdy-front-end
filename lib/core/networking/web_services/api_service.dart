@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:accounts_protector/core/helper/cache_helper.dart';
-import 'package:accounts_protector/core/networking/urls.dart';
 import 'package:dio/dio.dart';
 import '../../errors/failures.dart';
 import 'dio_service.dart';
@@ -10,10 +9,13 @@ class ApiService {
   final Dio _dio = DioService.dio;
 
   // Method to perform GET request
-  Future<Response> get({required String path, bool? addAuth}) async {
+  Future<Response> get({required String path, bool? addAuth, String? token}) async {
     _dio.options.method = 'GET';
     if(addAuth == true){
       _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+    }
+    if(token != null) {
+      _dio.options.headers['Authorization'] = 'Bearer $token';
     }
 
     try {
@@ -30,10 +32,13 @@ class ApiService {
 
   // Method to perform POST request
   Future<Response> post(
-      {required String path, dynamic body, bool? addAuth}) async {
+      {required String path, dynamic body, bool? addAuth, String? token}) async {
     _dio.options.method = 'POST';
     if(addAuth == true){
       _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+    }
+    if(token != null) {
+      _dio.options.headers['Authorization'] = 'Bearer $token';
     }
 
     String bodyJson = jsonEncode(body);
@@ -51,11 +56,15 @@ class ApiService {
 
   // Method to perform PUT request
   Future<Response> put(
-      {required String path, dynamic body, bool? addAuth}) async {
+      {required String path, dynamic body, bool? addAuth, String? token}) async {
     _dio.options.method = 'PUT';
     if(addAuth == true){
       _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
     }
+    if(token != null) {
+      _dio.options.headers['Authorization'] = 'Bearer $token';
+    }
+
     try {
       final response = await _dio.put(path, data: body);
       return response;
@@ -70,11 +79,15 @@ class ApiService {
 
   // Method to perform DELETE request
   Future<Response> delete(
-      {required String path, dynamic body, bool? addAuth}) async {
+      {required String path, dynamic body, bool? addAuth, String? token}) async {
     _dio.options.method = 'DELETE';
     if(addAuth == true){
       _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
     }
+    if(token != null) {
+      _dio.options.headers['Authorization'] = 'Bearer $token';
+    }
+
     try {
       final response = await _dio.delete(path, data: body);
       return response;
