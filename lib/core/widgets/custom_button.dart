@@ -35,13 +35,14 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.purple,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(32),
+            borderRadius: BorderRadius.circular(32.r),
           ),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 8.h),
-          child: isLoading ? const CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
+          child: isLoading ? CircularProgressIndicator(
+            valueColor: const AlwaysStoppedAnimation<Color>(AppColors.white),
+            strokeWidth: 2.w,
           ) : Text(
             text,
             style: TextStyles.font17WhiteBold,

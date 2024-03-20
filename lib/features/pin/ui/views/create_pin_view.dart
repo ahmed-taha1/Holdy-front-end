@@ -1,6 +1,8 @@
 import 'package:accounts_protector/features/pin/ui/widgets/create_pin_widgets/create_pin_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
+import '../../../../core/theming/app_colors.dart';
 
 class CreatePinView extends StatelessWidget {
   const CreatePinView({super.key});
@@ -11,7 +13,14 @@ class CreatePinView extends StatelessWidget {
       // appBar: PreferredSize(
       //     preferredSize: Size.fromHeight(40.h),
       //     child: const CustomAppBarWithBack()),
-      body: CreatePinViewBody(),
+      body: AnnotatedRegion(
+        value: SystemUiOverlayStyle(
+          statusBarColor: AppColors.white,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
+        ),
+        child: CreatePinViewBody(),
+      ),
     );
   }
 }

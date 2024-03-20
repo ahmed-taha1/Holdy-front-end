@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
-
 import 'platform.dart';
 
 class UserModel extends Equatable {

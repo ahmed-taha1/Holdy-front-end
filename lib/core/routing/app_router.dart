@@ -5,7 +5,9 @@ import 'package:accounts_protector/features/authentication/ui/views/otp_validati
 import 'package:accounts_protector/features/authentication/ui/views/register_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/reset_password_view.dart';
 import 'package:accounts_protector/features/pin/ui/views/pin_view.dart';
+import 'package:accounts_protector/features/platforms/ui/views/add_platform_view.dart';
 import 'package:accounts_protector/features/platforms/ui/views/platforms_view.dart';
+import 'package:accounts_protector/features/splash_screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/ui/views/forgot_password_view.dart';
 import '../../features/pin/ui/views/create_pin_view.dart';
@@ -34,18 +36,24 @@ abstract class AppRouter {
           path: Routes.platformsView.path,
           builder: (context, state) => const PlatformsView()),
       GoRoute(
+          path: Routes.addPlatformView.path,
+          builder: (context, state) => const AddPlatformView()),
+      GoRoute(
           path: Routes.createPinView.path,
           builder: (context, state) => const CreatePinView()),
       GoRoute(
           path: Routes.pinView.path,
           builder: (context, state) => const PinView()),
+      GoRoute(
+          path: Routes.splashScreen.path,
+          builder: (context, state) => const SplashScreen()),
     ],
     initialLocation: Routes.loginView.path,
-    // initialLocation: Routes.pinView.path,
+    // initialLocation: Routes.splashScreen.path,
   );
 
   static void setInitialRoute() {
-    if(CacheHelper.getData(key: CacheHelperConstants.isLogged) == true){
+    if (CacheHelper.getData(key: CacheHelperConstants.isLogged) == true) {
       router.go(Routes.pinView.path);
     }
   }

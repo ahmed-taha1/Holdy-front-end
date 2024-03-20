@@ -2,6 +2,7 @@ import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/features/pin/logic/pin_cubit.dart';
 import 'package:accounts_protector/features/pin/ui/widgets/shared/circles.dart';
 import 'package:accounts_protector/features/pin/ui/widgets/shared/icon_with_top_text.dart';
+import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +19,7 @@ class PinViewBody extends StatelessWidget {
     return BlocConsumer<PinCubit, PinState>(
       listener: (context, state) {
         if (state is PinSuccessState) {
+          context.read<PlatformsCubit>().getAllUserData();
           // TODO check which is better
           // Navigator.of(context).pop();
           context.go(Routes.platformsView.path);

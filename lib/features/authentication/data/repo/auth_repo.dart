@@ -46,4 +46,48 @@ class AuthRepo extends IAuthRepo {
       rethrow;
     }
   }
+
+  @override
+  Future<void> sendOtp({required String email}) async{
+    try{
+      await ApiService().post(
+        path: Urls.sendOtp,
+        body: {
+          'email': email,
+        },
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<VerifyOtpResponseDto> verifyOtp({required String otp, required String email}) async{
+    try{
+      var response = await ApiService().post(
+        path: Urls.verifyOtp,
+        body: {
+          'otpCode': otp,
+          'email': email,
+        },
+      );
+      return VerifyOtpResponseDto.fromJson(response.data);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> resetPassword({required ResetPasswordRequestDto resetPasswordRequestDto}) async {
+    try{
+      await ApiService().put(
+        path: Urls.resetPassword,
+        body: resetPasswordRequestDto.toJson(),
+        token: CacheHelper.getData(key: CacheHelperConstants.tempOtpToken),
+      );
+    }
+    catch (e) {
+      rethrow;
+    }
+  }
 }

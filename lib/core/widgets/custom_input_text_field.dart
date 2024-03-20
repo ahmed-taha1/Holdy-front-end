@@ -4,39 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../theming/styles.dart';
 
-// class WidgetsDrawer {
-//
-//   static Widget drawElevatedButton(
-//       {required String text, required VoidCallback onPressed}) {
-//     return Container(
-//       height: 60,
-//       width: 200,
-//       child: ElevatedButton(
-//         onPressed: onPressed,
-//         style: ElevatedButton.styleFrom(
-//           elevation: 2,
-//           shadowColor: AppColors.cyan,
-//           backgroundColor: AppColors.cyan,
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(100),
-//           ),
-//         ),
-//         child: Padding(
-//           padding: const EdgeInsets.symmetric(vertical: 8),
-//           child: Text(
-//             text,
-//             style: TextStyle(
-//               fontWeight: FontWeight.bold,
-//               fontSize: 25,
-//               color: AppColors.cyan,
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class CustomInputField extends StatefulWidget {
   const CustomInputField({
     Key? key,
@@ -46,6 +13,8 @@ class CustomInputField extends StatefulWidget {
     required this.keyboardType,
     this.isPassword = false,
     this.suffixIcon,
+    this.validationFunction,
+    this.onChange,
   }) : super(key: key);
 
   final IconData icon;
@@ -54,6 +23,8 @@ class CustomInputField extends StatefulWidget {
   final TextInputType keyboardType;
   final bool isPassword;
   final Widget? suffixIcon;
+  final String? Function(String?)? validationFunction;
+  final VoidCallback? onChange;
 
   @override
   State<CustomInputField> createState() => _CustomInputFieldState();
@@ -97,6 +68,9 @@ class _CustomInputFieldState extends State<CustomInputField> {
         borderRadius: BorderRadius.circular(21),
       ),
       child: TextFormField(
+        onChanged: (value) {
+          widget.onChange?.call();
+        },
         obscureText: widget.isPassword ? !_isPasswordVisible : false,
         controller: widget.controller,
         focusNode: _focusNode,
@@ -143,12 +117,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                     )
                   : null),
         ),
-        validator: (String? value) {
-          if (value == null || value.isEmpty) {
-            return 'Please enter some text';
-          }
-          return null;
-        },
+        validator: widget.validationFunction,
       ),
     );
   }

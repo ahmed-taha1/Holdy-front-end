@@ -2,7 +2,9 @@ import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
 import 'package:accounts_protector/core/widgets/default_auth_text.dart';
+import 'package:accounts_protector/features/authentication/logic/forgot_password/forgot_password_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,54 +20,73 @@ class OtpValidationViewBody extends StatelessWidget {
     TextEditingController otpController = TextEditingController();
 
     return SafeArea(
-      child: SizedBox(
-        height: double.infinity,
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              verticalSpace(50),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 42.w),
-                child: const DefaultAuthText(
-                  mainText: 'OTP Validation',
-                  subText: 'Please enter the OTP',
-                  iconPath: 'assets/svgs/verify_otp_icon.svg',
-                ),
+      child: BlocConsumer<ForgotPasswordCubit, ForgotPasswordState>(
+        listener: (context, state) {
+          if (state is OtpValidationSuccess) {
+            context.push(Routes.resetPasswordView.path);
+          }
+          if(state is ResendSendEmailSuccess){
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                backgroundColor: Colors.green,
+                content: Text('OTP sent successfully'),
               ),
-              verticalSpace(30),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: CustomInputField(
-                  icon: Icons.key,
-                  hintText: 'OTP',
-                  controller: otpController,
-                  keyboardType: TextInputType.number,
-                ),
+            );
+          }
+        },
+        builder: (context, state) {
+          return SizedBox(
+            height: double.infinity,
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  verticalSpace(50),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 42.w),
+                    child: const DefaultAuthText(
+                      mainText: 'OTP Validation',
+                      subText: 'Please enter the OTP',
+                      iconPath: 'assets/svgs/verify_otp_icon.svg',
+                    ),
+                  ),
+                  verticalSpace(30),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
+                    child: CustomInputField(
+                      icon: Icons.key,
+                      hintText: 'OTP',
+                      controller: otpController,
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                  verticalSpace(18),
+                  CustomButton(
+                    text: 'Proceed',
+                    onPressed: () {
+                      context.read<ForgotPasswordCubit>().verifyOtp(otp: otpController.text);
+                    },
+                    isLoading: context.read<ForgotPasswordCubit>().isLoading,
+                  ),
+                  verticalSpace(14),
+                  CustomTextButton(
+                    text: 'Resend OTP',
+                    textStyle: TextStyles.font14SemiLightBlueBold,
+                    onPressed: () {
+                      context.read<ForgotPasswordCubit>().resendEmail();
+                    },
+                  ),
+                  verticalSpace(130.h),
+                  Text(
+                    'Note: the OTP is valid for 5 minutes only.',
+                    style: TextStyles.font15DarkGreySemiBold,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              verticalSpace(18),
-              CustomButton(
-                  text: 'Proceed',
-                  onPressed: () {
-                    context.push(Routes.resetPasswordView.path);
-                  }),
-              verticalSpace(14),
-              CustomTextButton(
-                text: 'Resend OTP',
-                textStyle: TextStyles.font14SemiLightBlueBold,
-                onPressed: () {
-                  // context.push();
-                },
-              ),
-              verticalSpace(130.h),
-              Text(
-                'Note: the OTP is valid for 5 minutes only.',
-                style: TextStyles.font15DarkGreySemiBold,
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

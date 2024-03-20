@@ -69,7 +69,8 @@ class TextStyles {
 
   static TextStyle font13BlackPurpleMedium = TextStyle(
     fontSize: 13.sp,
-    fontWeight: FontWeightHelper.medium,
+    fontFamily: FontWeightHelper.medium,
+    // fontWeight: FontWeightHelper.medium,
     color: AppColors.blackPurple,
   );
 
@@ -89,7 +90,8 @@ class TextStyles {
 
   static TextStyle font11BlackPurpleMedium = TextStyle(
     fontSize: 11.sp,
-    fontWeight: FontWeightHelper.medium,
+    fontFamily: FontWeightHelper.medium,
+    // fontWeight: FontWeightHelper.medium,
     color: AppColors.blackPurple,
   );
 

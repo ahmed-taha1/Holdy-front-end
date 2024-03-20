@@ -1,6 +1,7 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/features/authentication/ui/widgets/Register_widgets/register_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/custom_app_app_bar_with_back.dart';
 
@@ -13,7 +14,14 @@ class RegisterView extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.h),
           child: const CustomAppBarWithBack()),
-      body: const RegisterViewBody(),
+      body: const AnnotatedRegion(
+        value: SystemUiOverlayStyle(
+          statusBarColor: AppColors.white,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
+        ),
+        child: RegisterViewBody(),
+      ),
     );
   }
 }

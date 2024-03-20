@@ -69,15 +69,41 @@ class RegisterResponseDto{
 }
 
 class PinRequestDto{
-  final String pin;
-  final String pinConfirmation;
+  final String pinHash;
+  final String pinHashConfirmation;
 
-  PinRequestDto({required this.pin,required this.pinConfirmation});
+  PinRequestDto({required this.pinHash,required this.pinHashConfirmation});
 
   Map<String, dynamic> toJson(){
     return {
-      'pin': pin,
-      'pinConfirmation': pinConfirmation,
+      'pinHash': pinHash,
+      'pinHashConfirmation': pinHashConfirmation,
+    };
+  }
+}
+
+class VerifyOtpResponseDto{
+  final String? token;
+
+  VerifyOtpResponseDto({required this.token});
+
+  factory VerifyOtpResponseDto.fromJson(Map<String, dynamic> json){
+    return VerifyOtpResponseDto(
+      token: json['token'],
+    );
+  }
+}
+
+class ResetPasswordRequestDto{
+  final String newPassword;
+  final String newPasswordRepeat;
+
+  ResetPasswordRequestDto({required this.newPassword,required this.newPasswordRepeat});
+
+  Map<String, dynamic> toJson(){
+    return {
+      'newPassword': newPassword,
+      'newPasswordRepeat': newPasswordRepeat,
     };
   }
 }

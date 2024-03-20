@@ -2,6 +2,7 @@ import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/theming/styles.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlatformColorPicker extends StatefulWidget {
   const PlatformColorPicker({super.key});
@@ -25,12 +26,12 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
             child: Container(
               decoration: BoxDecoration(
                 color: selectedColor,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(20),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.r),
                 ),
               ),
-              width: 35,
-              height: 35,
+              width: 35.w,
+              height: 35.h,
             ),
           ),
           horizontalSpace(10),
@@ -54,9 +55,9 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
       pickersEnabled: const <ColorPickerType, bool>{
         ColorPickerType.accent: false,
       },
-      width: 40,
-      height: 40,
-      borderRadius: 20,
+      width: 40.w,
+      height: 40.h,
+      borderRadius: 20.r,
       spacing: 10,
       runSpacing: 10,
       heading: const Text('Pick a color'),
