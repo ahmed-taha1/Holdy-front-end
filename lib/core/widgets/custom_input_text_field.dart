@@ -65,7 +65,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             offset: const Offset(0, 4),
           ),
         ],
-        borderRadius: BorderRadius.circular(21),
+        borderRadius: BorderRadius.circular(21.r),
       ),
       child: TextFormField(
         onChanged: (value) {
@@ -86,11 +86,21 @@ class _CustomInputFieldState extends State<CustomInputField> {
           floatingLabelStyle: TextStyles.font15DarkGreySemiBold,
           filled: true,
           fillColor: _isFocused ? AppColors.lightCyan : Colors.transparent,
-          border: const UnderlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(21),
-            ),
-            borderSide: BorderSide.none,
+          enabledBorder: UnderlineInputBorder(
+            borderRadius: BorderRadius.circular(21.r),
+            borderSide: const BorderSide(color: Colors.transparent),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderRadius: BorderRadius.circular(21.r),
+            borderSide: const BorderSide(color: Colors.transparent),
+          ),
+          errorBorder: UnderlineInputBorder(
+            borderRadius: BorderRadius.circular(21.r),
+            borderSide: const BorderSide(color: Colors.transparent),
+          ),
+          focusedErrorBorder: UnderlineInputBorder(
+            borderRadius: BorderRadius.circular(21.r),
+            borderSide: const BorderSide(color: Colors.transparent),
           ),
           contentPadding: EdgeInsets.only(
             top: 15.h,
@@ -98,13 +108,16 @@ class _CustomInputFieldState extends State<CustomInputField> {
             right: 10.w,
             bottom: 20.h,
           ),
+          errorStyle: TextStyles.font12RedBold,
           suffixIcon: widget.suffixIcon ??
               (widget.isPassword
                   ? GestureDetector(
                       onTap: () {
-                        setState(() {
-                          _isPasswordVisible = !_isPasswordVisible;
-                        });
+                        setState(
+                          () {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          },
+                        );
                       },
                       child: Icon(
                         _isPasswordVisible

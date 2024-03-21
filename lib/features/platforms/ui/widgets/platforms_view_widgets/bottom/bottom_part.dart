@@ -3,6 +3,7 @@ import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/core/routing/routes.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/bottom/platforms_grid_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../../core/theming/app_colors.dart';
 import '../../../../../../core/theming/styles.dart';
@@ -25,15 +26,17 @@ class BottomPart extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20, left: 40, right: 40),
+              padding: EdgeInsets.only(top: 20.h, left: 40.w, right: 40.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Platforms",
-                          style: TextStyles.font20BlackPurpleBold),
+                      Text(
+                        "Platforms",
+                        style: TextStyles.font20BlackPurpleBold,
+                      ),
                     ],
                   ),
                   IconButton(

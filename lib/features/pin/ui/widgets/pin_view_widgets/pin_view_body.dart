@@ -20,9 +20,8 @@ class PinViewBody extends StatelessWidget {
       listener: (context, state) {
         if (state is PinSuccessState) {
           context.read<PlatformsCubit>().getAllUserData();
-          // TODO check which is better
-          // Navigator.of(context).pop();
           context.go(Routes.platformsView.path);
+          // context.push(Routes.splashScreen.path);
         }
         if (state is PinFailureState) {
           ScaffoldMessenger.of(context).showSnackBar(

@@ -14,7 +14,7 @@ class PlatformRepo implements IPlatformRepo {
           key: CacheHelperConstants.token,
         ),
       );
-      UserModel userModel = UserModel.fromJson(response.data);
+      UserModel userModel = UserModel.fromMap(response.data);
       return userModel;
     } catch (e) {
       rethrow;

@@ -4,16 +4,22 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/theming/styles.dart';
 
 class PlatformsGridItem extends StatelessWidget {
-  PlatformsGridItem(
-      {super.key, required this.cardClick, required this.platformName}) {
+  PlatformsGridItem({
+    super.key,
+    required this.cardClick,
+    required this.platformName,
+    required this.numOfAccounts,
+    required this.colorHexa,
+  }) {
     platformInitial = platformName[0];
-    color = Colors.blue;
+    // color = Colors.blue;
   }
 
   final VoidCallback cardClick;
   final String platformName;
+  final String numOfAccounts;
   late final String platformInitial;
-  late final Color color;
+  final String colorHexa;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +28,12 @@ class PlatformsGridItem extends StatelessWidget {
       child: Card(
         elevation: 4,
         surfaceTintColor: Colors.white,
-        shape: RoundedRectangleBorder(
-            side: BorderSide(color: color),
-            borderRadius: const BorderRadius.all(Radius.circular(30))),
+        shape: const RoundedRectangleBorder(
+          side: BorderSide(width: 0),
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(14),
           child: Column(
@@ -35,7 +44,7 @@ class PlatformsGridItem extends StatelessWidget {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                    color: color,
+                    color: Color(int.parse(colorHexa, radix: 16)),
                     borderRadius: const BorderRadius.all(Radius.circular(10))),
                 child: Text(
                   platformInitial,
@@ -46,7 +55,10 @@ class PlatformsGridItem extends StatelessWidget {
               Text(platformName,
                   style: TextStyles.font15BlackPurpleMedium
                       .copyWith(fontFamily: FontWeightHelper.semiBold)),
-              Text("3 Accounts", style: TextStyles.font11DarkGreyRegular),
+              Text(
+                "$numOfAccounts Accounts",
+                style: TextStyles.font11DarkGreyRegular,
+              ),
             ],
           ),
         ),

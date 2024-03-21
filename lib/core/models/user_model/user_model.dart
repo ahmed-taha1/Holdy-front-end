@@ -10,7 +10,6 @@ class UserModel extends Equatable {
 	final List<Platform>? platforms;
 
 	const UserModel({
-
 		this.email,
 		this.firstName,
 		this.lastName,

@@ -35,7 +35,7 @@ class LoginViewBody extends StatelessWidget {
           );
         }
         else if(state is NoPinState){
-          context.go(Routes.pinView.path);
+          context.go(Routes.createPinView.path);
         }
       },
 
