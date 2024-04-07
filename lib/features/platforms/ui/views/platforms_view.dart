@@ -26,7 +26,7 @@ class PlatformsView extends StatelessWidget {
         ),
         child: BlocBuilder<PlatformsCubit, PlatformsState>(
           builder: (context, state) {
-            if (state is loadingState) {
+            if (state is LoadingState) {
               statusBarColor = AppColors.white;
               statusBarIconBrightness = Brightness.dark;
               statusBarBrightness = Brightness.dark;

@@ -2,7 +2,6 @@ import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/features/pin/logic/create_pin_cubit.dart';
 import 'package:accounts_protector/features/pin/ui/widgets/shared/circles.dart';
 import 'package:accounts_protector/features/pin/ui/widgets/shared/icon_with_top_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,6 +1,5 @@
 import 'package:accounts_protector/core/helper/font_weight_helper.dart';
 import 'package:accounts_protector/core/helper/spacing.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/theming/styles.dart';

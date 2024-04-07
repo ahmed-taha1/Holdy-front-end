@@ -6,7 +6,6 @@ import 'package:accounts_protector/core/widgets/default_add_platform_text.dart';
 import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/add_platform_view_widgets/platform_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

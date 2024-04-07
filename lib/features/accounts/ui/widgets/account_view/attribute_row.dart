@@ -2,9 +2,7 @@ import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/core/theming/styles.dart';
 import 'package:clipboard/clipboard.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AttributeRow extends StatelessWidget {

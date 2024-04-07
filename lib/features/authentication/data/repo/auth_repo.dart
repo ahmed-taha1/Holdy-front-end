@@ -38,7 +38,7 @@ class AuthRepo extends IAuthRepo {
   @override
   Future<void> setPin({required PinRequestDto pinRequestDto}) async {
     try{
-      var response = await getIt<ApiService>().post(
+      await getIt<ApiService>().post(
         path: Urls.setPin,
         body: pinRequestDto.toJson(),
         token: CacheHelper.getData(key: CacheHelperConstants.tempPinToken),

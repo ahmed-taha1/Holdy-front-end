@@ -44,32 +44,36 @@ class AppSettingsRows extends StatelessWidget {
           ),
         ),
         verticalSpace(25),
-        SettingRow(
-          prefix: CircleAvatar(
-            radius: 22.r,
-            backgroundColor: const Color(0xFFE9DCFF),
-            child: const Icon(
-              Icons.dark_mode_rounded,
-              size: 19,
-              color: Color(0xFF4026C8),
-            ),
-          ),
-          title: Text(
-            'Dark Mode',
-            style: TextStyles.font15BlackPurpleMedium,
-          ),
-          suffix: Transform.scale(
-            scale: 0.9,
-            child: Switch(
-              value: context
-                  .read<SettingsCubit>()
-                  .isDark!,
-              activeTrackColor: AppColors.purple,
-              onChanged: (value) {
-                context.read<SettingsCubit>().changeTheme();
-              },
-            ),
-          ),
+        BlocBuilder<SettingsCubit, SettingsState>(
+          builder: (context, state) {
+            return SettingRow(
+              prefix: CircleAvatar(
+                radius: 22.r,
+                backgroundColor: const Color(0xFFE9DCFF),
+                child: const Icon(
+                  Icons.dark_mode_rounded,
+                  size: 19,
+                  color: Color(0xFF4026C8),
+                ),
+              ),
+              title: Text(
+                'Dark Mode',
+                style: TextStyles.font15BlackPurpleMedium,
+              ),
+              suffix: Transform.scale(
+                scale: 0.9,
+                child: Switch(
+                  value: context
+                      .read<SettingsCubit>()
+                      .isDark!,
+                  activeTrackColor: AppColors.purple,
+                  onChanged: (value) {
+                    context.read<SettingsCubit>().changeTheme();
+                  },
+                ),
+              ),
+            );
+          },
         ),
         verticalSpace(25),
         SettingRow(

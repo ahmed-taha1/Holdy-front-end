@@ -18,7 +18,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
   Color selectedColor = Colors.blue;
 
   Future<void> getAllUserData() async {
-    emit(loadingState());
+    emit(LoadingState());
     try {
       userModel = await getIt<IPlatformRepo>().getAllUserData();
       emit(DataFetchSuccess());
@@ -52,7 +52,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
 
   Future<void> createPlatform(String platformName, String iconColor) async {
     isLoading = true;
-    emit(loadingState());
+    emit(LoadingState());
     try {
       int id = await getIt<IPlatformRepo>().createPlatform(platformName, iconColor);
       Platform newPlatform = Platform(
@@ -80,7 +80,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
 
   Future<void> deletePlatform(int platformId) async {
     isLoading = true;
-    emit(loadingState());
+    emit(LoadingState());
     try {
       await getIt<IPlatformRepo>().deletePlatform(platformId);
       userModel?.platforms
@@ -104,7 +104,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
 
   Future<void> updatePlatform(int platformId, String platformName) async {
     isLoading = true;
-    emit(loadingState());
+    emit(LoadingState());
     try {
       UpdatePlatformDto updatePlatformDto = UpdatePlatformDto(
         platformId: platformId,

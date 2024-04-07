@@ -20,7 +20,7 @@ class AccountsRepo implements IAccountsRepo {
   @override
   Future<void> deleteAccount(int accountId) async {
     try {
-      var response = await getIt<ApiService>()
+      await getIt<ApiService>()
           .delete(path: Urls.deleteAccount, body: {'accountId': accountId});
     } catch (e) {
       rethrow;
@@ -30,7 +30,7 @@ class AccountsRepo implements IAccountsRepo {
   @override
   Future<void> updateAccount(Account account) async {
     try {
-      var response = await getIt<ApiService>()
+      await getIt<ApiService>()
           .put(path: Urls.updateAccount, body: account.toMap());
     } catch (e) {
       rethrow;

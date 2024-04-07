@@ -7,7 +7,7 @@ abstract class PlatformsState extends Equatable {
 }
 
 class PlatformsInitial extends PlatformsState {}
-class loadingState extends PlatformsState {}
+class LoadingState extends PlatformsState {}
 class DataFetchSuccess extends PlatformsState {}
 class SearchPlatformState extends PlatformsState {
   final List<Platform> filteredPlatforms;
