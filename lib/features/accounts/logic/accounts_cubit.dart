@@ -1,12 +1,12 @@
+import 'package:accounts_protector/core/di/get_it.dart';
 import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/core/helper/encryption_helper.dart';
 import 'package:accounts_protector/core/models/platform.dart';
-import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '../../../core/models/account.dart';
-import '../data/accounts_repo.dart';
+import '../data/i_accounts_repo.dart';
 import '../data/pair.dart';
 
 part 'accounts_state.dart';
@@ -35,7 +35,7 @@ class AccountsCubit extends Cubit<AccountsState> {
       accountFields: getAttributesMapFromControllers(),
     );
     try {
-      int id = await AccountsRepo().createAccount(account);
+      int id = await getIt<IAccountsRepo>().createAccount(account);
       account.accountId = id;
       selectedPlatform?.accounts!.add(account);
       selectedPlatform?.numOfAccounts++;
@@ -55,7 +55,7 @@ class AccountsCubit extends Cubit<AccountsState> {
     emit(LoadingState());
     isLoading = true;
     try {
-      await AccountsRepo().deleteAccount(selectedAccount!.accountId!);
+      await getIt<IAccountsRepo>().deleteAccount(selectedAccount!.accountId!);
       selectedPlatform?.accounts!.remove(selectedAccount);
       selectedPlatform?.numOfAccounts--;
       emit(AccountDeletedState(selectedAccount!.accountId!));
@@ -81,7 +81,7 @@ class AccountsCubit extends Cubit<AccountsState> {
       accountFields: getAttributesMapFromControllers(),
     );
     try {
-      await AccountsRepo().updateAccount(updatedAccount);
+      await getIt<IAccountsRepo>().updateAccount(updatedAccount);
       selectedAccount!.accountName = updatedAccount.accountName;
       selectedAccount!.accountFields = updatedAccount.accountFields;
       emit(AccountUpdatedState());

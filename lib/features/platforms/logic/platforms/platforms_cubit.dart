@@ -1,11 +1,12 @@
+import 'package:accounts_protector/core/di/get_it.dart';
 import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/features/platforms/data/dto/platforms_dto.dart';
-import 'package:accounts_protector/features/platforms/data/repo/platform_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/models/platform.dart';
 import '../../../../core/models/user_model.dart';
+import '../../data/repo/i_platform_repo.dart';
 
 part 'platforms_state.dart';
 
@@ -19,7 +20,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
   Future<void> getAllUserData() async {
     emit(loadingState());
     try {
-      userModel = await PlatformRepo().getAllUserData();
+      userModel = await getIt<IPlatformRepo>().getAllUserData();
       emit(DataFetchSuccess());
     } catch (e) {
       if (e is ServerFailure) {
@@ -53,7 +54,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
     isLoading = true;
     emit(loadingState());
     try {
-      int id = await PlatformRepo().createPlatform(platformName, iconColor);
+      int id = await getIt<IPlatformRepo>().createPlatform(platformName, iconColor);
       Platform newPlatform = Platform(
         platformId: id,
         platformName: platformName,
@@ -81,7 +82,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
     isLoading = true;
     emit(loadingState());
     try {
-      await PlatformRepo().deletePlatform(platformId);
+      await getIt<IPlatformRepo>().deletePlatform(platformId);
       userModel?.platforms
           ?.removeWhere((element) => element.platformId == platformId);
       emit(PlatformDeleteSuccess(platformId: platformId));
@@ -110,7 +111,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
         platformName: platformName,
         iconColor: selectedColor.value.toRadixString(16),
       );
-      await PlatformRepo().updatePlatform(updatePlatformDto);
+      await getIt<IPlatformRepo>().updatePlatform(updatePlatformDto);
       Platform? p = userModel?.platforms
           ?.firstWhere((element) => element.platformId == platformId);
       p?.platformName = platformName;

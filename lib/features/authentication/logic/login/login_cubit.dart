@@ -1,10 +1,10 @@
 import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
-import 'package:accounts_protector/features/authentication/data/repo/auth_repo.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
+import '../../../../core/di/get_it.dart';
+import '../../data/repo/i_auth_repo.dart';
 import 'login_states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
@@ -19,7 +19,7 @@ class LoginCubit extends Cubit<LoginStates> {
     try{
       if(formKey.currentState!.validate()){
         loginResponseDto =
-            await AuthRepo().login(email: email, password: password);
+            await getIt<IAuthRepo>().login(email: email, password: password);
         if (loginResponseDto!.pinHash == null ||
             loginResponseDto!.pinHash == '') {
           CacheHelper.putData(
@@ -44,7 +44,6 @@ class LoginCubit extends Cubit<LoginStates> {
       else {
         emit(const LoginFailureState('Something went wrong'));
       }
-      // isLoading = false;
     }
     isLoading = false;
   }

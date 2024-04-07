@@ -1,8 +1,9 @@
 import 'package:accounts_protector/core/helper/encryption_helper.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
-import 'package:accounts_protector/features/authentication/data/repo/auth_repo.dart';
 import 'package:accounts_protector/features/pin/logic/pin_state.dart';
 import 'package:bloc/bloc.dart';
+import '../../../core/di/get_it.dart';
+import '../../authentication/data/repo/i_auth_repo.dart';
 
 
 class CreatePinCubit extends Cubit<PinState> {
@@ -37,7 +38,7 @@ class CreatePinCubit extends Cubit<PinState> {
       if (currentPinLength == pinLength && pin == confirmPin) {
         isConfirm = true;
         // TODO maybe added here await
-        AuthRepo().setPin(
+        getIt<IAuthRepo>().setPin(
           pinRequestDto: PinRequestDto(
             pinHash: EncryptionHelper.hash(data: pin),
             pinHashConfirmation: EncryptionHelper.hash(data: confirmPin),

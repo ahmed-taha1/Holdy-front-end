@@ -1,11 +1,11 @@
+import 'package:accounts_protector/core/di/get_it.dart';
 import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../data/repo/auth_repo.dart';
-
+import '../../data/repo/i_auth_repo.dart';
 part 'forgot_password_state.dart';
 
 class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
@@ -17,7 +17,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
     isLoading = true;
     emit(ForgotPasswordLoading());
     try {
-      await AuthRepo().sendOtp(email: email);
+      await getIt<IAuthRepo>().sendOtp(email: email);
       isLoading = false;
       this.email = email;
       emit(SendEmailSuccess());
@@ -35,7 +35,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   void resendEmail() async {
     emit(ForgotPasswordLoading());
     try {
-      await AuthRepo().sendOtp(email: email);
+      await getIt<IAuthRepo>().sendOtp(email: email);
       emit(ResendSendEmailSuccess());
     } catch (e) {
       if (e is ServerFailure) {
@@ -51,7 +51,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
     isLoading = true;
     emit(ForgotPasswordLoading());
     try {
-      VerifyOtpResponseDto response = await AuthRepo().verifyOtp(otp: otp, email: email);
+      VerifyOtpResponseDto response = await getIt<IAuthRepo>().verifyOtp(otp: otp, email: email);
       CacheHelper.putData(key: CacheHelperConstants.tempOtpToken, value: response.token);
       isLoading = false;
       emit(OtpValidationSuccess());
@@ -70,7 +70,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
     isLoading = true;
     emit(ForgotPasswordLoading());
     try {
-      await AuthRepo().resetPassword(resetPasswordRequestDto: ResetPasswordRequestDto(newPassword: newPassword, newPasswordRepeat: newPasswordRepeat));
+      await getIt<IAuthRepo>().resetPassword(resetPasswordRequestDto: ResetPasswordRequestDto(newPassword: newPassword, newPasswordRepeat: newPasswordRepeat));
       isLoading = false;
       emit(ResetPasswordSuccess());
     } catch (e) {

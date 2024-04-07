@@ -1,4 +1,5 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/core/widgets/toast.dart';
 import 'package:accounts_protector/features/pin/logic/pin_cubit.dart';
 import 'package:accounts_protector/features/pin/ui/widgets/shared/circles.dart';
 import 'package:accounts_protector/features/pin/ui/widgets/shared/icon_with_top_text.dart';
@@ -21,7 +22,6 @@ class PinViewBody extends StatelessWidget {
         if (state is PinSuccessState) {
           context.read<PlatformsCubit>().getAllUserData();
           context.go(Routes.platformsView.path);
-          // context.push(Routes.splashScreen.path);
         }
         if (state is PinFailureState) {
           ScaffoldMessenger.of(context).showSnackBar(

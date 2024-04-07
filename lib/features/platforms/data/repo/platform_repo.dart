@@ -1,3 +1,4 @@
+import 'package:accounts_protector/core/di/get_it.dart';
 import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/core/networking/web_services/api_service.dart';
 import 'package:accounts_protector/features/platforms/data/dto/platforms_dto.dart';
@@ -9,7 +10,7 @@ class PlatformRepo implements IPlatformRepo {
   @override
   Future<UserModel> getAllUserData() async {
     try {
-      var response = await ApiService().get(
+      var response = await getIt<ApiService>().get(
         path: Urls.getAllData,
         token: CacheHelper.getData(
           key: CacheHelperConstants.token,
@@ -25,7 +26,7 @@ class PlatformRepo implements IPlatformRepo {
   @override
   Future<int> createPlatform(String platformName, String iconColor) async{
     try{
-      var response = await ApiService().post(
+      var response = await getIt<ApiService>().post(
         path: Urls.createPlatform,
         token: CacheHelper.getData(
           key: CacheHelperConstants.token,
@@ -44,7 +45,7 @@ class PlatformRepo implements IPlatformRepo {
   @override
   Future<void> deletePlatform(int platformId) async{
     try{
-      await ApiService().delete(
+      await getIt<ApiService>().delete(
         path: Urls.deletePlatform,
         token: CacheHelper.getData(
           key: CacheHelperConstants.token,
@@ -61,7 +62,7 @@ class PlatformRepo implements IPlatformRepo {
   @override
   Future<void> updatePlatform(UpdatePlatformDto updatePlatformDto) async{
     try{
-      await ApiService().put(
+      await getIt<ApiService>().put(
         path: Urls.updatePlatform,
         token: CacheHelper.getData(
           key: CacheHelperConstants.token,

@@ -31,9 +31,13 @@ class AccountGridItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              accountName,
-              style: TextStyles.font15BlackPurpleSemiBold,
+            Expanded(
+              child: Text(
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                accountName,
+                style: TextStyles.font15BlackPurpleSemiBold,
+              ),
             ),
             const Icon(
                 Icons.arrow_forward_ios_rounded,
