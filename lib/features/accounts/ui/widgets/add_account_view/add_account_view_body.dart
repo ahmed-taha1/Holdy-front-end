@@ -49,6 +49,8 @@ class AddAccountViewBody extends StatelessWidget {
                   mainText: 'Create Account',
                   subText:
                       'please enter the account data that\nyou want to save',
+                  iconPath: 'assets/svgs/account_icon.svg',
+                  vSpace: 10,
                 ),
               ),
               verticalSpace(40),

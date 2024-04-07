@@ -15,6 +15,7 @@ class SettingsView extends StatelessWidget {
         isScrolled: true,
       ),
       body: SettingsViewBody(),
+      backgroundColor: AppColors.white,
     );
   }
 }

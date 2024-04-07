@@ -11,10 +11,6 @@ void main() async {
   // to fix .sp font bug in flutter screentil in release mode
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //   statusBarColor: AppColors.purple,
-  //   statusBarIconBrightness: Brightness.light,
-  // ));
   await CacheHelper.init();
   await ScreenUtil.ensureScreenSize();
   AppRouter.setInitialRoute();

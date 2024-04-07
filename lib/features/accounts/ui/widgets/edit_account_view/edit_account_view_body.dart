@@ -46,6 +46,8 @@ class EditAccountViewBody extends StatelessWidget {
             children: [
               const ViewHeader(
                 mainText: 'Edit Your Account',
+                iconPath: 'assets/svgs/account_icon.svg',
+                vSpace: 10,
               ),
               CustomInputField(
                 hintText: 'Account Name',
