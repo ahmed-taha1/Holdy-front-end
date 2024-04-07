@@ -16,7 +16,7 @@ class DioService {
       receiveTimeout: const Duration(seconds: 30),
       headers: {
         'Content-Type': 'application/json',
-        'Host': 'accountsprotector.somee.com'
+        'Host': Urls.host,
       },
     );
     _dio.options = baseOptions;

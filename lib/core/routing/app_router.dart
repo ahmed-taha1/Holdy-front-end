@@ -1,15 +1,20 @@
 import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/core/routing/routes.dart';
+import 'package:accounts_protector/features/accounts/ui/views/account_view.dart';
+import 'package:accounts_protector/features/accounts/ui/views/accounts_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/login_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/otp_validation_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/register_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/reset_password_view.dart';
 import 'package:accounts_protector/features/pin/ui/views/pin_view.dart';
 import 'package:accounts_protector/features/platforms/ui/views/add_platform_view.dart';
+import 'package:accounts_protector/features/platforms/ui/views/edit_platform_view.dart';
 import 'package:accounts_protector/features/platforms/ui/views/platforms_view.dart';
+import 'package:accounts_protector/features/settings/ui/views/settings_view.dart';
 import 'package:accounts_protector/features/splash_screen/splash_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../features/accounts/ui/views/add_account_view.dart';
+import '../../features/accounts/ui/views/edit_account_view.dart';
 import '../../features/authentication/ui/views/forgot_password_view.dart';
 import '../../features/pin/ui/views/create_pin_view.dart';
 
@@ -47,10 +52,27 @@ abstract class AppRouter {
           path: Routes.pinView.path,
           builder: (context, state) => const PinView()),
       GoRoute(
-          path: Routes.splashScreen.path,
+          path: Routes.splashView.path,
           builder: (context, state) => const SplashScreen()),
+      GoRoute(
+          path: Routes.settingsView.path,
+          builder: (context, state) => const SettingsView()),
+      GoRoute(
+          path: Routes.accountsView.path,
+          builder: (context, state) => const AccountsView()),
+      GoRoute(
+          path: Routes.addAccountView.path,
+          builder: (context, state) => const AddAccountView()),
+      GoRoute(
+          path: Routes.accountView.path,
+          builder: (context, state) => const AccountView()),
+      GoRoute(
+          path: Routes.editAccountView.path,
+          builder: (context, state) => const EditAccountView()),
+      GoRoute(
+          path: Routes.editPlatformView.path,
+          builder: (context, state) => const EditPlatformView()),
     ],
-    observers: [GlobalRouteObserver()],
     initialLocation: Routes.loginView.path,
     // initialLocation: Routes.splashScreen.path,
   );
@@ -58,33 +80,6 @@ abstract class AppRouter {
   static void setInitialRoute() {
     if (CacheHelper.getData(key: CacheHelperConstants.isLogged) == true) {
       router.go(Routes.pinView.path);
-    }
-  }
-}
-
-// Global route observer to track route changes
-class GlobalRouteObserver extends RouteObserver<PageRoute<dynamic>> {
-  @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    if (route is PageRoute && !route.isFirst) {
-      // Update the current route name when a new route is pushed
-      AppRouter.currentLocation = route.settings.name ?? '';
-    }
-  }
-
-  @override
-  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    if (previousRoute is PageRoute) {
-      // Update the current route name when a route is popped
-      AppRouter.currentLocation = previousRoute.settings.name ?? '';
-    }
-  }
-
-  @override
-  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
-    if (newRoute is PageRoute && !newRoute.isFirst) {
-      // Update the current route name when a new route is pushed
-      AppRouter.currentLocation = newRoute.settings.name ?? '';
     }
   }
 }

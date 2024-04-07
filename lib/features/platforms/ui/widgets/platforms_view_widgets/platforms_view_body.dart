@@ -1,13 +1,15 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/top/top_part.dart';
-import 'package:accounts_protector/features/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/models/platform.dart';
 import 'bottom/bottom_part.dart';
 
 class PlatformsViewBody extends StatelessWidget {
-  const PlatformsViewBody({super.key});
+  const PlatformsViewBody({super.key, required this.platforms});
+
+  final List<Platform> platforms;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,9 @@ class PlatformsViewBody extends StatelessWidget {
               username:
                   context.read<PlatformsCubit>().userModel?.firstName ?? '',
             ),
-            const BottomPart(),
+            BottomPart(
+              platforms: platforms,
+            ),
           ],
         ),
       ),

@@ -8,7 +8,7 @@ import '../../../../../core/helper/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_input_text_field.dart';
-import '../../../../../core/widgets/default_auth_text.dart';
+import '../../../../../core/widgets/view_header.dart';
 
 class ResetPasswordViewBody extends StatelessWidget {
   const ResetPasswordViewBody({super.key});
@@ -34,7 +34,7 @@ class ResetPasswordViewBody extends StatelessWidget {
                   verticalSpace(50),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 42.w),
-                    child: const DefaultAuthText(
+                    child: const ViewHeader(
                       mainText: 'Reset Password',
                       subText:
                           'Please fill the input blow here to reset your password',

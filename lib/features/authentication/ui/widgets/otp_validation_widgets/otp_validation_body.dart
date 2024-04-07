@@ -1,7 +1,7 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
-import 'package:accounts_protector/core/widgets/default_auth_text.dart';
+import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/authentication/logic/forgot_password/forgot_password_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +44,7 @@ class OtpValidationViewBody extends StatelessWidget {
                   verticalSpace(50),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 42.w),
-                    child: const DefaultAuthText(
+                    child: const ViewHeader(
                       mainText: 'OTP Validation',
                       subText: 'Please enter the OTP',
                       iconPath: 'assets/svgs/verify_otp_icon.svg',

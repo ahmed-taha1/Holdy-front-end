@@ -7,7 +7,7 @@ import '../theming/styles.dart';
 class CustomInputField extends StatefulWidget {
   const CustomInputField({
     Key? key,
-    required this.icon,
+    this.icon,
     required this.hintText,
     required this.controller,
     required this.keyboardType,
@@ -17,14 +17,14 @@ class CustomInputField extends StatefulWidget {
     this.onChange,
   }) : super(key: key);
 
-  final IconData icon;
+  final IconData? icon;
   final String hintText;
   final TextEditingController controller;
   final TextInputType keyboardType;
   final bool isPassword;
   final Widget? suffixIcon;
   final String? Function(String?)? validationFunction;
-  final VoidCallback? onChange;
+  final Function(String)? onChange;
 
   @override
   State<CustomInputField> createState() => _CustomInputFieldState();
@@ -68,19 +68,17 @@ class _CustomInputFieldState extends State<CustomInputField> {
         borderRadius: BorderRadius.circular(21.r),
       ),
       child: TextFormField(
-        onChanged: (value) {
-          widget.onChange?.call();
-        },
+        onChanged: widget.onChange,
         obscureText: widget.isPassword ? !_isPasswordVisible : false,
         controller: widget.controller,
         focusNode: _focusNode,
         keyboardType: widget.keyboardType,
         style: TextStyles.font17BlackPurpleBold,
         decoration: InputDecoration(
-          prefixIcon: Icon(
+          prefixIcon: widget.icon != null ? Icon(
             widget.icon,
             color: _isFocused ? AppColors.blackPurple : AppColors.lightGrey,
-          ),
+          ) : null,
           labelText: widget.hintText,
           labelStyle: TextStyles.font11LightGreyBold,
           floatingLabelStyle: TextStyles.font15DarkGreySemiBold,

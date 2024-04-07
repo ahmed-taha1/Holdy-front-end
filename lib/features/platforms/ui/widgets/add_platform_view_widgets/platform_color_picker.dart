@@ -2,18 +2,19 @@ import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/theming/styles.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PlatformColorPicker extends StatefulWidget {
-  const PlatformColorPicker({super.key});
+import '../../../logic/platforms/platforms_cubit.dart';
 
+class PlatformColorPicker extends StatefulWidget {
+  const PlatformColorPicker({super.key, this.initialColor});
+  final Color? initialColor;
   @override
   State<PlatformColorPicker> createState() => _PlatformColorPickerState();
 }
 
 class _PlatformColorPickerState extends State<PlatformColorPicker> {
-  Color selectedColor = Colors.blue;
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,7 +26,7 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
             onTap: _openColorPicker,
             child: Container(
               decoration: BoxDecoration(
-                color: selectedColor,
+                color: context.read<PlatformsCubit>().selectedColor,
                 borderRadius: BorderRadius.all(
                   Radius.circular(20.r),
                 ),
@@ -45,11 +46,11 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
   }
 
   Future<void> _openColorPicker() async {
-    bool pickedColor = await ColorPicker(
-      color: selectedColor,
+    /*bool pickedColor = */await ColorPicker(
+      color: context.read<PlatformsCubit>().selectedColor,
       onColorChanged: (Color newColor) {
         setState(() {
-          selectedColor = newColor;
+          context.read<PlatformsCubit>().selectedColor = newColor;
         });
       },
       pickersEnabled: const <ColorPickerType, bool>{

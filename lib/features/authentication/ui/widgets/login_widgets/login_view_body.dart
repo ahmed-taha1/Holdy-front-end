@@ -10,7 +10,7 @@ import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_button.dart';
-import '../../../../../core/widgets/default_auth_text.dart';
+import '../../../../../core/widgets/view_header.dart';
 import '../../../logic/login/login_states.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -56,7 +56,7 @@ class LoginViewBody extends StatelessWidget {
                         verticalSpace(85),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: const DefaultAuthText(
+                          child: const ViewHeader(
                             mainText: 'Login',
                             subText: 'Please sign in to continue',
                             isLogoIncluded: true,

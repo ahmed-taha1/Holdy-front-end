@@ -2,15 +2,17 @@ import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../../core/models/user_model/platform.dart';
-import '../../../../logic/platforms/platforms_cubit.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../../../core/models/platform.dart';
+import '../../../../../../core/routing/routes.dart';
+import '../../../../../accounts/logic/accounts_cubit.dart';
 
 class PlatformsGridView extends StatelessWidget {
   const PlatformsGridView({
-    super.key,
+    super.key, required this.platforms,
   });
 
+  final List<Platform> platforms;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -22,17 +24,18 @@ class PlatformsGridView extends StatelessWidget {
         shrinkWrap: true,
         crossAxisCount: 2,
         children: List.generate(
-          context.read<PlatformsCubit>().userModel?.platforms?.length ?? 0,
+          platforms.length,
           (index) {
             Platform? platform =
-                context.read<PlatformsCubit>().userModel?.platforms![index];
+                platforms[index];
             return PlatformsGridItem(
-              platformName: platform?.platformName ?? "",
+              platformName: platform.platformName ?? "",
               cardClick: () {
-                print("item $index clicked");
+                context.read<AccountsCubit>().selectedPlatform = platform;
+                context.push(Routes.accountsView.path);
               },
-              numOfAccounts: platform?.numOfAccounts.toString() ?? "0",
-              colorHexa: platform?.iconColor ?? "0",
+              numOfAccounts: platform.numOfAccounts.toString(),
+              colorHexa: platform.iconColor ?? "0",
             );
           },
         ),

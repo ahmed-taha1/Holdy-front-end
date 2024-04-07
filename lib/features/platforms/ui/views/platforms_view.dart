@@ -1,6 +1,5 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
-import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,18 +26,27 @@ class PlatformsView extends StatelessWidget {
         ),
         child: BlocBuilder<PlatformsCubit, PlatformsState>(
           builder: (context, state) {
-            if (state is DataFetchInProgress) {
+            if (state is loadingState) {
               statusBarColor = AppColors.white;
               statusBarIconBrightness = Brightness.dark;
               statusBarBrightness = Brightness.dark;
               return const SplashScreen();
-            } else if (state is DataFetchSuccess) {
+            } else if (state is DataFetchFailure) {
+              statusBarColor = AppColors.white;
+              statusBarIconBrightness = Brightness.dark;
+              statusBarBrightness = Brightness.dark;
+              return const SplashScreen();
+            } else if (state is SearchPlatformState) {
               statusBarColor = AppColors.purple;
               statusBarIconBrightness = Brightness.light;
               statusBarBrightness = Brightness.light;
-              return const PlatformsViewBody();
-            } else {
-              return const SplashScreen();
+              return PlatformsViewBody(platforms: state.filteredPlatforms);
+            }
+            else {
+              statusBarColor = AppColors.purple;
+              statusBarIconBrightness = Brightness.light;
+              statusBarBrightness = Brightness.light;
+              return PlatformsViewBody(platforms: context.read<PlatformsCubit>().userModel?.platforms ?? []);
             }
           },
         ),

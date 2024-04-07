@@ -4,17 +4,17 @@ import 'package:flutter_svg/svg.dart';
 import '../helper/spacing.dart';
 import '../theming/styles.dart';
 
-class DefaultAuthText extends StatelessWidget {
-  const DefaultAuthText(
+class ViewHeader extends StatelessWidget {
+  const ViewHeader(
       {super.key,
       required this.mainText,
-      required this.subText,
+      this.subText,
       this.isLogoIncluded,
       this.iconPath,
       this.vSpace = 53});
 
   final String mainText;
-  final String subText;
+  final String? subText;
   final bool? isLogoIncluded;
   final String? iconPath;
   final int vSpace;
@@ -45,10 +45,12 @@ class DefaultAuthText extends StatelessWidget {
                 style: TextStyles.font30BlackPurpleBold,
               ),
               verticalSpace(11.h),
-              Text(
-                subText,
-                style: TextStyles.font15DarkGreySemiBold,
-              ),
+              subText == null
+                  ? const SizedBox()
+                  : Text(
+                      subText!,
+                      style: TextStyles.font15DarkGreySemiBold,
+                    ),
             ],
           ),
         ),

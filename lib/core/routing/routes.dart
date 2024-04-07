@@ -8,8 +8,13 @@ enum Routes{
   addPlatformView('/AddPlatformView'),
   createPinView('/CreatePinView'),
   pinView('/PinView'),
-  splashScreen('/splashScreen');
-
+  splashView('/splashScreen'),
+  settingsView('/settingsScreen'),
+  accountsView('/accounts'),
+  accountView('/accountView'),
+  addAccountView('/addAccountView'),
+  editAccountView('/editAccountView'),
+  editPlatformView('/editPlatformView');
   final String path;
   const Routes(this.path);
 }

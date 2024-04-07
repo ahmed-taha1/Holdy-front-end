@@ -25,6 +25,13 @@ class TextStyles {
     color: AppColors.white,
   );
 
+  static TextStyle font20BlackPurpleSemiBold = TextStyle(
+    fontSize: 20.sp,
+    fontFamily: FontWeightHelper.semiBold,
+    // fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.blackPurple,
+  );
+
   static TextStyle font17BlackPurpleBold = TextStyle(
     fontSize: 17.sp,
     fontFamily: FontWeightHelper.bold,
@@ -121,5 +128,19 @@ class TextStyles {
     fontFamily: FontWeightHelper.bold,
     // fontWeight: FontWeightHelper.bold,
     color: AppColors.red,
+  );
+
+  static TextStyle font12RegularDarkGrey = TextStyle(
+    fontSize: 12.sp,
+    fontFamily: FontWeightHelper.regular,
+    // fontWeight: FontWeightHelper.regular,
+    color: AppColors.darkGrey,
+  );
+
+  static TextStyle font15WhiteSemiBold = TextStyle(
+    fontSize: 15.sp,
+    fontFamily: FontWeightHelper.semiBold,
+    // fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.white,
   );
 }

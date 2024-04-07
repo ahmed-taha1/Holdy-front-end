@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class Account extends Equatable {
-	final String? accountName;
+	String? accountName;
 	final int? platformId;
-	final int? accountId;
-	final Map<String ,String>? accountFields;
+	int? accountId;
+	Map<String ,dynamic>? accountFields;
 
-	const Account({
+	Account({
 		this.accountName, 
 		this.platformId, 
 		this.accountId, 
-		this.accountFields, 
+		this.accountFields,
 	});
 
 	factory Account.fromMap(Map<String, dynamic> data) => Account(

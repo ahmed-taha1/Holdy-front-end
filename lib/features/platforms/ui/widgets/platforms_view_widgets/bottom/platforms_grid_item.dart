@@ -1,6 +1,8 @@
 import 'package:accounts_protector/core/helper/font_weight_helper.dart';
 import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/theming/styles.dart';
 
 class PlatformsGridItem extends StatelessWidget {
@@ -11,8 +13,7 @@ class PlatformsGridItem extends StatelessWidget {
     required this.numOfAccounts,
     required this.colorHexa,
   }) {
-    platformInitial = platformName[0];
-    // color = Colors.blue;
+    platformInitial = platformName[0].toUpperCase();
   }
 
   final VoidCallback cardClick;
@@ -28,14 +29,19 @@ class PlatformsGridItem extends StatelessWidget {
       child: Card(
         elevation: 4,
         surfaceTintColor: Colors.white,
-        shape: const RoundedRectangleBorder(
-          side: BorderSide(width: 0),
-          borderRadius: BorderRadius.all(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            width: 1,
+            color: Color(
+              int.parse(colorHexa, radix: 16),
+            ),
+          ),
+          borderRadius: const BorderRadius.all(
             Radius.circular(30),
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(14),
+          padding: EdgeInsets.only(top: 14.h, left: 1.w, right: 1.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -44,17 +50,28 @@ class PlatformsGridItem extends StatelessWidget {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                    color: Color(int.parse(colorHexa, radix: 16)),
-                    borderRadius: const BorderRadius.all(Radius.circular(10))),
+                  color: Color(int.parse(colorHexa, radix: 16)),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
                 child: Text(
                   platformInitial,
                   style: TextStyles.font26WhiteBold,
                 ),
               ),
-              verticalSpace(10),
-              Text(platformName,
-                  style: TextStyles.font15BlackPurpleMedium
-                      .copyWith(fontFamily: FontWeightHelper.semiBold)),
+              verticalSpace(5),
+              Flexible(
+                child: Text(
+                  platformName,
+                  textAlign: TextAlign.center,
+                  style: TextStyles.font15BlackPurpleMedium.copyWith(
+                    fontFamily: FontWeightHelper.semiBold,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
               Text(
                 "$numOfAccounts Accounts",
                 style: TextStyles.font11DarkGreyRegular,

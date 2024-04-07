@@ -1,5 +1,5 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
-import 'package:accounts_protector/core/widgets/default_auth_text.dart';
+import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/authentication/logic/register/register_cubit.dart';
 import 'package:accounts_protector/features/authentication/logic/register/register_input_validation_functions.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +54,7 @@ class RegisterViewBody extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    child: const DefaultAuthText(
+                    child: const ViewHeader(
                       vSpace: 10,
                       mainText: 'Create Account',
                       subText: 'Please fill the input below here',

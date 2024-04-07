@@ -1,17 +1,23 @@
 import 'package:accounts_protector/core/errors/failures.dart';
-import 'package:accounts_protector/core/models/user_model/user_model.dart';
+import 'package:accounts_protector/features/platforms/data/dto/platforms_dto.dart';
 import 'package:accounts_protector/features/platforms/data/repo/platform_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import '../../../../core/models/platform.dart';
+import '../../../../core/models/user_model.dart';
 
 part 'platforms_state.dart';
 
 class PlatformsCubit extends Cubit<PlatformsState> {
   PlatformsCubit() : super(PlatformsInitial());
   UserModel? userModel;
+  List<Platform>? filteredPlatforms;
+  bool isLoading = false;
+  Color selectedColor = Colors.blue;
 
-  void getAllUserData() async {
-    emit(DataFetchInProgress());
+  Future<void> getAllUserData() async {
+    emit(loadingState());
     try {
       userModel = await PlatformRepo().getAllUserData();
       emit(DataFetchSuccess());
@@ -28,5 +34,105 @@ class PlatformsCubit extends Cubit<PlatformsState> {
         );
       }
     }
+  }
+
+  void searchPlatform(String searchQuery) {
+    if (searchQuery == "") {
+      emit(DataFetchSuccess());
+    } else {
+      filteredPlatforms = userModel?.platforms!
+          .where((element) => element.platformName!
+              .toLowerCase()
+              .contains(searchQuery.toLowerCase()))
+          .toList();
+      emit(SearchPlatformState(filteredPlatforms: filteredPlatforms!));
+    }
+  }
+
+  Future<void> createPlatform(String platformName, String iconColor) async {
+    isLoading = true;
+    emit(loadingState());
+    try {
+      int id = await PlatformRepo().createPlatform(platformName, iconColor);
+      Platform newPlatform = Platform(
+        platformId: id,
+        platformName: platformName,
+        iconColor: iconColor,
+      );
+      userModel?.platforms?.add(newPlatform);
+      emit(PlatformCreateSuccess());
+    } catch (e) {
+      if (e is ServerFailure) {
+        emit(
+          PlatformCreateFailure(errorMessage: e.errorMassage),
+        );
+      } else {
+        emit(
+          const PlatformCreateFailure(
+            errorMessage: 'Something went wrong! Please try again later.',
+          ),
+        );
+      }
+    }
+    isLoading = false;
+  }
+
+  Future<void> deletePlatform(int platformId) async {
+    isLoading = true;
+    emit(loadingState());
+    try {
+      await PlatformRepo().deletePlatform(platformId);
+      userModel?.platforms
+          ?.removeWhere((element) => element.platformId == platformId);
+      emit(PlatformDeleteSuccess(platformId: platformId));
+    } catch (e) {
+      if (e is ServerFailure) {
+        emit(
+          PlatformDeleteFailure(errorMessage: e.errorMassage),
+        );
+      } else {
+        emit(
+          const PlatformDeleteFailure(
+            errorMessage: 'Something went wrong! Please try again later.',
+          ),
+        );
+      }
+    }
+    isLoading = false;
+  }
+
+  Future<void> updatePlatform(int platformId, String platformName) async {
+    isLoading = true;
+    emit(loadingState());
+    try {
+      UpdatePlatformDto updatePlatformDto = UpdatePlatformDto(
+        platformId: platformId,
+        platformName: platformName,
+        iconColor: selectedColor.value.toRadixString(16),
+      );
+      await PlatformRepo().updatePlatform(updatePlatformDto);
+      Platform? p = userModel?.platforms
+          ?.firstWhere((element) => element.platformId == platformId);
+      p?.platformName = platformName;
+      p?.iconColor = selectedColor.value.toRadixString(16);
+      emit(PlatformUpdateSuccess());
+    } catch (e) {
+      if (e is ServerFailure) {
+        emit(
+          PlatformUpdateFailure(errorMessage: e.errorMassage),
+        );
+      } else {
+        emit(
+          const PlatformUpdateFailure(
+            errorMessage: 'Something went wrong! Please try again later.',
+          ),
+        );
+      }
+    }
+    isLoading = false;
+  }
+
+  void changePlatformNumOfAccounts(int platformId, int numOfAccounts) {
+    emit(ChangeNumOfAccountsState(platformId: platformId, numOfAccounts: numOfAccounts));
   }
 }

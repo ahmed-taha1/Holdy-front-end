@@ -39,11 +39,7 @@ class Circle extends StatelessWidget {
       height: 15,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: isOn ? AppColors.purple : null,
-        border: isOn ? null : Border.all(
-          color: AppColors.blackPurple,
-          width: 0.7,
-        ),
+        color: isOn ? AppColors.purple : AppColors.lighterPurple,
       ),
     );
   }

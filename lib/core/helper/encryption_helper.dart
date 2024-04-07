@@ -5,23 +5,32 @@ import 'package:crypto/crypto.dart';
 
 class EncryptionHelper {
   static encryptLib.Key? _key;
-  static final _iv = encryptLib.IV.fromLength(16); // 16 bytes for AES
+  static encryptLib.IV? _iv;
 
   static String encrypt(String data) {
-    try
-    {
+    try {
+      _iv = encryptLib.IV.fromLength(16); // Generate IV for this encryption
       final encrypter = encryptLib.Encrypter(encryptLib.AES(_key!));
-      final encrypted = encrypter.encrypt(data, iv: _iv);
-      return encrypted.base64;
+      final encrypted = encrypter.encrypt(data, iv: _iv!);
+      // Save the IV with the encrypted data, for example as a base64 string
+      return '${_iv!.base64}\$${encrypted.base64}';
     } catch (e) {
       throw Exception('Error encrypting data');
     }
   }
 
-  static String decrypt(String encryptedData) {
+  static String decrypt(String encryptedDataWithIV) {
     try {
+      // Extract the IV and encrypted data
+      final parts = encryptedDataWithIV.split('\$');
+      if (parts.length != 2) {
+        throw Exception('Invalid encrypted data format');
+      }
+      _iv = encryptLib.IV.fromBase64(parts[0]);
+      final encryptedData = parts[1];
+
       final decrypter = encryptLib.Encrypter(encryptLib.AES(_key!));
-      final decrypted = decrypter.decrypt64(encryptedData, iv: _iv);
+      final decrypted = decrypter.decrypt64(encryptedData, iv: _iv!);
       return decrypted;
     } catch (e) {
       throw Exception('Error decrypting data');

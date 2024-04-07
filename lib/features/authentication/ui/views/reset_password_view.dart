@@ -10,18 +10,13 @@ class ResetPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.h),
-          child: const CustomAppBarWithBack()),
-      body: const AnnotatedRegion(
-        value: SystemUiOverlayStyle(
-          statusBarColor: AppColors.white,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.dark,
-        ),
-        child: ResetPasswordViewBody(),
+    return const Scaffold(
+      appBar: CustomAppBarWithBack(
+        brightness: Brightness.dark,
+        statusBarColor: AppColors.white,
+        isScrolled: true,
       ),
+      body: ResetPasswordViewBody(),
     );
   }
 }

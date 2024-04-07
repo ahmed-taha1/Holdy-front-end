@@ -17,7 +17,10 @@ class PinCubit extends Cubit<PinState> {
       emit(AddNumberState(currentPinLength));
       if (currentPinLength == pinLength) {
         if(CacheHelper.getData(key: CacheHelperConstants.pinHash) == EncryptionHelper.hash(data: pin)){
-          CacheHelper.putData(key: CacheHelperConstants.key, value: EncryptionHelper.generateKey(data: pin));
+          if(CacheHelper.getData(key: CacheHelperConstants.key) != EncryptionHelper.generateKey(data: pin)) {
+            CacheHelper.putData(key: CacheHelperConstants.key,
+                value: EncryptionHelper.generateKey(data: pin));
+          }
           EncryptionHelper.setKey(CacheHelper.getData(key: CacheHelperConstants.key));
           emit(PinSuccessState());
         }

@@ -1,4 +1,3 @@
-import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/core/routing/routes.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/top/search_input.dart';
 import 'package:flutter/material.dart';
@@ -41,8 +40,7 @@ class TopPart extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    context.go(Routes.loginView.path);
-                    print("settings clicked");
+                    context.push(Routes.settingsView.path);
                   },
                   icon: const Icon(
                     Icons.settings,

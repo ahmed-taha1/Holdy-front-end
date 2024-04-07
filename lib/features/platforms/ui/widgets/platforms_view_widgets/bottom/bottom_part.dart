@@ -1,27 +1,33 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
-import 'package:accounts_protector/core/routing/app_router.dart';
 import 'package:accounts_protector/core/routing/routes.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/bottom/platforms_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../../../core/models/platform.dart';
 import '../../../../../../core/theming/app_colors.dart';
 import '../../../../../../core/theming/styles.dart';
 
 class BottomPart extends StatelessWidget {
   const BottomPart({
     super.key,
+    required this.platforms,
   });
+
+  final List<Platform> platforms;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 4,
       child: Container(
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.r),
+            topRight: Radius.circular(30.r),
+          ),
+        ),
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
@@ -52,7 +58,9 @@ class BottomPart extends StatelessWidget {
               ),
             ),
             verticalSpace(10),
-            const PlatformsGridView(),
+            PlatformsGridView(
+              platforms: platforms,
+            ),
           ],
         ),
       ),
