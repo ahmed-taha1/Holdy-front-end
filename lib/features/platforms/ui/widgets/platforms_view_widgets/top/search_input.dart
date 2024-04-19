@@ -6,9 +6,9 @@ import '../../../../../../core/theming/app_colors.dart';
 import '../../../../logic/platforms/platforms_cubit.dart';
 
 class SearchInput extends StatelessWidget {
-  const SearchInput({super.key, this.onChanged});
+  const SearchInput({super.key, required this.onChanged});
 
-  final VoidCallback? onChanged;
+  final Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,9 +42,7 @@ class SearchInput extends StatelessWidget {
                 color: AppColors.white,
               ),
             ),
-            onChanged: (value) {
-              context.read<PlatformsCubit>().searchPlatform(value);
-            },
+            onChanged: onChanged,
           ),
         ),
       ),

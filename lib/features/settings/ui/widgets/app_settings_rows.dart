@@ -16,6 +16,7 @@ class AppSettingsRows extends StatelessWidget {
     return Column(
       children: [
         SettingRow(
+          onTap: () {},
           prefix: CircleAvatar(
             radius: 22.r,
             backgroundColor: const Color(0xFFFFDED0),
@@ -47,6 +48,7 @@ class AppSettingsRows extends StatelessWidget {
         BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {
             return SettingRow(
+              onTap: () {},
               prefix: CircleAvatar(
                 radius: 22.r,
                 backgroundColor: const Color(0xFFE9DCFF),
@@ -77,6 +79,7 @@ class AppSettingsRows extends StatelessWidget {
         ),
         verticalSpace(25),
         SettingRow(
+          onTap: () {},
           prefix: CircleAvatar(
             radius: 22.r,
             backgroundColor: const Color(0xFFFFCDDA),

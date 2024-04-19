@@ -9,9 +9,9 @@ class SettingsCubit extends Cubit<SettingsState> {
     isDark = CacheHelper.getData(key: CacheHelperConstants.isDark) ?? false;
   }
 
-  Future<void> logout() async{
-    await CacheHelper.clearCache();
+  void logout(){
     emit(LogoutSuccess());
+    CacheHelper.clearCache();
   }
 
   void changeTheme() {

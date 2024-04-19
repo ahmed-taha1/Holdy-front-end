@@ -6,45 +6,39 @@ import 'package:go_router/go_router.dart';
 
 class CustomAppBarWithBack extends StatelessWidget
     implements PreferredSizeWidget {
-  const CustomAppBarWithBack(
-      {super.key,
-      this.backGroundColor = AppColors.white,
-      this.arrowColor = AppColors.blackPurple,
-      required this.brightness,
-      required this.statusBarColor,
-      this.isScrolled = false,
-      this.onPressed});
+  const CustomAppBarWithBack({
+    super.key,
+    this.arrowColor = AppColors.blackPurple,
+    this.isScrolled = false,
+    this.onPressed, required this.backGroundColor,
+  });
 
   final VoidCallback? onPressed;
   final Color backGroundColor;
   final Color arrowColor;
-  final Brightness brightness;
-  final Color statusBarColor;
   final bool isScrolled;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: statusBarColor,
-        statusBarBrightness: brightness,
-        statusBarIconBrightness: brightness,
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.black26,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.light,
       ),
       scrolledUnderElevation: 0,
       leading: Padding(
-        padding: EdgeInsets.only(bottom: 5.h),
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: GestureDetector(
-            onTap: () {
-              context.pop();
-              onPressed?.call();
-            },
-            child: Icon(
-              Icons.arrow_back_ios,
-              color: arrowColor,
-            ),
+        padding: EdgeInsets.only(left: 20.w, top: 10.h),
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: arrowColor,
           ),
+          onTap: () {
+            context.pop();
+            onPressed?.call();
+          },
         ),
       ),
       backgroundColor: backGroundColor,

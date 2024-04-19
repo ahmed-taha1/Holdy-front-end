@@ -36,6 +36,7 @@ class SettingsViewBody extends StatelessWidget {
                 Text('Account', style: TextStyles.font20BlackPurpleSemiBold),
                 verticalSpace(25),
                 SettingRow(
+                  onTap: () {},
                   prefix: const CircleAvatar(
                     radius: 23,
                     backgroundColor: AppColors.whiteGrey,

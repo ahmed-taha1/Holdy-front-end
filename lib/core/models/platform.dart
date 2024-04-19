@@ -3,19 +3,19 @@ import 'package:equatable/equatable.dart';
 import 'account.dart';
 
 class Platform extends Equatable {
-	final List<Account>? accounts;
+	List<Account>? accounts;
 	final int? platformId;
 	String? platformName;
 	String? iconColor;
 	int numOfAccounts;
 
 	Platform({
-		this.accounts = const <Account>[],
+		List<Account>? accounts,
 		this.platformId, 
 		this.platformName, 
 		this.iconColor,
 		this.numOfAccounts = 0,
-	});
+	}) : accounts = accounts ?? <Account>[];
 
 	factory Platform.fromMap(Map<String, dynamic> data) => Platform(
 				accounts: (data['accounts'] as List<dynamic>?)

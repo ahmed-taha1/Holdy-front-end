@@ -1,12 +1,15 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/theming/app_colors.dart';
+import 'package:accounts_protector/core/widgets/custom_loading.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
 import 'package:accounts_protector/core/widgets/default_add_platform_text.dart';
+import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/add_platform_view_widgets/platform_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,11 +19,15 @@ class AddPlatformViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController platformNameInputController = TextEditingController();
-    return BlocConsumer<PlatformsCubit, PlatformsState>(
+    return BlocListener<PlatformsCubit, PlatformsState>(
       listener: (context, state) {
         if (state is PlatformCreateSuccess) {
+          EasyLoading.dismiss();
           context.pop();
+        } else if (state is PlatformLoadingState) {
+          showCustomLoading();
         } else if (state is PlatformCreateFailure) {
+          EasyLoading.dismiss();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.errorMessage),
@@ -29,10 +36,10 @@ class AddPlatformViewBody extends StatelessWidget {
           );
         }
       },
-      builder: (context, state) {
-        return SafeArea(
+      child: SafeArea(
+        child: KeyboardHider(
           child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 42.w),
               child: SizedBox(
@@ -59,17 +66,14 @@ class AddPlatformViewBody extends StatelessWidget {
                       text: "Create",
                       onPressed: () {
                         context.read<PlatformsCubit>().createPlatform(
-                          platformNameInputController.text,
-                          context
-                              .read<PlatformsCubit>()
-                              .selectedColor
-                              .value
-                              .toRadixString(16),
-                        );
+                              platformNameInputController.text,
+                              context
+                                  .read<PlatformsCubit>()
+                                  .selectedColor
+                                  .value
+                                  .toRadixString(16),
+                            );
                       },
-                      isLoading: context
-                          .watch<PlatformsCubit>()
-                          .isLoading,
                     ),
                     verticalSpace(40),
                   ],
@@ -77,8 +81,8 @@ class AddPlatformViewBody extends StatelessWidget {
               ),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

@@ -19,12 +19,13 @@ class PinViewBody extends StatelessWidget {
     return BlocConsumer<PinCubit, PinState>(
       listener: (context, state) {
         if (state is PinSuccessState) {
-          context.read<PlatformsCubit>().getAllUserData();
           context.go(Routes.platformsView.path);
+          context.read<PlatformsCubit>().getAllUserData();
         }
         if (state is PinFailureState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
+              backgroundColor: Colors.redAccent,
               content: Text(state.errorMassage),
               duration: const Duration(seconds: 2),
             ),

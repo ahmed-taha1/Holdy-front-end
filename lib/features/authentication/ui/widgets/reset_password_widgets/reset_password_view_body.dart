@@ -1,6 +1,8 @@
+import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/features/authentication/logic/forgot_password/forgot_password_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,17 +20,18 @@ class ResetPasswordViewBody extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     TextEditingController rePasswordController = TextEditingController();
     return SafeArea(
-      child: BlocConsumer<ForgotPasswordCubit, ForgotPasswordState>(
+      child: BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
         listener: (context, state) {
           if (state is ResetPasswordSuccess) {
+            EasyLoading.dismiss();
             context.go(Routes.loginView.path);
           }
         },
-        builder: (context, state) {
-          return SizedBox(
-            height: double.infinity,
+        child: SizedBox(
+          height: double.infinity,
+          child: KeyboardHider(
             child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
                   verticalSpace(50),
@@ -72,13 +75,12 @@ class ResetPasswordViewBody extends StatelessWidget {
                             newPasswordRepeat: rePasswordController.text,
                           );
                     },
-                    isLoading: context.read<ForgotPasswordCubit>().isLoading,
                   ),
                 ],
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }

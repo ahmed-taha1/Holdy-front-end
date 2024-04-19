@@ -10,14 +10,16 @@ import 'login_states.dart';
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitialState());
   LoginResponseDto? loginResponseDto;
-  bool isLoading = false;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  Future<void>login({required String email,required String password})async{
-    isLoading = true;
-    emit(LoginLoadingState());
+  Future<void>login() async{
     try{
       if(formKey.currentState!.validate()){
+        emit(LoginLoadingState());
+        String email = emailController.text;
+        String password = passwordController.text;
         loginResponseDto =
             await getIt<IAuthRepo>().login(email: email, password: password);
         if (loginResponseDto!.pinHash == null ||
@@ -34,6 +36,8 @@ class LoginCubit extends Cubit<LoginStates> {
               key: CacheHelperConstants.pinHash,
               value: loginResponseDto!.pinHash);
           CacheHelper.putData(key: CacheHelperConstants.isLogged, value: true);
+          emailController.clear();
+          passwordController.clear();
           emit(LoginSuccessState());
         }
       }
@@ -45,6 +49,5 @@ class LoginCubit extends Cubit<LoginStates> {
         emit(const LoginFailureState('Something went wrong'));
       }
     }
-    isLoading = false;
   }
 }

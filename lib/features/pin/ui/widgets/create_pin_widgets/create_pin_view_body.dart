@@ -17,10 +17,13 @@ class CreatePinViewBody extends StatelessWidget {
     return BlocConsumer<CreatePinCubit, PinState>(
       listener: (context, state) {
         if (state is PinFailureState) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(state.errorMassage),
-            duration: const Duration(seconds: 2),
-          ));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.redAccent,
+              content: Text(state.errorMassage),
+              duration: const Duration(seconds: 2),
+            ),
+          );
         }
       },
       builder: (context, state) {
@@ -33,9 +36,14 @@ class CreatePinViewBody extends StatelessWidget {
                 children: [
                   verticalSpace(20),
                   IconWithTopText(
-                      title: context.read<CreatePinCubit>().isReenter ? 'Re-Enter your PIN' : 'Create your PIN', addWarning: true),
+                      title: context.read<CreatePinCubit>().isReenter
+                          ? 'Re-Enter your PIN'
+                          : 'Create your PIN',
+                      addWarning: true),
                   verticalSpace(20),
-                  Circles(numOfLightCircles: context.read<CreatePinCubit>().currentPinLength),
+                  Circles(
+                      numOfLightCircles:
+                          context.read<CreatePinCubit>().currentPinLength),
                   verticalSpace(20),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.h),

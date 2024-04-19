@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import '../../../../core/theming/app_colors.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
 import '../widgets/login_widgets/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
@@ -10,14 +9,10 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: AnnotatedRegion(
-        value: SystemUiOverlayStyle(
-          statusBarColor: AppColors.white,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.dark,
-        ),
-        child: LoginViewBody(),
-      ),
+      resizeToAvoidBottomInset: false,
+      appBar: CustomAppBar(backGroundColor: AppColors.white),
+      backgroundColor: AppColors.white,
+      body: LoginViewBody(),
     );
   }
 }

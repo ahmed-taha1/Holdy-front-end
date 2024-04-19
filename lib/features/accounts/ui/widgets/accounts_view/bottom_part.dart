@@ -2,7 +2,6 @@ import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../../core/models/platform.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/app_colors.dart';
@@ -53,7 +52,7 @@ class BottomPart extends StatelessWidget {
                   ),
                   verticalSpace(40),
                   AccountsGrid(
-                    accounts: platform.accounts!,
+                    color: Color(int.parse(platform.iconColor!, radix: 16)),
                   ),
                 ],
               ),

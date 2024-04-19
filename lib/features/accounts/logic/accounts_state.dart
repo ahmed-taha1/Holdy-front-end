@@ -27,8 +27,14 @@ class AccountDeletedState extends AccountsState {
   List<Object> get props => [accountId];
 }
 class AccountUpdatedState extends AccountsState {}
-class LoadingState extends AccountsState {}
+class AccountLoadingState extends AccountsState {}
 class CreateAccountSuccess extends AccountsState {}
+class AccountSearchState extends AccountsState {
+  final String query;
+  const AccountSearchState(this.query);
+  @override
+  List<Object> get props => [query];
+}
 class FailedState extends AccountsState {
   final String errorMessage;
   const FailedState(this.errorMessage);

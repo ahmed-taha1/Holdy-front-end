@@ -11,14 +11,12 @@ part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(RegisterInitial());
-  bool isLoading = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Future<void> register(
       {required RegisterRequestDto registerRequestDto}) async {
     if(formKey.currentState!.validate()){
       emit(RegisterLoadingState());
-      isLoading = true;
       try {
         var response =
             await getIt<IAuthRepo>().register(registerRequestDto: registerRequestDto);
@@ -34,6 +32,5 @@ class RegisterCubit extends Cubit<RegisterState> {
         }
       }
     }
-    isLoading = false;
   }
 }

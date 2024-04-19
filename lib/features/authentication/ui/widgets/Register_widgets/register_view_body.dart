@@ -1,14 +1,17 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
+import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/authentication/logic/register/register_cubit.dart';
 import 'package:accounts_protector/features/authentication/logic/register/register_input_validation_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/helper/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../core/widgets/custom_loading.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_input_text_field.dart';
 import '../../../../../core/widgets/custom_text_button.dart';
@@ -26,12 +29,15 @@ class RegisterViewBody extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     TextEditingController rePasswordController = TextEditingController();
 
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocListener<RegisterCubit, RegisterState>(
       listener: (context, state) {
-        if(state is RegisterSuccessState){
+        if (state is RegisterLoadingState) {
+          showCustomLoading();
+        } else if (state is RegisterSuccessState) {
+          EasyLoading.dismiss();
           context.go(Routes.createPinView.path);
-        }
-        else if(state is RegisterFailureState){
+        } else if (state is RegisterFailureState) {
+          EasyLoading.dismiss();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.errorMassage),
@@ -40,13 +46,12 @@ class RegisterViewBody extends StatelessWidget {
           );
         }
       },
-
-      builder: (context, state) {
-        return Container(
-          color: AppColors.white,
-          height: double.infinity,
+      child: Container(
+        color: AppColors.white,
+        height: double.infinity,
+        child: KeyboardHider(
           child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: 25.w),
             child: Form(
               key: context.read<RegisterCubit>().formKey,
@@ -66,7 +71,8 @@ class RegisterViewBody extends StatelessWidget {
                     hintText: 'FIRST NAME',
                     controller: firstNameController,
                     keyboardType: TextInputType.text,
-                    validationFunction: RegisterInputValidationFunctions.firstNameValidator,
+                    validationFunction:
+                        RegisterInputValidationFunctions.firstNameValidator,
                   ),
                   verticalSpace(11),
                   CustomInputField(
@@ -81,7 +87,8 @@ class RegisterViewBody extends StatelessWidget {
                     hintText: 'EMAIL',
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    validationFunction: RegisterInputValidationFunctions.emailFieldValidator,
+                    validationFunction:
+                        RegisterInputValidationFunctions.emailFieldValidator,
                   ),
                   verticalSpace(11),
                   CustomInputField(
@@ -89,7 +96,8 @@ class RegisterViewBody extends StatelessWidget {
                     hintText: 'PHONE',
                     controller: phoneController,
                     keyboardType: TextInputType.phone,
-                    validationFunction: RegisterInputValidationFunctions.phoneNumberValidator,
+                    validationFunction:
+                        RegisterInputValidationFunctions.phoneNumberValidator,
                   ),
                   verticalSpace(11),
                   CustomInputField(
@@ -98,7 +106,8 @@ class RegisterViewBody extends StatelessWidget {
                     controller: passwordController,
                     keyboardType: TextInputType.text,
                     isPassword: true,
-                    validationFunction: RegisterInputValidationFunctions.passwordValidator,
+                    validationFunction:
+                        RegisterInputValidationFunctions.passwordValidator,
                   ),
                   verticalSpace(11),
                   CustomInputField(
@@ -107,7 +116,9 @@ class RegisterViewBody extends StatelessWidget {
                     controller: rePasswordController,
                     keyboardType: TextInputType.text,
                     isPassword: true,
-                    validationFunction: (value) => RegisterInputValidationFunctions.confirmPasswordValidator(value, passwordController.text),
+                    validationFunction: (value) =>
+                        RegisterInputValidationFunctions.confirmPasswordValidator(
+                            value, passwordController.text),
                   ),
                   verticalSpace(18),
                   CustomButton(
@@ -124,7 +135,6 @@ class RegisterViewBody extends StatelessWidget {
                           );
                     },
                     text: 'REGISTER',
-                    isLoading: context.read<RegisterCubit>().isLoading,
                   ),
                   verticalSpace(15),
                   Row(
@@ -148,8 +158,8 @@ class RegisterViewBody extends StatelessWidget {
               ),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

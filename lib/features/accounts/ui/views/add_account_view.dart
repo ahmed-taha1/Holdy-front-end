@@ -11,10 +11,10 @@ class AddAccountView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: CustomAppBarWithBack(
-        brightness: Brightness.dark,
-        statusBarColor: AppColors.white,
         isScrolled: true,
+        backGroundColor: AppColors.white,
         onPressed: (){
           context.read<AccountsCubit>().resetInputFields();
         },

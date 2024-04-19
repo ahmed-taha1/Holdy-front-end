@@ -10,10 +10,8 @@ class AccountView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: CustomAppBarWithBack(
-          backGroundColor: AppColors.purple,
-          arrowColor: AppColors.white,
-          brightness: Brightness.light,
-          statusBarColor: AppColors.purple,
+        arrowColor: AppColors.white,
+        backGroundColor: AppColors.purple,
       ),
       body: AccountViewBody(),
       backgroundColor: AppColors.purple,

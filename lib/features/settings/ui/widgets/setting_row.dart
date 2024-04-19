@@ -7,17 +7,20 @@ class SettingRow extends StatelessWidget {
       required this.prefix,
       required this.suffix,
       required this.title,
-      this.onTap});
+      required this.onTap});
 
   final Widget prefix;
   final Widget suffix;
   final Widget title;
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
+    return TextButton(
+      style: TextButton.styleFrom(
+
+      ),
+      onPressed: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

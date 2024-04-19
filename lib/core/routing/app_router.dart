@@ -72,6 +72,9 @@ abstract class AppRouter {
       GoRoute(
           path: Routes.editPlatformView.path,
           builder: (context, state) => const EditPlatformView()),
+      GoRoute(
+          path: Routes.splashView.path,
+          builder: (context, state) => const SplashScreen()),
     ],
     initialLocation: Routes.loginView.path,
     // initialLocation: Routes.splashScreen.path,

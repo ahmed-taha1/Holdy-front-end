@@ -1,6 +1,8 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widgets/custom_app_app_bar_with_back.dart';
+import '../../logic/accounts_cubit.dart';
 import '../widgets/accounts_view/accounts_view_body.dart';
 
 class AccountsView extends StatelessWidget {
@@ -8,15 +10,17 @@ class AccountsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: CustomAppBarWithBack(
-        backGroundColor: AppColors.purple,
         arrowColor: AppColors.white,
-        brightness: Brightness.light,
-        statusBarColor: AppColors.purple,
+        backGroundColor: AppColors.purple,
         isScrolled: false,
+        onPressed: (){
+          context.read<AccountsCubit>().clearSearch();
+        },
       ),
-      body: AccountsViewBody(),
+      body: const AccountsViewBody(),
       backgroundColor: AppColors.purple,
     );
   }

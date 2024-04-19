@@ -10,9 +10,8 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: CustomAppBarWithBack(
-        brightness: Brightness.dark,
-        statusBarColor: AppColors.white,
         isScrolled: true,
+        backGroundColor: AppColors.white,
       ),
       body: SettingsViewBody(),
       backgroundColor: AppColors.white,

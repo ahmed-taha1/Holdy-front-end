@@ -1,10 +1,13 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/core/widgets/custom_loading.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
+import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/authentication/logic/forgot_password/forgot_password_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/routing/routes.dart';
@@ -17,12 +20,16 @@ class ForgotPasswordViewBody extends StatelessWidget {
     TextEditingController emailController = TextEditingController();
 
     return SafeArea(
-      child: BlocConsumer<ForgotPasswordCubit, ForgotPasswordState>(
+      child: BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
         listener: (context, state) {
-          if(state is SendEmailSuccess){
-            context.push(Routes.otpValidationView.path);
+          if (state is ForgotPasswordLoading) {
+            showCustomLoading();
           }
-          else if(state is ForgotPasswordFailure){
+          if (state is SendEmailSuccess) {
+            EasyLoading.dismiss();
+            context.push(Routes.otpValidationView.path);
+          } else if (state is ForgotPasswordFailure) {
+            EasyLoading.dismiss();
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 backgroundColor: Colors.redAccent,
@@ -31,11 +38,11 @@ class ForgotPasswordViewBody extends StatelessWidget {
             );
           }
         },
-        builder: (context, state) {
-          return SizedBox(
-            height: double.infinity,
+        child: SizedBox(
+          height: double.infinity,
+          child: KeyboardHider(
             child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
                   verticalSpace(50),
@@ -59,7 +66,6 @@ class ForgotPasswordViewBody extends StatelessWidget {
                   ),
                   verticalSpace(18),
                   CustomButton(
-                    isLoading: context.read<ForgotPasswordCubit>().isLoading,
                     text: 'Send',
                     onPressed: () {
                       context
@@ -70,8 +76,8 @@ class ForgotPasswordViewBody extends StatelessWidget {
                 ],
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }

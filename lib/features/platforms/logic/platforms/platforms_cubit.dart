@@ -14,11 +14,10 @@ class PlatformsCubit extends Cubit<PlatformsState> {
   PlatformsCubit() : super(PlatformsInitial());
   UserModel? userModel;
   List<Platform>? filteredPlatforms;
-  bool isLoading = false;
   Color selectedColor = Colors.blue;
 
   Future<void> getAllUserData() async {
-    emit(LoadingState());
+    emit(PlatformLoadingState());
     try {
       userModel = await getIt<IPlatformRepo>().getAllUserData();
       emit(DataFetchSuccess());
@@ -51,8 +50,7 @@ class PlatformsCubit extends Cubit<PlatformsState> {
   }
 
   Future<void> createPlatform(String platformName, String iconColor) async {
-    isLoading = true;
-    emit(LoadingState());
+    emit(PlatformLoadingState());
     try {
       int id = await getIt<IPlatformRepo>().createPlatform(platformName, iconColor);
       Platform newPlatform = Platform(
@@ -75,12 +73,10 @@ class PlatformsCubit extends Cubit<PlatformsState> {
         );
       }
     }
-    isLoading = false;
   }
 
   Future<void> deletePlatform(int platformId) async {
-    isLoading = true;
-    emit(LoadingState());
+    emit(PlatformLoadingState());
     try {
       await getIt<IPlatformRepo>().deletePlatform(platformId);
       userModel?.platforms
@@ -99,12 +95,10 @@ class PlatformsCubit extends Cubit<PlatformsState> {
         );
       }
     }
-    isLoading = false;
   }
 
   Future<void> updatePlatform(int platformId, String platformName) async {
-    isLoading = true;
-    emit(LoadingState());
+    emit(PlatformLoadingState());
     try {
       UpdatePlatformDto updatePlatformDto = UpdatePlatformDto(
         platformId: platformId,
@@ -130,7 +124,6 @@ class PlatformsCubit extends Cubit<PlatformsState> {
         );
       }
     }
-    isLoading = false;
   }
 
   void changePlatformNumOfAccounts(int platformId, int numOfAccounts) {

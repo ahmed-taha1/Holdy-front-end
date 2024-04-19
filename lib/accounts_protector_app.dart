@@ -10,13 +10,14 @@ import 'package:accounts_protector/features/platforms/logic/platforms/platforms_
 import 'package:accounts_protector/features/settings/logic/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'core/helper/font_weight_helper.dart';
 
 class AccountsProtectorApp extends StatelessWidget {
   const AccountsProtectorApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
@@ -35,6 +36,7 @@ class AccountsProtectorApp extends StatelessWidget {
           BlocProvider(create: (context) => AccountsCubit()),
         ],
         child: MaterialApp.router(
+          builder: EasyLoading.init(),
           routerConfig: AppRouter.router,
           debugShowCheckedModeBanner: false,
           title: 'Accounts Protector',

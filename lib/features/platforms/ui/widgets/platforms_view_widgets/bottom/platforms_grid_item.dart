@@ -1,4 +1,3 @@
-import 'package:accounts_protector/core/helper/font_weight_helper.dart';
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,60 +22,48 @@ class PlatformsGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: cardClick,
-      child: Card(
-        elevation: 4,
-        surfaceTintColor: Colors.white,
+    return TextButton(
+      onPressed: cardClick,
+      style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
-          side: BorderSide(
-            width: 1,
-            color: Color(
-              int.parse(colorHexa, radix: 16),
-            ),
-          ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(30),
-          ),
+          borderRadius: BorderRadius.circular(30),
         ),
-        child: Padding(
-          padding: EdgeInsets.only(top: 14.h, left: 1.w, right: 1.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                alignment: Alignment.center,
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(int.parse(colorHexa, radix: 16)),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(10),
+        backgroundColor: Color(int.parse(colorHexa, radix: 16)),
+        fixedSize: Size(145.w, 145.h),
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(top: 14.h, left: 1.w, right: 1.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              platformInitial,
+              style: TextStyles.font26WhiteBold.copyWith(fontSize: 40.sp),
+            ),
+            verticalSpace(5),
+            Flexible(
+              child: Text(
+                platformName,
+                textAlign: TextAlign.center,
+                style: TextStyles.font15WhiteSemiBold,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Text(
+              "$numOfAccounts Accounts",
+              style: TextStyles.font11WhiteSemiBold.copyWith(
+                color: const Color(0xffF2F2F2),
+                shadows: [
+                  Shadow(
+                    color: Colors.black.withOpacity(0.3),
+                    offset: const Offset(0, 1),
+                    blurRadius: 10,
                   ),
-                ),
-                child: Text(
-                  platformInitial,
-                  style: TextStyles.font26WhiteBold,
-                ),
+                ],
               ),
-              verticalSpace(5),
-              Flexible(
-                child: Text(
-                  platformName,
-                  textAlign: TextAlign.center,
-                  style: TextStyles.font15BlackPurpleMedium.copyWith(
-                    fontFamily: FontWeightHelper.semiBold,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              Text(
-                "$numOfAccounts Accounts",
-                style: TextStyles.font11DarkGreyRegular,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

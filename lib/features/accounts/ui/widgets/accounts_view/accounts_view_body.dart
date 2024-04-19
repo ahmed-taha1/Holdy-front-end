@@ -32,7 +32,11 @@ class AccountsViewBody extends StatelessWidget {
               ),
             ),
             verticalSpace(35),
-            const SearchInput(),
+            SearchInput(
+              onChanged: (val) {
+                context.read<AccountsCubit>().searchAccount(val);
+              },
+            ),
             verticalSpace(40),
             BottomPart(
               platform: platform,

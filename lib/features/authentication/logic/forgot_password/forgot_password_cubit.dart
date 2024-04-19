@@ -10,15 +10,11 @@ part 'forgot_password_state.dart';
 
 class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   ForgotPasswordCubit() : super(ForgotPasswordInitial());
-
-  bool isLoading = false;
   String email = '';
   void sendEmail({required String email}) async {
-    isLoading = true;
     emit(ForgotPasswordLoading());
     try {
       await getIt<IAuthRepo>().sendOtp(email: email);
-      isLoading = false;
       this.email = email;
       emit(SendEmailSuccess());
     } catch (e) {
@@ -28,7 +24,6 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
       else{
         emit(const ForgotPasswordFailure(errorMessage: 'Something went wrong'));
       }
-      isLoading = false;
     }
   }
 
@@ -48,12 +43,10 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   }
 
   void verifyOtp({required String otp}) async {
-    isLoading = true;
     emit(ForgotPasswordLoading());
     try {
       VerifyOtpResponseDto response = await getIt<IAuthRepo>().verifyOtp(otp: otp, email: email);
       CacheHelper.putData(key: CacheHelperConstants.tempOtpToken, value: response.token);
-      isLoading = false;
       emit(OtpValidationSuccess());
     } catch (e) {
       if (e is ServerFailure) {
@@ -62,16 +55,13 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
       else{
         emit(const ForgotPasswordFailure(errorMessage: 'Something went wrong'));
       }
-      isLoading = false;
     }
   }
 
   void resetPassword({required String newPassword, required String newPasswordRepeat}) async {
-    isLoading = true;
     emit(ForgotPasswordLoading());
     try {
       await getIt<IAuthRepo>().resetPassword(resetPasswordRequestDto: ResetPasswordRequestDto(newPassword: newPassword, newPasswordRepeat: newPasswordRepeat));
-      isLoading = false;
       emit(ResetPasswordSuccess());
     } catch (e) {
       if (e is ServerFailure) {
@@ -80,7 +70,6 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
       else{
         emit(const ForgotPasswordFailure(errorMessage: 'Something went wrong'));
       }
-      isLoading = false;
     }
   }
 }
