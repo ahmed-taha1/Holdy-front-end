@@ -43,88 +43,87 @@ class LoginViewBody extends StatelessWidget {
       },
       child: SizedBox(
         height: double.infinity,
-        child: KeyboardHider(
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: EdgeInsets.symmetric(vertical: 5.h),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.w),
-                  child: Form(
-                    key: context.read<LoginCubit>().formKey,
-                    child: Column(
-                      children: [
-                        verticalSpace(85),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: const ViewHeader(
-                            mainText: 'Login',
-                            subText: 'Please sign in to continue',
-                            isLogoIncluded: true,
-                          ),
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          physics: const AlwaysScrollableScrollPhysics(),
+          padding: EdgeInsets.symmetric(vertical: 5.h),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
+                child: Form(
+                  key: context.read<LoginCubit>().formKey,
+                  child: Column(
+                    children: [
+                      verticalSpace(85),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
+                        child: const ViewHeader(
+                          mainText: 'Login',
+                          subText: 'Please sign in to continue',
+                          isLogoIncluded: true,
                         ),
-                        verticalSpace(33),
-                        CustomInputField(
-                          controller:
-                              context.read<LoginCubit>().emailController,
-                          hintText: 'EMAIL',
-                          icon: Icons.email_outlined,
-                          keyboardType: TextInputType.emailAddress,
-                          validationFunction:
-                              LoginInputValidationFunctions.emailFieldValidator,
-                        ),
-                        verticalSpace(12),
-                        CustomInputField(
-                          controller:
-                              context.read<LoginCubit>().passwordController,
-                          hintText: 'PASSWORD',
-                          icon: Icons.lock,
-                          keyboardType: TextInputType.visiblePassword,
-                          isPassword: true,
-                          // TODO add on change
-                          validationFunction:
-                              LoginInputValidationFunctions.passwordValidator,
-                        ),
-                      ],
-                    ),
+                      ),
+                      verticalSpace(33),
+                      CustomInputField(
+                        controller:
+                            context.read<LoginCubit>().emailController,
+                        hintText: 'EMAIL',
+                        icon: Icons.email_outlined,
+                        keyboardType: TextInputType.emailAddress,
+                        validationFunction:
+                            LoginInputValidationFunctions.emailFieldValidator,
+                      ),
+                      verticalSpace(12),
+                      CustomInputField(
+                        controller:
+                            context.read<LoginCubit>().passwordController,
+                        hintText: 'PASSWORD',
+                        icon: Icons.lock,
+                        keyboardType: TextInputType.visiblePassword,
+                        isPassword: true,
+                        // TODO add on change
+                        validationFunction:
+                            LoginInputValidationFunctions.passwordValidator,
+                      ),
+                    ],
                   ),
                 ),
-                verticalSpace(18),
-                CustomButton(
-                  onPressed: () {
-                    FocusScope.of(context).unfocus();
-                    context.read<LoginCubit>().login();
-                  },
-                  text: 'LOGIN',
-                ),
-                verticalSpace(14),
-                CustomTextButton(
-                  text: 'Forgot Password?',
-                  textStyle: TextStyles.font14SemiLightBlueBold,
-                  onPressed: () {
-                    context.push(Routes.forgotPasswordView.path);
-                  },
-                ),
-                verticalSpace(50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account?",
-                      style: TextStyles.font15DarkGreySemiBold,
-                    ),
-                    CustomTextButton(
-                      text: " Register",
-                      textStyle: TextStyles.font14SemiLightBlueBold,
-                      onPressed: () {
-                        context.push(Routes.registerView.path);
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              ),
+              verticalSpace(18),
+              CustomButton(
+                onPressed: () {
+                  FocusScope.of(context).unfocus();
+                  context.read<LoginCubit>().login();
+                },
+                text: 'LOGIN',
+              ),
+              verticalSpace(14),
+              CustomTextButton(
+                text: 'Forgot Password?',
+                textStyle: TextStyles.font14SemiLightBlueBold,
+                onPressed: () {
+                  context.push(Routes.forgotPasswordView.path);
+                },
+              ),
+              verticalSpace(50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
+                    style: TextStyles.font15DarkGreySemiBold,
+                  ),
+                  CustomTextButton(
+                    text: " Register",
+                    textStyle: TextStyles.font14SemiLightBlueBold,
+                    onPressed: () {
+                      context.push(Routes.registerView.path);
+                    },
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

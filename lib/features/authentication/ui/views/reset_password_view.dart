@@ -9,7 +9,7 @@ class ResetPasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       appBar: CustomAppBarWithBack(
         isScrolled: true,
         backGroundColor: AppColors.white,

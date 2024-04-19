@@ -42,53 +42,52 @@ class OtpValidationViewBody extends StatelessWidget {
         builder: (context, state) {
           return SizedBox(
             height: double.infinity,
-            child: KeyboardHider(
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  children: [
-                    verticalSpace(50),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 42.w),
-                      child: const ViewHeader(
-                        mainText: 'OTP Validation',
-                        subText: 'Please enter the OTP',
-                        iconPath: 'assets/svgs/verify_otp_icon.svg',
-                      ),
+            child: SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Column(
+                children: [
+                  verticalSpace(50),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 42.w),
+                    child: const ViewHeader(
+                      mainText: 'OTP Validation',
+                      subText: 'Please enter the OTP',
+                      iconPath: 'assets/svgs/verify_otp_icon.svg',
                     ),
-                    verticalSpace(30),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.w),
-                      child: CustomInputField(
-                        icon: Icons.key,
-                        hintText: 'OTP',
-                        controller: otpController,
-                        keyboardType: TextInputType.number,
-                      ),
+                  ),
+                  verticalSpace(30),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
+                    child: CustomInputField(
+                      icon: Icons.key,
+                      hintText: 'OTP',
+                      controller: otpController,
+                      keyboardType: TextInputType.number,
                     ),
-                    verticalSpace(18),
-                    CustomButton(
-                      text: 'Proceed',
-                      onPressed: () {
-                        context.read<ForgotPasswordCubit>().verifyOtp(otp: otpController.text);
-                      },
-                    ),
-                    verticalSpace(14),
-                    CustomTextButton(
-                      text: 'Resend OTP',
-                      textStyle: TextStyles.font14SemiLightBlueBold,
-                      onPressed: () {
-                        context.read<ForgotPasswordCubit>().resendEmail();
-                      },
-                    ),
-                    verticalSpace(130.h),
-                    Text(
-                      'Note: the OTP is valid for 5 minutes only.',
-                      style: TextStyles.font15DarkGreySemiBold,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
+                  ),
+                  verticalSpace(18),
+                  CustomButton(
+                    text: 'Proceed',
+                    onPressed: () {
+                      context.read<ForgotPasswordCubit>().verifyOtp(otp: otpController.text);
+                    },
+                  ),
+                  verticalSpace(14),
+                  CustomTextButton(
+                    text: 'Resend OTP',
+                    textStyle: TextStyles.font14SemiLightBlueBold,
+                    onPressed: () {
+                      context.read<ForgotPasswordCubit>().resendEmail();
+                    },
+                  ),
+                  verticalSpace(130.h),
+                  Text(
+                    'Note: the OTP is valid for 5 minutes only.',
+                    style: TextStyles.font15DarkGreySemiBold,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
           );

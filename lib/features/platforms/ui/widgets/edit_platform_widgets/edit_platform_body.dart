@@ -56,55 +56,54 @@ class EditPlatformViewBody extends StatelessWidget {
         }
       },
       child: SafeArea(
-        child: KeyboardHider(
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: EdgeInsets.symmetric(horizontal: 42.w),
-            child: Column(
-              children: [
-                const ViewHeader(
-                  mainText: 'Edit Your Platform',
-                  iconPath: "assets/svgs/platforms.svg",
-                ),
-                verticalSpace(33),
-                CustomInputField(
-                  controller: platformNameInputController,
-                  hintText: 'Platform Name',
-                  icon: Icons.person,
-                  keyboardType: TextInputType.text,
-                ),
-                verticalSpace(20),
-                const PlatformColorPicker(),
-                verticalSpace(33),
-                Column(
-                  children: [
-                    CustomButton(
-                      text: 'Save',
-                      onPressed: () {
-                        context.read<PlatformsCubit>().updatePlatform(
-                              context
-                                  .read<AccountsCubit>()
-                                  .selectedPlatform!
-                                  .platformId!,
-                              platformNameInputController.text,
-                            );
-                      },
-                    ),
-                    verticalSpace(20),
-                    CustomButton(
-                      text: 'Delete',
-                      onPressed: () {
-                        context.read<PlatformsCubit>().deletePlatform(context
-                            .read<AccountsCubit>()
-                            .selectedPlatform!
-                            .platformId!);
-                      },
-                      backgroundColor: Colors.redAccent,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          physics: const AlwaysScrollableScrollPhysics(),
+          padding: EdgeInsets.symmetric(horizontal: 42.w),
+          child: Column(
+            children: [
+              const ViewHeader(
+                mainText: 'Edit Your Platform',
+                iconPath: "assets/svgs/platforms.svg",
+              ),
+              verticalSpace(33),
+              CustomInputField(
+                controller: platformNameInputController,
+                hintText: 'Platform Name',
+                icon: Icons.person,
+                keyboardType: TextInputType.text,
+              ),
+              verticalSpace(20),
+              const PlatformColorPicker(),
+              verticalSpace(33),
+              Column(
+                children: [
+                  CustomButton(
+                    text: 'Save',
+                    onPressed: () {
+                      context.read<PlatformsCubit>().updatePlatform(
+                            context
+                                .read<AccountsCubit>()
+                                .selectedPlatform!
+                                .platformId!,
+                            platformNameInputController.text,
+                          );
+                    },
+                  ),
+                  verticalSpace(20),
+                  CustomButton(
+                    text: 'Delete',
+                    onPressed: () {
+                      context.read<PlatformsCubit>().deletePlatform(context
+                          .read<AccountsCubit>()
+                          .selectedPlatform!
+                          .platformId!);
+                    },
+                    backgroundColor: Colors.redAccent,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

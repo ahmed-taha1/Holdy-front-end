@@ -9,7 +9,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       appBar: CustomAppBar(backGroundColor: AppColors.white),
       backgroundColor: AppColors.white,
       body: LoginViewBody(),

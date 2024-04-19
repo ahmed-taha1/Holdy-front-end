@@ -47,47 +47,46 @@ class AddAccountViewBody extends StatelessWidget {
             );
           }
         },
-        child: KeyboardHider(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 20.h),
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.h),
-                  child: const ViewHeader(
-                    mainText: 'Create Account',
-                    subText:
-                        'please enter the account data that\nyou want to save',
-                    iconPath: 'assets/svgs/account_icon.svg',
-                    vSpace: 10,
-                  ),
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          padding: EdgeInsets.symmetric(horizontal: 20.h),
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.h),
+                child: const ViewHeader(
+                  mainText: 'Create Account',
+                  subText:
+                      'please enter the account data that\nyou want to save',
+                  iconPath: 'assets/svgs/account_icon.svg',
+                  vSpace: 10,
                 ),
-                verticalSpace(40),
-                CustomInputField(
-                  icon: Icons.person,
-                  hintText: 'AccountName',
-                  controller: context.read<AccountsCubit>().accountNameController,
-                  keyboardType: TextInputType.text,
-                ),
-                verticalSpace(20),
-                const TextFieldsGrid(),
-                verticalSpace(40),
-                CustomButton(
-                  text: 'CREATE',
-                  onPressed: () {
-                    context.read<AccountsCubit>().createAccount();
-                  },
-                ),
-                verticalSpace(40),
-                Text('Field name ex:\n"Password", "Email", "User Name".',
-                    style: TextStyles.font15DarkGreySemiBold,
-                    textAlign: TextAlign.center),
-                verticalSpace(20),
-              ],
-            ),
+              ),
+              verticalSpace(40),
+              CustomInputField(
+                icon: Icons.person,
+                hintText: 'AccountName',
+                controller: context.read<AccountsCubit>().accountNameController,
+                keyboardType: TextInputType.text,
+              ),
+              verticalSpace(20),
+              const TextFieldsGrid(),
+              verticalSpace(40),
+              CustomButton(
+                text: 'CREATE',
+                onPressed: () {
+                  context.read<AccountsCubit>().createAccount();
+                },
+              ),
+              verticalSpace(40),
+              Text('Field name ex:\n"Password", "Email", "User Name".',
+                  style: TextStyles.font15DarkGreySemiBold,
+                  textAlign: TextAlign.center),
+              verticalSpace(20),
+            ],
           ),
         ),
       ),

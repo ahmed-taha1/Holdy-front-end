@@ -37,47 +37,46 @@ class AddPlatformViewBody extends StatelessWidget {
         }
       },
       child: SafeArea(
-        child: KeyboardHider(
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 42.w),
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const DefaultAddPlatformText(
-                      mainText: "Add Platform",
-                      subText: "Please fill the input below here",
-                      iconPath: "assets/svgs/platforms.svg",
-                    ),
-                    verticalSpace(33),
-                    CustomInputField(
-                      controller: platformNameInputController,
-                      hintText: 'Platform Name',
-                      icon: Icons.person,
-                      keyboardType: TextInputType.text,
-                    ),
-                    verticalSpace(33),
-                    const PlatformColorPicker(),
-                    verticalSpace(33),
-                    CustomButton(
-                      text: "Create",
-                      onPressed: () {
-                        context.read<PlatformsCubit>().createPlatform(
-                              platformNameInputController.text,
-                              context
-                                  .read<PlatformsCubit>()
-                                  .selectedColor
-                                  .value
-                                  .toRadixString(16),
-                            );
-                      },
-                    ),
-                    verticalSpace(40),
-                  ],
-                ),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 42.w),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const DefaultAddPlatformText(
+                    mainText: "Add Platform",
+                    subText: "Please fill the input below here",
+                    iconPath: "assets/svgs/platforms.svg",
+                  ),
+                  verticalSpace(33),
+                  CustomInputField(
+                    controller: platformNameInputController,
+                    hintText: 'Platform Name',
+                    icon: Icons.person,
+                    keyboardType: TextInputType.text,
+                  ),
+                  verticalSpace(33),
+                  const PlatformColorPicker(),
+                  verticalSpace(33),
+                  CustomButton(
+                    text: "Create",
+                    onPressed: () {
+                      context.read<PlatformsCubit>().createPlatform(
+                            platformNameInputController.text,
+                            context
+                                .read<PlatformsCubit>()
+                                .selectedColor
+                                .value
+                                .toRadixString(16),
+                          );
+                    },
+                  ),
+                  verticalSpace(40),
+                ],
               ),
             ),
           ),

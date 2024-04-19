@@ -40,41 +40,40 @@ class ForgotPasswordViewBody extends StatelessWidget {
         },
         child: SizedBox(
           height: double.infinity,
-          child: KeyboardHider(
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  verticalSpace(50),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 42.w),
-                    child: const ViewHeader(
-                      mainText: 'Forgot Password',
-                      subText: 'Please enter your email to receive OTP',
-                      iconPath: 'assets/svgs/forgot_password_icon.svg',
-                    ),
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            child: Column(
+              children: [
+                verticalSpace(50),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 42.w),
+                  child: const ViewHeader(
+                    mainText: 'Forgot Password',
+                    subText: 'Please enter your email to receive OTP',
+                    iconPath: 'assets/svgs/forgot_password_icon.svg',
                   ),
-                  verticalSpace(30),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 25.w),
-                    child: CustomInputField(
-                      icon: Icons.email_outlined,
-                      hintText: 'EMAIL',
-                      controller: emailController,
-                      keyboardType: TextInputType.emailAddress,
-                    ),
+                ),
+                verticalSpace(30),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.w),
+                  child: CustomInputField(
+                    icon: Icons.email_outlined,
+                    hintText: 'EMAIL',
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
                   ),
-                  verticalSpace(18),
-                  CustomButton(
-                    text: 'Send',
-                    onPressed: () {
-                      context
-                          .read<ForgotPasswordCubit>()
-                          .sendEmail(email: emailController.text);
-                    },
-                  ),
-                ],
-              ),
+                ),
+                verticalSpace(18),
+                CustomButton(
+                  text: 'Send',
+                  onPressed: () {
+                    context
+                        .read<ForgotPasswordCubit>()
+                        .sendEmail(email: emailController.text);
+                  },
+                ),
+              ],
             ),
           ),
         ),

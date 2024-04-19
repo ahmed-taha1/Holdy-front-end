@@ -47,45 +47,44 @@ class EditAccountViewBody extends StatelessWidget {
         }
       },
       child: SafeArea(
-        child: KeyboardHider(
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const ViewHeader(
-                  mainText: 'Edit Your Account',
-                  iconPath: 'assets/svgs/account_icon.svg',
-                  vSpace: 10,
-                ),
-                CustomInputField(
-                  hintText: 'Account Name',
-                  icon: Icons.person,
-                  controller: context.read<AccountsCubit>().accountNameController,
-                  keyboardType: TextInputType.text,
-                ),
-                verticalSpace(20),
-                const TextFieldsGrid(),
-                verticalSpace(40),
-                CustomButton(
-                  text: 'Save',
-                  onPressed: () {
-                    context.read<AccountsCubit>().updateAccount();
-                  },
-                ),
-                verticalSpace(20),
-                CustomButton(
-                  text: 'Delete',
-                  onPressed: () {
-                    context.read<AccountsCubit>().deleteAccount();
-                  },
-                  backgroundColor: Colors.redAccent,
-                ),
-                verticalSpace(20),
-              ],
-            ),
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          physics: const AlwaysScrollableScrollPhysics(),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const ViewHeader(
+                mainText: 'Edit Your Account',
+                iconPath: 'assets/svgs/account_icon.svg',
+                vSpace: 10,
+              ),
+              CustomInputField(
+                hintText: 'Account Name',
+                icon: Icons.person,
+                controller: context.read<AccountsCubit>().accountNameController,
+                keyboardType: TextInputType.text,
+              ),
+              verticalSpace(20),
+              const TextFieldsGrid(),
+              verticalSpace(40),
+              CustomButton(
+                text: 'Save',
+                onPressed: () {
+                  context.read<AccountsCubit>().updateAccount();
+                },
+              ),
+              verticalSpace(20),
+              CustomButton(
+                text: 'Delete',
+                onPressed: () {
+                  context.read<AccountsCubit>().deleteAccount();
+                },
+                backgroundColor: Colors.redAccent,
+              ),
+              verticalSpace(20),
+            ],
           ),
         ),
       ),
