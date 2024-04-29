@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../../core/models/platform.dart';
-import '../../../../../../core/theming/app_colors.dart';
-import '../../../../../../core/theming/styles.dart';
+import '../../../../../../core/theming/text_styles.dart';
 
 class BottomPart extends StatelessWidget {
   const BottomPart({
@@ -22,7 +21,7 @@ class BottomPart extends StatelessWidget {
       flex: 4,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.r),
             topRight: Radius.circular(30.r),
@@ -41,7 +40,9 @@ class BottomPart extends StatelessWidget {
                     children: [
                       Text(
                         "Platforms",
-                        style: TextStyles.font20BlackPurpleBold,
+                        style: TextStyles.font20BlackPurpleBold.copyWith(
+                          color: Theme.of(context).primaryColor,
+                        ),
                       ),
                     ],
                   ),
@@ -49,9 +50,9 @@ class BottomPart extends StatelessWidget {
                     onPressed: () {
                       context.push(Routes.addPlatformView.path);
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.add,
-                      color: AppColors.blackPurple,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 ],

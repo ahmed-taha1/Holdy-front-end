@@ -1,6 +1,5 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
-import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

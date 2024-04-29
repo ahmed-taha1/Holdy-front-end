@@ -41,12 +41,8 @@ class NumbersGrid extends StatelessWidget {
               }
               if (context.read<CreatePinCubit>().confirmPin == '') {
                 context.read<CreatePinCubit>().addNumber(_numbers[index]);
-                debugPrint(
-                    context.read<CreatePinCubit>().currentPinLength.toString());
               } else {
                 context.read<CreatePinCubit>().addConfirmPinNumber(_numbers[index]);
-                debugPrint(
-                    context.read<CreatePinCubit>().currentPinLength.toString());
               }
               if (context.read<CreatePinCubit>().isConfirm) {
                 context.go(Routes.loginView.path);

@@ -1,7 +1,6 @@
-import 'package:accounts_protector/core/theming/styles.dart';
+import 'package:accounts_protector/core/theming/text_styles.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
-import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/accounts/logic/accounts_cubit.dart';
 import 'package:accounts_protector/features/accounts/ui/widgets/add_account_view/text_fields_grid.dart';
@@ -83,7 +82,9 @@ class AddAccountViewBody extends StatelessWidget {
               ),
               verticalSpace(40),
               Text('Field name ex:\n"Password", "Email", "User Name".',
-                  style: TextStyles.font15DarkGreySemiBold,
+                  style: TextStyles.font15DarkGreySemiBold.copyWith(
+                    color: Theme.of(context).secondaryHeaderColor,
+                  ),
                   textAlign: TextAlign.center),
               verticalSpace(20),
             ],

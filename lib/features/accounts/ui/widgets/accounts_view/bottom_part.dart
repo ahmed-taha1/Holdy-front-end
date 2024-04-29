@@ -4,8 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/models/platform.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/theming/app_colors.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/text_styles.dart';
 import 'accounts_grid.dart';
 
 class BottomPart extends StatelessWidget {
@@ -28,7 +27,7 @@ class BottomPart extends StatelessWidget {
                   topLeft: Radius.circular(30.r),
                   topRight: Radius.circular(30.r),
                 ),
-                color: Colors.white,
+                color: Theme.of(context).scaffoldBackgroundColor,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,10 +41,10 @@ class BottomPart extends StatelessWidget {
                         onPressed: () {
                           context.push(Routes.addAccountView.path);
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           size: 30,
                           Icons.add,
-                          color: AppColors.blackPurple,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),
@@ -69,7 +68,7 @@ class BottomPart extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  platform.platformName![0],
+                  platform.platformName![0].toUpperCase(),
                   style: TextStyles.font20WhiteBold.copyWith(fontSize: 70.sp),
                 ),
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/text_styles.dart';
 
 class TopPart extends StatelessWidget {
   const TopPart({super.key, required this.title, required this.onPressed});

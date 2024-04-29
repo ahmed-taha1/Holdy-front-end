@@ -1,9 +1,7 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
-import 'package:accounts_protector/core/theming/app_colors.dart';
-import 'package:accounts_protector/core/theming/styles.dart';
+import 'package:accounts_protector/core/theming/text_styles.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AttributeRow extends StatelessWidget {
   final String fieldKey, value;
@@ -21,29 +19,35 @@ class AttributeRow extends StatelessWidget {
             children: [
               Text(
                 fieldKey,
-                style: TextStyles.font15BlackPurpleSemiBold,
+                style: TextStyles.font15BlackPurpleSemiBold.copyWith(
+                    color: Theme.of(context).primaryColor,
+                ),
               ),
               horizontalSpace(5),
               Text(
                 ":",
-                style: TextStyles.font15BlackPurpleMedium,
+                style: TextStyles.font15BlackPurpleMedium.copyWith(
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
               horizontalSpace(5),
               SizedBox(
-                width: 170.w,
+                width: MediaQuery.of(context).size.width * 0.54,
                 child: SelectableText(
                   value,
-                  style: TextStyles.font15BlackPurpleMedium,
+                  style: TextStyles.font15BlackPurpleMedium.copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
               ),
             ],
           ),
           IconButton(
             icon: const Icon(Icons.copy_all_rounded, size: 25),
-            onPressed: () async {
+            onPressed: (){
               FlutterClipboard.copy(value);
             },
-            color: AppColors.blackPurple,
+            color: Theme.of(context).primaryColor,
           ),
         ],
       ),

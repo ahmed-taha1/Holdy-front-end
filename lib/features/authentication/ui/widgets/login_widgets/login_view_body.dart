@@ -9,10 +9,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_button.dart';
-import '../../../../../core/widgets/keyboard_hider.dart';
 import '../../../../../core/widgets/view_header.dart';
 import '../../../logic/login/login_states.dart';
 
@@ -112,7 +111,9 @@ class LoginViewBody extends StatelessWidget {
                 children: [
                   Text(
                     "Don't have an account?",
-                    style: TextStyles.font15DarkGreySemiBold,
+                    style: TextStyles.font15DarkGreySemiBold.copyWith(
+                      color: Theme.of(context).secondaryHeaderColor,
+                    ),
                   ),
                   CustomTextButton(
                     text: " Register",

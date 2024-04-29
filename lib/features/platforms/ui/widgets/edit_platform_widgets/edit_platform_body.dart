@@ -1,4 +1,3 @@
-import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/accounts/logic/accounts_cubit.dart';
 import 'package:flutter/material.dart';

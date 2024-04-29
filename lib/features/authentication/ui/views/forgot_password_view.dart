@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theming/app_colors.dart';
 import '../../../../core/widgets/custom_app_app_bar_with_back.dart';
 import '../widgets/forgot_password_widgets/forgot_password_view_body.dart';
 
@@ -8,13 +7,14 @@ class ForgotPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // resizeToAvoidBottomInset: false,
+    return Scaffold(
       appBar: CustomAppBarWithBack(
         isScrolled: true,
-        backGroundColor: AppColors.white,
+        backGroundColor: Theme.of(context).scaffoldBackgroundColor,
+        arrowColor: Theme.of(context).primaryColor,
       ),
-      body: ForgotPasswordViewBody(),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: const ForgotPasswordViewBody(),
     );
   }
 }

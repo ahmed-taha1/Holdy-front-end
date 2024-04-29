@@ -1,9 +1,7 @@
-import 'package:accounts_protector/core/theming/styles.dart';
+import 'package:accounts_protector/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/theming/app_colors.dart';
-import '../../../../logic/platforms/platforms_cubit.dart';
 
 class SearchInput extends StatelessWidget {
   const SearchInput({super.key, required this.onChanged});
@@ -29,9 +27,7 @@ class SearchInput extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(6).add(EdgeInsets.only(left: 8.h)),
           child: TextField(
-            style: const TextStyle(
-              color: AppColors.white,
-            ),
+            style: TextStyles.font15WhiteSemiBold,
             cursorColor: AppColors.white,
             decoration: InputDecoration(
               border: InputBorder.none,

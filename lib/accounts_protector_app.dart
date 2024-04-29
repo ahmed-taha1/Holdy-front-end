@@ -1,5 +1,5 @@
-import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/core/routing/app_router.dart';
+import 'package:accounts_protector/core/theming/theme_bloc.dart';
 import 'package:accounts_protector/features/accounts/logic/accounts_cubit.dart';
 import 'package:accounts_protector/features/authentication/logic/forgot_password/forgot_password_cubit.dart';
 import 'package:accounts_protector/features/authentication/logic/login/login_cubit.dart';
@@ -12,12 +12,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
-import 'core/helper/font_weight_helper.dart';
 
 class AccountsProtectorApp extends StatelessWidget {
   const AccountsProtectorApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
@@ -26,6 +24,7 @@ class AccountsProtectorApp extends StatelessWidget {
       minTextAdapt: true,
       child: MultiBlocProvider(
         providers: [
+          BlocProvider(create: (context) => ThemeBloc()..add(GetCurrentThemeEvent())),
           BlocProvider(create: (context) => LoginCubit()),
           BlocProvider(create: (context) => CreatePinCubit()),
           BlocProvider(create: (context) => RegisterCubit()),
@@ -35,20 +34,30 @@ class AccountsProtectorApp extends StatelessWidget {
           BlocProvider(create: (context) => SettingsCubit()),
           BlocProvider(create: (context) => AccountsCubit()),
         ],
-        child: MaterialApp.router(
-          builder: EasyLoading.init(),
-          routerConfig: AppRouter.router,
-          debugShowCheckedModeBanner: false,
-          title: 'Accounts Protector',
-          theme: ThemeData(
-            fontFamily: FontWeightHelper.regular,
-            // scaffoldBackgroundColor: AppColors.white,
-            primaryColor: AppColors.blackPurple,
-            primarySwatch: Colors.grey,
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-            useMaterial3: true,
-            textTheme: ThemeData.light().textTheme,
-          ),
+        child: BlocBuilder<ThemeBloc, ThemeState>(
+          builder: (context, state) {
+            if(state is LoadedThemeState){
+              return MaterialApp.router(
+                builder: EasyLoading.init(),
+                routerConfig: AppRouter.router,
+                debugShowCheckedModeBanner: false,
+                title: 'Accounts Protector',
+                theme: state.theme,
+                /*ThemeData(
+                  fontFamily: FontWeightHelper.regular,
+                  // scaffoldBackgroundColor: AppColors.white,
+                  primaryColor: AppColors.blackPurple,
+                  primarySwatch: Colors.grey,
+                  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+                  useMaterial3: true,
+                  textTheme: ThemeData
+                      .light()
+                      .textTheme,
+                ),*/
+              );
+            }
+            return Container();
+          },
         ),
       ),
     );

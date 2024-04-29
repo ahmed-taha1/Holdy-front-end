@@ -1,8 +1,7 @@
-import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/styles.dart';
+import '../theming/text_styles.dart';
 
 class CustomInputField extends StatefulWidget {
   const CustomInputField({
@@ -73,17 +72,23 @@ class _CustomInputFieldState extends State<CustomInputField> {
         controller: widget.controller,
         focusNode: _focusNode,
         keyboardType: widget.keyboardType,
-        style: TextStyles.font17BlackPurpleBold,
+        style: TextStyles.font17BlackPurpleBold.copyWith(
+            color: Theme.of(context).primaryColor,
+        ),
         decoration: InputDecoration(
           prefixIcon: widget.icon != null ? Icon(
             widget.icon,
-            color: _isFocused ? AppColors.blackPurple : AppColors.lightGrey,
+            color: _isFocused ? Theme.of(context).primaryColor : Theme.of(context).hintColor,
           ) : null,
           labelText: widget.hintText,
-          labelStyle: TextStyles.font11LightGreyBold,
-          floatingLabelStyle: TextStyles.font15DarkGreySemiBold,
+          labelStyle: TextStyles.font11LightGreyBold.copyWith(
+              color: Theme.of(context).hintColor,
+          ),
+          floatingLabelStyle: TextStyles.font15DarkGreySemiBold.copyWith(
+            color: Theme.of(context).secondaryHeaderColor,
+          ),
           filled: true,
-          fillColor: _isFocused ? AppColors.lightCyan : Colors.transparent,
+          fillColor: _isFocused ? Theme.of(context).hoverColor : Colors.transparent,
           enabledBorder: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(21.r),
             borderSide: const BorderSide(color: Colors.transparent),
@@ -122,8 +127,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
                             ? Icons.visibility
                             : Icons.visibility_off,
                         color: _isFocused
-                            ? AppColors.blackPurple
-                            : AppColors.lightGrey,
+                            ? Theme.of(context).primaryColor
+                            : Theme.of(context).hintColor,
                       ),
                     )
                   : null),

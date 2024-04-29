@@ -1,7 +1,6 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
-import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/authentication/logic/forgot_password/forgot_password_cubit.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/theming/styles.dart';
-import '../../../../../core/widgets/custom_loading.dart';
+import '../../../../../core/theming/text_styles.dart';
 import '../../../../../core/widgets/custom_text_button.dart';
 
 class OtpValidationViewBody extends StatelessWidget {
@@ -81,12 +78,15 @@ class OtpValidationViewBody extends StatelessWidget {
                       context.read<ForgotPasswordCubit>().resendEmail();
                     },
                   ),
-                  verticalSpace(130.h),
+                  verticalSpace(100),
                   Text(
                     'Note: the OTP is valid for 5 minutes only.',
-                    style: TextStyles.font15DarkGreySemiBold,
+                    style: TextStyles.font15DarkGreySemiBold.copyWith(
+                      color: Theme.of(context).secondaryHeaderColor,
+                    ),
                     textAlign: TextAlign.center,
                   ),
+                  verticalSpace(20),
                 ],
               ),
             ),

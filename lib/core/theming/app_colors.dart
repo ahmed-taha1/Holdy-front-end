@@ -24,7 +24,7 @@ class AppColors {
   // for text buttons
   static const Color lightBlue = Color(0xFF4B90FF);
   // for warnings
-  static const Color red = Color(0xFFE00000);
+  static const Color red = Color(0xFFFF4D4D);
   // for settings avatars background
   static const Color whiteGrey = Color(0xFFE9E9E9);
   // for settings avatars icon

@@ -43,11 +43,14 @@ class PinViewBody extends StatelessWidget {
                 children: [
                   verticalSpace(20),
                   const IconWithTopText(
-                      title: 'Enter your PIN', addWarning: false),
+                    title: 'Enter your PIN',
+                    addWarning: false,
+                  ),
                   verticalSpace(20),
                   Circles(
-                      numOfLightCircles:
-                          context.read<PinCubit>().currentPinLength),
+                    numOfLightCircles:
+                        context.read<PinCubit>().currentPinLength,
+                  ),
                   verticalSpace(20),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.h),

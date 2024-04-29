@@ -1,4 +1,6 @@
-import 'package:accounts_protector/core/theming/styles.dart';
+import 'package:accounts_protector/core/theming/app_theme.dart';
+import 'package:accounts_protector/core/theming/text_styles.dart';
+import 'package:accounts_protector/core/theming/theme_bloc.dart';
 import 'package:accounts_protector/features/settings/logic/settings_cubit.dart';
 import 'package:accounts_protector/features/settings/ui/widgets/setting_row.dart';
 import 'package:flutter/material.dart';
@@ -28,17 +30,21 @@ class AppSettingsRows extends StatelessWidget {
           ),
           title: Text(
             'Language',
-            style: TextStyles.font15BlackPurpleMedium,
+            style: TextStyles.font15BlackPurpleMedium.copyWith(
+              color: Theme.of(context).primaryColor,
+            ),
           ),
           suffix: Row(
             children: [
               Text(
                 'English',
-                style: TextStyles.font15DarkGreySemiBold,
+                style: TextStyles.font15DarkGreySemiBold.copyWith(
+                  color: Theme.of(context).secondaryHeaderColor,
+                ),
               ),
-              const Icon(
+              Icon(
                 Icons.arrow_forward_ios_rounded,
-                color: AppColors.blackPurple,
+                color: Theme.of(context).primaryColor,
                 size: 22,
               )
             ],
@@ -60,17 +66,27 @@ class AppSettingsRows extends StatelessWidget {
               ),
               title: Text(
                 'Dark Mode',
-                style: TextStyles.font15BlackPurpleMedium,
+                style: TextStyles.font15BlackPurpleMedium.copyWith(
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
               suffix: Transform.scale(
                 scale: 0.9,
-                child: Switch(
-                  value: context
-                      .read<SettingsCubit>()
-                      .isDark!,
-                  activeTrackColor: AppColors.purple,
-                  onChanged: (value) {
-                    context.read<SettingsCubit>().changeTheme();
+                child: BlocBuilder<ThemeBloc, ThemeState>(
+                  builder: (context, state) {
+                    return Switch(
+                      value: context.read<ThemeBloc>().isDark,
+                      activeTrackColor: AppColors.purple,
+                      onChanged: (value) {
+                        debugPrint('Dark Mode: ${context.read<ThemeBloc>().isDark}');
+                        final isDark = context.read<ThemeBloc>().isDark;
+                        context.read<ThemeBloc>().add(
+                              ThemeChangedEvent(
+                                isDark ? AppTheme.light : AppTheme.dark,
+                              ),
+                            );
+                      },
+                    );
                   },
                 ),
               ),
@@ -91,11 +107,13 @@ class AppSettingsRows extends StatelessWidget {
           ),
           title: Text(
             'Help',
-            style: TextStyles.font15BlackPurpleMedium,
+            style: TextStyles.font15BlackPurpleMedium.copyWith(
+                color: Theme.of(context).primaryColor,
+            ),
           ),
-          suffix: const Icon(
+          suffix: Icon(
             Icons.arrow_forward_ios_rounded,
-            color: AppColors.blackPurple,
+            color: Theme.of(context).primaryColor,
             size: 22,
           ),
         ),
@@ -115,11 +133,13 @@ class AppSettingsRows extends StatelessWidget {
           ),
           title: Text(
             'Log Out',
-            style: TextStyles.font15BlackPurpleMedium,
+            style: TextStyles.font15BlackPurpleMedium.copyWith(
+              color: Theme.of(context).primaryColor,
+            ),
           ),
-          suffix: const Icon(
+          suffix: Icon(
             Icons.arrow_forward_ios_rounded,
-            color: AppColors.blackPurple,
+            color: Theme.of(context).primaryColor,
             size: 22,
           ),
         ),

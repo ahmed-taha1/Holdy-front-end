@@ -1,6 +1,6 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/theming/app_colors.dart';
-import 'package:accounts_protector/core/theming/styles.dart';
+import 'package:accounts_protector/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -45,7 +45,12 @@ class IconWithTopText extends StatelessWidget {
           ),
         ),
         verticalSpace(18),
-        Text(title, style: TextStyles.font20BlackPurpleBold),
+        Text(
+          title,
+          style: TextStyles.font20BlackPurpleBold.copyWith(
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
         warningWidget,
       ],
     );

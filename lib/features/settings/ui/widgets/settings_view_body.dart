@@ -1,7 +1,7 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/routing/routes.dart';
 import 'package:accounts_protector/core/theming/app_colors.dart';
-import 'package:accounts_protector/core/theming/styles.dart';
+import 'package:accounts_protector/core/theming/text_styles.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
 import 'package:accounts_protector/features/settings/logic/settings_cubit.dart';
@@ -33,7 +33,12 @@ class SettingsViewBody extends StatelessWidget {
               children: [
                 const ViewHeader(mainText: 'Settings'),
                 verticalSpace(40),
-                Text('Account', style: TextStyles.font20BlackPurpleSemiBold),
+                Text(
+                  'Account',
+                  style: TextStyles.font20BlackPurpleSemiBold.copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
                 verticalSpace(25),
                 SettingRow(
                   onTap: () {},
@@ -46,21 +51,32 @@ class SettingsViewBody extends StatelessWidget {
                     text: TextSpan(
                       text:
                           '${context.read<PlatformsCubit>().userModel!.firstName} ${context.read<PlatformsCubit>().userModel?.lastName ?? ''}',
-                      style: TextStyles.font15BlackPurpleMedium,
+                      style: TextStyles.font15BlackPurpleMedium.copyWith(
+                        color: Theme.of(context).primaryColor,
+                      ),
                       children: [
                         TextSpan(
                           text: '\nPersonal Info',
-                          style: TextStyles.font12RegularDarkGrey,
+                          style: TextStyles.font12RegularDarkGrey.copyWith(
+                            color: Theme.of(context).secondaryHeaderColor,
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  suffix: const Icon(Icons.arrow_forward_ios_rounded,
-                      color: AppColors.blackPurple, size: 22),
+                  suffix: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Theme.of(context).primaryColor,
+                    size: 22,
+                  ),
                 ),
                 verticalSpace(40),
-                Text('App Settings',
-                    style: TextStyles.font20BlackPurpleSemiBold),
+                Text(
+                  'App Settings',
+                  style: TextStyles.font20BlackPurpleSemiBold.copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
                 verticalSpace(25),
                 const AppSettingsRows(),
               ],

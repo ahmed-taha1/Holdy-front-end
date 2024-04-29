@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import '../../../core/models/account.dart';
 import '../data/i_accounts_repo.dart';
 import '../data/pair.dart';
-
 part 'accounts_state.dart';
 
 class AccountsCubit extends Cubit<AccountsState> {
@@ -23,7 +22,6 @@ class AccountsCubit extends Cubit<AccountsState> {
 
   Future<void> createAccount() async {
     emit(AccountLoadingState());
-    removeEmptyControllers();
     final Account account = Account(
       accountName: accountNameController.text,
       platformId: selectedPlatform!.platformId,
@@ -64,7 +62,6 @@ class AccountsCubit extends Cubit<AccountsState> {
 
   Future<void> updateAccount() async {
     emit(AccountLoadingState());
-    removeEmptyControllers();
     final Account updatedAccount = Account(
       accountId: selectedAccount!.accountId,
       accountName: accountNameController.text,
@@ -136,18 +133,21 @@ class AccountsCubit extends Cubit<AccountsState> {
     controllers.add(Pair(TextEditingController(), TextEditingController()));
   }
 
-  void removeEmptyControllers() {
-    controllers.removeWhere(
-        (element) => element.key.text.isEmpty || element.value.text.isEmpty);
-  }
-
   Map<String, String> getAttributesMapFromControllers() {
-    return controllers.asMap().map(
-          (index, pair) => MapEntry(
-            EncryptionHelper.encrypt(pair.key.text),
-            EncryptionHelper.encrypt(pair.value.text),
-          ),
-        );
+    var filteredControllers = controllers.asMap().entries.where(
+      (entry) {
+        var pair = entry.value;
+        return pair.key.text.isNotEmpty && pair.value.text.isNotEmpty;
+      },
+    );
+    return Map.fromEntries(
+      filteredControllers.map(
+        (entry) => MapEntry(
+          EncryptionHelper.encrypt(entry.value.key.text),
+          EncryptionHelper.encrypt(entry.value.value.text),
+        ),
+      ),
+    );
   }
 
   List<Pair<String, String>> getSelectedAccountAttributes() {

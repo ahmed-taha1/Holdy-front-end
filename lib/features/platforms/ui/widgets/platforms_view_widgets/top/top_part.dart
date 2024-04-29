@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../../../../core/theming/app_colors.dart';
-import '../../../../../../core/theming/styles.dart';
+import '../../../../../../core/theming/text_styles.dart';
 import '../../../../logic/platforms/platforms_cubit.dart';
 
 class TopPart extends StatelessWidget {

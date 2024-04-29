@@ -3,8 +3,7 @@ import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:accounts_protector/core/widgets/custom_loading.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
-import 'package:accounts_protector/core/widgets/default_add_platform_text.dart';
-import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
+import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/add_platform_view_widgets/platform_color_picker.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +46,7 @@ class AddPlatformViewBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const DefaultAddPlatformText(
+                  const ViewHeader(
                     mainText: "Add Platform",
                     subText: "Please fill the input below here",
                     iconPath: "assets/svgs/platforms.svg",

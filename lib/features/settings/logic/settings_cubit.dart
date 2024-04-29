@@ -13,10 +13,4 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(LogoutSuccess());
     CacheHelper.clearCache();
   }
-
-  void changeTheme() {
-    isDark = !isDark!;
-    CacheHelper.putData(key: CacheHelperConstants.isDark, value: isDark);
-    emit(DarkModeChanged(isDark!));
-  }
 }

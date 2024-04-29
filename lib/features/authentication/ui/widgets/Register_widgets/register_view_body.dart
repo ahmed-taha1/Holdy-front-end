@@ -1,5 +1,4 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
-import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/authentication/logic/register/register_cubit.dart';
 import 'package:accounts_protector/features/authentication/logic/register/register_input_validation_functions.dart';
@@ -10,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/helper/spacing.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/text_styles.dart';
 import '../../../../../core/widgets/custom_loading.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_input_text_field.dart';
@@ -46,8 +45,7 @@ class RegisterViewBody extends StatelessWidget {
           );
         }
       },
-      child: Container(
-        color: AppColors.white,
+      child: SizedBox(
         height: double.infinity,
         child: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -142,7 +140,9 @@ class RegisterViewBody extends StatelessWidget {
                   children: [
                     Text(
                       "Already have an account? ",
-                      style: TextStyles.font15DarkGreySemiBold,
+                      style: TextStyles.font15DarkGreySemiBold.copyWith(
+                        color: Theme.of(context).secondaryHeaderColor,
+                      ),
                     ),
                     CustomTextButton(
                       text: " Login",

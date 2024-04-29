@@ -1,5 +1,5 @@
 import 'package:accounts_protector/core/helper/spacing.dart';
-import 'package:accounts_protector/core/theming/styles.dart';
+import 'package:accounts_protector/core/theming/text_styles.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +38,9 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
           horizontalSpace(10),
           Text(
             "Icon Color",
-            style: TextStyles.font15BlackPurpleMedium,
+            style: TextStyles.font15BlackPurpleMedium.copyWith(
+              color: Theme.of(context).primaryColor,
+            ),
           ),
         ],
       ),

@@ -2,7 +2,6 @@ import 'package:accounts_protector/core/helper/spacing.dart';
 import 'package:accounts_protector/core/widgets/custom_loading.dart';
 import 'package:accounts_protector/core/widgets/custom_button.dart';
 import 'package:accounts_protector/core/widgets/custom_input_text_field.dart';
-import 'package:accounts_protector/core/widgets/keyboard_hider.dart';
 import 'package:accounts_protector/core/widgets/view_header.dart';
 import 'package:accounts_protector/features/authentication/logic/forgot_password/forgot_password_cubit.dart';
 import 'package:flutter/material.dart';

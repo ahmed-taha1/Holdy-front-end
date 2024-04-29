@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../helper/spacing.dart';
-import '../theming/styles.dart';
+import '../theming/text_styles.dart';
 
 class DefaultAddPlatformText extends StatelessWidget {
   const DefaultAddPlatformText(

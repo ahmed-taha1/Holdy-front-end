@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../helper/spacing.dart';
-import '../theming/styles.dart';
+import '../theming/text_styles.dart';
 
 class ViewHeader extends StatelessWidget {
   const ViewHeader(
@@ -42,14 +42,18 @@ class ViewHeader extends StatelessWidget {
             children: [
               Text(
                 mainText,
-                style: TextStyles.font30BlackPurpleBold,
+                style: TextStyles.font30BlackPurpleBold.copyWith(
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
               verticalSpace(11.h),
               subText == null
                   ? const SizedBox()
                   : Text(
                       subText!,
-                      style: TextStyles.font15DarkGreySemiBold,
+                      style: TextStyles.font15DarkGreySemiBold.copyWith(
+                        color: Theme.of(context).secondaryHeaderColor,
+                      ),
                     ),
             ],
           ),

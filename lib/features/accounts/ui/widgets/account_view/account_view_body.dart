@@ -1,7 +1,5 @@
 import 'package:accounts_protector/core/models/account.dart';
 import 'package:accounts_protector/core/routing/routes.dart';
-import 'package:accounts_protector/core/theming/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +38,7 @@ class AccountViewBody extends StatelessWidget {
                 height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30.r),
                     topRight: Radius.circular(30.r),
