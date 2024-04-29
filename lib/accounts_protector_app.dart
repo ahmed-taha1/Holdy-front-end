@@ -43,17 +43,6 @@ class AccountsProtectorApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 title: 'Accounts Protector',
                 theme: state.theme,
-                /*ThemeData(
-                  fontFamily: FontWeightHelper.regular,
-                  // scaffoldBackgroundColor: AppColors.white,
-                  primaryColor: AppColors.blackPurple,
-                  primarySwatch: Colors.grey,
-                  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-                  useMaterial3: true,
-                  textTheme: ThemeData
-                      .light()
-                      .textTheme,
-                ),*/
               );
             }
             return Container();
