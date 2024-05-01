@@ -1,6 +1,6 @@
 import 'package:accounts_protector/core/theming/app_theme.dart';
 import 'package:accounts_protector/core/theming/text_styles.dart';
-import 'package:accounts_protector/core/theming/theme_bloc.dart';
+import 'package:accounts_protector/core/theming/logic/theme_bloc.dart';
 import 'package:accounts_protector/features/settings/logic/settings_cubit.dart';
 import 'package:accounts_protector/features/settings/ui/widgets/setting_row.dart';
 import 'package:flutter/material.dart';

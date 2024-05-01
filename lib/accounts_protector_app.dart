@@ -1,9 +1,11 @@
+import 'package:accounts_protector/core/networking/logic/connection_handler_bloc.dart';
 import 'package:accounts_protector/core/routing/app_router.dart';
-import 'package:accounts_protector/core/theming/theme_bloc.dart';
+import 'package:accounts_protector/core/theming/logic/theme_bloc.dart';
 import 'package:accounts_protector/features/accounts/logic/accounts_cubit.dart';
 import 'package:accounts_protector/features/authentication/logic/forgot_password/forgot_password_cubit.dart';
 import 'package:accounts_protector/features/authentication/logic/login/login_cubit.dart';
 import 'package:accounts_protector/features/authentication/logic/register/register_cubit.dart';
+import 'package:accounts_protector/features/offline/offline_view.dart';
 import 'package:accounts_protector/features/pin/logic/create_pin_cubit.dart';
 import 'package:accounts_protector/features/pin/logic/pin_cubit.dart';
 import 'package:accounts_protector/features/platforms/logic/platforms/platforms_cubit.dart';
@@ -24,7 +26,8 @@ class AccountsProtectorApp extends StatelessWidget {
       minTextAdapt: true,
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => ThemeBloc()..add(GetCurrentThemeEvent())),
+          BlocProvider(
+              create: (context) => ThemeBloc()..add(GetCurrentThemeEvent())),
           BlocProvider(create: (context) => LoginCubit()),
           BlocProvider(create: (context) => CreatePinCubit()),
           BlocProvider(create: (context) => RegisterCubit()),
@@ -33,16 +36,27 @@ class AccountsProtectorApp extends StatelessWidget {
           BlocProvider(create: (context) => PlatformsCubit()),
           BlocProvider(create: (context) => SettingsCubit()),
           BlocProvider(create: (context) => AccountsCubit()),
+          BlocProvider(create: (context) => ConnectionHandlerBloc()),
         ],
         child: BlocBuilder<ThemeBloc, ThemeState>(
-          builder: (context, state) {
-            if(state is LoadedThemeState){
-              return MaterialApp.router(
-                builder: EasyLoading.init(),
-                routerConfig: AppRouter.router,
-                debugShowCheckedModeBanner: false,
-                title: 'Accounts Protector',
-                theme: state.theme,
+          builder: (context, themeState) {
+            if (themeState is LoadedThemeState) {
+              return BlocBuilder<ConnectionHandlerBloc, ConnectionHandlerState>(
+                builder: (context, connectionState) {
+                  if (connectionState is ConnectedState) {
+                    return MaterialApp.router(
+                      builder: EasyLoading.init(),
+                      routerConfig: AppRouter.router,
+                      debugShowCheckedModeBanner: false,
+                      title: 'Accounts Protector',
+                      theme: themeState.theme,
+                    );
+                  } else {
+                    return OfflineView(
+                      appTheme: themeState.theme,
+                    );
+                  }
+                },
               );
             }
             return Container();
