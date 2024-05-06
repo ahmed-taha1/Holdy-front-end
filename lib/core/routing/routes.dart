@@ -14,6 +14,7 @@ enum Routes{
   accountView('/accountView'),
   addAccountView('/addAccountView'),
   editAccountView('/editAccountView'),
+  helpView('/helpView'),
   editPlatformView('/editPlatformView');
   final String path;
   const Routes(this.path);

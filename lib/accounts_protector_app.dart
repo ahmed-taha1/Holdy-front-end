@@ -51,10 +51,12 @@ class AccountsProtectorApp extends StatelessWidget {
                       title: 'Accounts Protector',
                       theme: themeState.theme,
                     );
-                  } else {
+                  } else if (connectionState is NotConnectedState) {
                     return OfflineView(
                       appTheme: themeState.theme,
                     );
+                  } else {
+                    return Container();
                   }
                 },
               );

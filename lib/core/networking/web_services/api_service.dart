@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:accounts_protector/core/helper/cache_helper.dart';
+import 'package:accounts_protector/core/helper/spam_detector.dart';
 import 'package:dio/dio.dart';
-import '../../errors/failures.dart';
+import '../../errors/server_failure.dart';
 import 'dio_service.dart';
 
 class ApiService {
@@ -19,9 +20,12 @@ class ApiService {
     }
 
     try {
+      SpamDetector.isSpam(path);
       final response = await _dio.get(path);
+      SpamDetector.clearSpam(path);
       return response;
     } catch (dioError) {
+      SpamDetector.addFailure(path);
       if (dioError is DioException) {
         throw ServerFailure.fromDioError(dioError);
       } else {
@@ -43,10 +47,13 @@ class ApiService {
 
     String bodyJson = jsonEncode(body);
     try {
+      SpamDetector.isSpam(path);
       final response = await _dio.post(path, data: bodyJson);
+      SpamDetector.clearSpam(path);
       return response;
     } catch (dioError) {
       if (dioError is DioException) {
+        SpamDetector.addFailure(path);
         throw ServerFailure.fromDioError(dioError);
       } else {
         rethrow;
@@ -66,9 +73,12 @@ class ApiService {
     }
 
     try {
+      SpamDetector.isSpam(path);
       final response = await _dio.put(path, data: body);
+      SpamDetector.clearSpam(path);
       return response;
     } catch (dioError) {
+      SpamDetector.addFailure(path);
       if (dioError is DioException) {
         throw ServerFailure.fromDioError(dioError);
       } else {
@@ -89,9 +99,12 @@ class ApiService {
     }
 
     try {
+      SpamDetector.isSpam(path);
       final response = await _dio.delete(path, data: body);
+      SpamDetector.clearSpam(path);
       return response;
     } catch (dioError) {
+      SpamDetector.addFailure(path);
       if (dioError is DioException) {
         throw ServerFailure.fromDioError(dioError);
       } else {

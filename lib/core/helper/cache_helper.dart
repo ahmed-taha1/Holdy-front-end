@@ -42,7 +42,12 @@ class CacheHelper {
     return sharedPreferences!.remove(key);
   }
 
-  static Future<void> clearCache() async {
-    await sharedPreferences!.clear();
+  static void logout() {
+    removeData(key: CacheHelperConstants.token);
+    removeData(key: CacheHelperConstants.pinHash);
+    removeData(key: CacheHelperConstants.isLogged);
+    removeData(key: CacheHelperConstants.tempPinToken);
+    removeData(key: CacheHelperConstants.tempOtpToken);
+    removeData(key: CacheHelperConstants.key);
   }
 }

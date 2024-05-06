@@ -6,6 +6,7 @@ import 'package:accounts_protector/features/authentication/ui/views/login_view.d
 import 'package:accounts_protector/features/authentication/ui/views/otp_validation_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/register_view.dart';
 import 'package:accounts_protector/features/authentication/ui/views/reset_password_view.dart';
+import 'package:accounts_protector/features/help/help_view.dart';
 import 'package:accounts_protector/features/pin/ui/views/pin_view.dart';
 import 'package:accounts_protector/features/platforms/ui/views/add_platform_view.dart';
 import 'package:accounts_protector/features/platforms/ui/views/edit_platform_view.dart';
@@ -75,6 +76,10 @@ abstract class AppRouter {
       GoRoute(
           path: Routes.splashView.path,
           builder: (context, state) => const SplashScreen()),
+      GoRoute(
+          path: Routes.helpView.path,
+          builder: (context, state) => const HelpView()),
+
     ],
     initialLocation: Routes.loginView.path,
     // initialLocation: Routes.splashScreen.path,

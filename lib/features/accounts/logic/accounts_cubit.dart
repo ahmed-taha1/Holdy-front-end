@@ -1,10 +1,11 @@
+import 'dart:math';
 import 'package:accounts_protector/core/di/get_it.dart';
-import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/core/helper/encryption_helper.dart';
 import 'package:accounts_protector/core/models/platform.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import '../../../core/errors/i_failure.dart';
 import '../../../core/models/account.dart';
 import '../data/i_accounts_repo.dart';
 import '../data/pair.dart';
@@ -35,8 +36,8 @@ class AccountsCubit extends Cubit<AccountsState> {
       emit(CreateAccountSuccess());
       resetInputFields();
     } catch (e) {
-      if (e is ServerFailure) {
-        emit(FailedState(e.errorMassage));
+      if (e is Failure) {
+        emit(FailedState(e.message));
       } else {
         emit(const FailedState('Something went wrong'));
       }
@@ -52,8 +53,8 @@ class AccountsCubit extends Cubit<AccountsState> {
       emit(AccountDeletedState(selectedAccount!.accountId!));
       resetInputFields();
     } catch (e) {
-      if (e is ServerFailure) {
-        emit(FailedState(e.errorMassage));
+      if (e is Failure) {
+        emit(FailedState(e.message));
       } else {
         emit(const FailedState('Something went wrong'));
       }
@@ -76,8 +77,8 @@ class AccountsCubit extends Cubit<AccountsState> {
       emit(AccountsInitial());
       resetInputFields();
     } catch (e) {
-      if (e is ServerFailure) {
-        emit(FailedState(e.errorMassage));
+      if (e is Failure) {
+        emit(FailedState(e.message));
       } else {
         emit(const FailedState('Something went wrong'));
       }
@@ -155,5 +156,27 @@ class AccountsCubit extends Cubit<AccountsState> {
         .map((entry) => Pair(EncryptionHelper.decrypt(entry.key),
             EncryptionHelper.decrypt(entry.value)))
         .toList();
+  }
+
+  void createRandomPassword(int passwordLength) {
+    const String chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#%^&*()_+';
+    final Random rnd = Random.secure();
+    String password = String.fromCharCodes(
+      Iterable.generate(
+        passwordLength,
+            (_) => chars.codeUnitAt(rnd.nextInt(chars.length)),
+      ),
+    );
+
+    for (int i = 0; i < controllers.length; i++) {
+      if (controllers[i].key.text.toLowerCase() == 'password') {
+        controllers[i].value.text = password;
+        emit(TextFieldCreated(controllers, controllers.length));
+        return;
+      }
+    }
+    controllers.add(Pair(TextEditingController(text: 'Password'),
+        TextEditingController(text: password)));
+    emit(TextFieldCreated(controllers, controllers.length));
   }
 }

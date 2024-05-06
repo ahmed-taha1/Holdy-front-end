@@ -1,9 +1,9 @@
-import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/di/get_it.dart';
+import '../../../../core/errors/i_failure.dart';
 import '../../data/repo/i_auth_repo.dart';
 import 'login_states.dart';
 
@@ -42,8 +42,8 @@ class LoginCubit extends Cubit<LoginStates> {
         }
       }
     }catch(e){
-      if(e is ServerFailure) {
-        emit(LoginFailureState(e.errorMassage));
+      if(e is Failure) {
+        emit(LoginFailureState(e.message));
       }
       else {
         emit(const LoginFailureState('Something went wrong'));

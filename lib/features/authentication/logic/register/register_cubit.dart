@@ -1,4 +1,3 @@
-import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/core/helper/cache_helper.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
 import 'package:bloc/bloc.dart';
@@ -6,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/di/get_it.dart';
+import '../../../../core/errors/i_failure.dart';
 import '../../data/repo/i_auth_repo.dart';
 part 'register_state.dart';
 
@@ -24,8 +24,8 @@ class RegisterCubit extends Cubit<RegisterState> {
             key: CacheHelperConstants.tempPinToken, value: response.token);
         emit(RegisterSuccessState());
       } catch (e) {
-        if (e is ServerFailure) {
-          emit(RegisterFailureState(errorMassage: e.errorMassage));
+        if (e is Failure) {
+          emit(RegisterFailureState(errorMassage: e.message));
         } else {
           emit(
               const RegisterFailureState(errorMassage: 'Something went wrong'));

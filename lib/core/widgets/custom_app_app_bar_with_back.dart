@@ -11,13 +11,14 @@ class CustomAppBarWithBack extends StatelessWidget
     this.arrowColor = AppColors.blackPurple,
     this.isScrolled = false,
     this.onPressed, required this.backGroundColor,
+    this.action,
   });
 
   final VoidCallback? onPressed;
   final Color backGroundColor;
   final Color arrowColor;
   final bool isScrolled;
-
+  final Widget? action;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -41,6 +42,12 @@ class CustomAppBarWithBack extends StatelessWidget
           },
         ),
       ),
+      actions: [
+        Padding(
+            padding: EdgeInsets.only(right: 20.w, top: 10.h),
+            child: action ?? const SizedBox()
+        ),
+      ],
       backgroundColor: backGroundColor,
     );
   }

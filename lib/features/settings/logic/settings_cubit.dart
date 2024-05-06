@@ -11,6 +11,6 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void logout(){
     emit(LogoutSuccess());
-    CacheHelper.clearCache();
+    CacheHelper.logout();
   }
 }

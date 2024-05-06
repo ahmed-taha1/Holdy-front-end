@@ -1,9 +1,9 @@
 import 'package:accounts_protector/core/di/get_it.dart';
-import 'package:accounts_protector/core/errors/failures.dart';
 import 'package:accounts_protector/features/platforms/data/dto/platforms_dto.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/errors/i_failure.dart';
 import '../../../../core/models/platform.dart';
 import '../../../../core/models/user_model.dart';
 import '../../data/repo/i_platform_repo.dart';
@@ -22,9 +22,9 @@ class PlatformsCubit extends Cubit<PlatformsState> {
       userModel = await getIt<IPlatformRepo>().getAllUserData();
       emit(DataFetchSuccess());
     } catch (e) {
-      if (e is ServerFailure) {
+      if (e is Failure) {
         emit(
-          DataFetchFailure(errorMessage: e.errorMassage),
+          DataFetchFailure(errorMessage: e.message),
         );
       } else {
         emit(
@@ -61,9 +61,9 @@ class PlatformsCubit extends Cubit<PlatformsState> {
       userModel?.platforms?.add(newPlatform);
       emit(PlatformCreateSuccess());
     } catch (e) {
-      if (e is ServerFailure) {
+      if (e is Failure) {
         emit(
-          PlatformCreateFailure(errorMessage: e.errorMassage),
+          PlatformCreateFailure(errorMessage: e.message),
         );
       } else {
         emit(
@@ -83,9 +83,9 @@ class PlatformsCubit extends Cubit<PlatformsState> {
           ?.removeWhere((element) => element.platformId == platformId);
       emit(PlatformDeleteSuccess(platformId: platformId));
     } catch (e) {
-      if (e is ServerFailure) {
+      if (e is Failure) {
         emit(
-          PlatformDeleteFailure(errorMessage: e.errorMassage),
+          PlatformDeleteFailure(errorMessage: e.message),
         );
       } else {
         emit(
@@ -112,9 +112,9 @@ class PlatformsCubit extends Cubit<PlatformsState> {
       p?.iconColor = selectedColor.value.toRadixString(16);
       emit(PlatformUpdateSuccess());
     } catch (e) {
-      if (e is ServerFailure) {
+      if (e is Failure) {
         emit(
-          PlatformUpdateFailure(errorMessage: e.errorMassage),
+          PlatformUpdateFailure(errorMessage: e.message),
         );
       } else {
         emit(

@@ -6,8 +6,10 @@ import 'package:accounts_protector/features/settings/ui/widgets/setting_row.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/helper/spacing.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/app_colors.dart';
 
 class AppSettingsRows extends StatelessWidget {
@@ -55,6 +57,7 @@ class AppSettingsRows extends StatelessWidget {
           builder: (context, state) {
             return SettingRow(
               onTap: () {},
+              isEnabled: false,
               prefix: CircleAvatar(
                 radius: 22.r,
                 backgroundColor: const Color(0xFFE9DCFF),
@@ -78,7 +81,6 @@ class AppSettingsRows extends StatelessWidget {
                       value: context.read<ThemeBloc>().isDark,
                       activeTrackColor: AppColors.purple,
                       onChanged: (value) {
-                        debugPrint('Dark Mode: ${context.read<ThemeBloc>().isDark}');
                         final isDark = context.read<ThemeBloc>().isDark;
                         context.read<ThemeBloc>().add(
                               ThemeChangedEvent(
@@ -95,7 +97,9 @@ class AppSettingsRows extends StatelessWidget {
         ),
         verticalSpace(25),
         SettingRow(
-          onTap: () {},
+          onTap: () {
+            context.push(Routes.helpView.path);
+          },
           prefix: CircleAvatar(
             radius: 22.r,
             backgroundColor: const Color(0xFFFFCDDA),
@@ -108,7 +112,7 @@ class AppSettingsRows extends StatelessWidget {
           title: Text(
             'Help',
             style: TextStyles.font15BlackPurpleMedium.copyWith(
-                color: Theme.of(context).primaryColor,
+              color: Theme.of(context).primaryColor,
             ),
           ),
           suffix: Icon(
