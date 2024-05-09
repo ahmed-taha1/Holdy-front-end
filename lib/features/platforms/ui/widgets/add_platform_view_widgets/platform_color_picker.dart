@@ -23,7 +23,7 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: _openColorPicker,
+            onTap: () => _openColorPicker(context),
             child: Container(
               decoration: BoxDecoration(
                 color: context.read<PlatformsCubit>().selectedColor,
@@ -47,8 +47,8 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
     );
   }
 
-  Future<void> _openColorPicker() async {
-    /*bool pickedColor = */await ColorPicker(
+  Future<void> _openColorPicker(BuildContext context) async {
+    await ColorPicker(
       color: context.read<PlatformsCubit>().selectedColor,
       onColorChanged: (Color newColor) {
         setState(() {
@@ -58,6 +58,10 @@ class _PlatformColorPickerState extends State<PlatformColorPicker> {
       pickersEnabled: const <ColorPickerType, bool>{
         ColorPickerType.accent: false,
       },
+      actionButtons: const ColorPickerActionButtons(
+        closeButton: true,
+        dialogActionButtons: false,
+      ),
       width: 40.w,
       height: 40.h,
       borderRadius: 20.r,

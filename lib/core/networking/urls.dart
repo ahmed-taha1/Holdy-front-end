@@ -1,8 +1,8 @@
 class Urls {
-  // static const String baseUrl = 'http://accountsprotector.runasp.net/api/';
-  static const String baseUrl = 'https://www.AccountsProtector.somee.com/api/';
-  // static const String host = 'accountsprotector.runasp.net';
-  static const String host = 'accountsprotector.somee.com';
+  static const String baseUrl = 'http://accountsprotector.runasp.net/api/';
+  // static const String baseUrl = 'https://www.AccountsProtector.somee.com/api/';
+  static const String host = 'accountsprotector.runasp.net';
+  // static const String host = 'accountsprotector.somee.com';
   static const String register = 'User/Register';
   static const String login = 'User/Login';
   static const String setPin = 'Pin/SetPin';
@@ -18,4 +18,5 @@ class Urls {
   static const String createAccount = 'Account/CreateAccount';
   static const String updateAccount = 'Account/UpdateAccount';
   static const String deleteAccount = 'Account/DeleteAccount';
+  static const String reportBug = 'Mail/ReportBug';
 }

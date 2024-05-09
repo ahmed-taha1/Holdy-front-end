@@ -4,6 +4,8 @@ import 'package:accounts_protector/features/authentication/data/repo/auth_repo.d
 import 'package:accounts_protector/features/authentication/data/repo/i_auth_repo.dart';
 import 'package:accounts_protector/features/platforms/data/repo/i_platform_repo.dart';
 import 'package:accounts_protector/features/platforms/data/repo/platform_repo.dart';
+import 'package:accounts_protector/features/settings/data/i_settings_repo.dart';
+import 'package:accounts_protector/features/settings/data/settings_repo.dart';
 import 'package:get_it/get_it.dart';
 import '../../features/accounts/data/i_accounts_repo.dart';
 import '../helper/cache_helper.dart';
@@ -18,4 +20,5 @@ void setupGetIt() {
   getIt.registerLazySingleton<ApiService>(() => ApiService());
   getIt.registerLazySingleton<EncryptionHelper>(() => EncryptionHelper());
   getIt.registerLazySingleton<CacheHelper>(() => CacheHelper());
+  getIt.registerLazySingleton<ISettingsRepo>(() => SettingsRepo());
 }
