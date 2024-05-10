@@ -1,16 +1,31 @@
 # accounts_protector
 
-A new Flutter project.
+Accounts Protector is an app for saving personal user accounts such like Facebook, Instagram, Google, Twitter Accounts
 
-## Getting Started
+and ensure the security for user personal data this app built of Clean Architecture and bloc state management for high
 
-This project is a starting point for a Flutter application.
+performance and reliable state management, back-end part made by .NET Core API for scaling and security
 
-A few resources to get you started if this is your first Flutter project:
+## Key Features:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+• Modern UI to ease user experience.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+• Create, edit platform and choose name, color for its icon.
+
+• Create, edit account at platform with account name and account fields.
+
+• Account fields are dynamic based on user’s choosing pairs of {“keys”: “values”} ex {“email”: email@yahoo.com}.
+
+• Remove account or platform
+
+• Login, register, forgot password using OTP with client, server side validations.
+
+• Dark, Light mode.
+
+• Online server database.
+
+• High security for user’s personal data, data are end-to-end encrypted, account user password at our platform is 
+hashed for more security.
+
+• PIN creation is mandatory at registration process then PIN entering is mandatory at every time when the app 
+starting.
