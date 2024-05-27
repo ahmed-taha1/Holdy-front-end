@@ -175,8 +175,9 @@ class AccountsCubit extends Cubit<AccountsState> {
         return;
       }
     }
-    controllers.add(Pair(TextEditingController(text: 'Password'),
-        TextEditingController(text: password)));
+    controllers[controllers.length - 1].key.text = 'Password';
+    controllers[controllers.length - 1].value.text = password;
+    controllers.add(Pair(TextEditingController(), TextEditingController()));
     emit(TextFieldCreated(controllers, controllers.length));
   }
 }
