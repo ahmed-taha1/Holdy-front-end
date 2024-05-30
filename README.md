@@ -1,6 +1,6 @@
-# Accounts Protector
+# Holdy
 
-Accounts Protector is an app for saving personal user accounts such as Facebook, Instagram, Google, and Twitter Accounts and ensuring the security of user personal data. This app is built using Clean Architecture and BLoC state management for high-performance and reliable state management. The back-end is implemented using .NET Core API for scalability and security.
+Holdy is an app for saving personal user accounts such as Facebook, Instagram, Google, and Twitter Accounts and ensuring the security of user personal data. This app is built using Clean Architecture and BLoC state management for high-performance and reliable state management. The back-end is implemented using .NET Core API for scalability and security.
 
 ## Key Features
 
