@@ -3,7 +3,7 @@ import 'package:accounts_protector/features/platforms/data/dto/platforms_dto.dar
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/errors/i_failure.dart';
+import '../../../../core/failures/i_failure.dart';
 import '../../../../core/models/platform.dart';
 import '../../../../core/models/user_model.dart';
 import '../../data/repo/i_platform_repo.dart';
@@ -11,10 +11,13 @@ import '../../data/repo/i_platform_repo.dart';
 part 'platforms_state.dart';
 
 class PlatformsCubit extends Cubit<PlatformsState> {
-  PlatformsCubit() : super(PlatformsInitial());
+  PlatformsCubit() : super(PlatformsInitial()){
+    getAllUserData();
+  }
   UserModel? userModel;
   List<Platform>? filteredPlatforms;
   Color selectedColor = Colors.blue;
+
 
   Future<void> getAllUserData() async {
     emit(PlatformLoadingState());

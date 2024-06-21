@@ -1,4 +1,4 @@
-import 'package:accounts_protector/core/errors/spam_failure.dart';
+import 'package:accounts_protector/core/failures/spam_failure.dart';
 
 class SpamDetector{
   static final Map<String, int> _spamMap = {};

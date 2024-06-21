@@ -1,5 +1,5 @@
 import 'package:accounts_protector/core/theming/app_colors.dart';
-import 'package:accounts_protector/core/helper/font_weight_helper.dart';
+import 'package:accounts_protector/core/theming/font_weights.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

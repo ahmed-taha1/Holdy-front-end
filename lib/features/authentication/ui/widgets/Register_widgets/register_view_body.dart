@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../../core/helper/spacing.dart';
+import '../../../../../core/widgets/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/text_styles.dart';
 import '../../../../../core/widgets/custom_loading.dart';

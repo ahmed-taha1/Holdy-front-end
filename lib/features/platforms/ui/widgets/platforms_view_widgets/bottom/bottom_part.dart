@@ -1,4 +1,4 @@
-import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/core/widgets/spacing.dart';
 import 'package:accounts_protector/core/routing/routes.dart';
 import 'package:accounts_protector/features/platforms/ui/widgets/platforms_view_widgets/bottom/platforms_grid_view.dart';
 import 'package:flutter/material.dart';

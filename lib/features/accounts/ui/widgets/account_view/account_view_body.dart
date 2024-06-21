@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/helper/spacing.dart';
+import '../../../../../core/widgets/spacing.dart';
 import '../../../data/pair.dart';
 import '../../../logic/accounts_cubit.dart';
 import '../accounts_view/top_part.dart';

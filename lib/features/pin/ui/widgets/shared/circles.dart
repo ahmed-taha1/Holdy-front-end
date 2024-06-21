@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/core/widgets/spacing.dart';
 import 'package:accounts_protector/core/theming/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

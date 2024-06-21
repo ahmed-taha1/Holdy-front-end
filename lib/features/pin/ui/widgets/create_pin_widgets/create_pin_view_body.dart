@@ -1,4 +1,4 @@
-import 'package:accounts_protector/core/helper/spacing.dart';
+import 'package:accounts_protector/core/widgets/spacing.dart';
 import 'package:accounts_protector/features/pin/logic/create_pin_cubit.dart';
 import 'package:accounts_protector/features/pin/ui/widgets/shared/circles.dart';
 import 'package:accounts_protector/features/pin/ui/widgets/shared/icon_with_top_text.dart';

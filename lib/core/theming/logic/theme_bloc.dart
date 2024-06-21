@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:accounts_protector/core/helper/cache_helper.dart';
+import 'package:accounts_protector/core/services/cache_service.dart';
 import 'package:accounts_protector/core/theming/app_theme.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';

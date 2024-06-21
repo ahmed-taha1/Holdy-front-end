@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:accounts_protector/core/helper/cache_helper.dart';
-import 'package:accounts_protector/core/helper/spam_detector.dart';
+import 'package:accounts_protector/core/services/cache_service.dart';
+import 'package:accounts_protector/core/services/spam_detection_service.dart';
 import 'package:dio/dio.dart';
-import '../../errors/server_failure.dart';
+import '../../failures/server_failure.dart';
 import 'dio_service.dart';
 
 class ApiService {

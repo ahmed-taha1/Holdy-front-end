@@ -1,10 +1,10 @@
-import 'package:accounts_protector/core/helper/bloc_observer.dart';
+import 'package:accounts_protector/core/services/bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'accounts_protector_app.dart';
 import 'core/di/get_it.dart';
-import 'core/helper/cache_helper.dart';
+import 'core/services/cache_service.dart';
 import 'core/routing/app_router.dart';
 
 void main() async {

@@ -1,4 +1,4 @@
-import 'package:accounts_protector/core/helper/encryption_helper.dart';
+import 'package:accounts_protector/core/services/encryption_service.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
 import 'package:accounts_protector/features/pin/logic/pin_state.dart';
 import 'package:bloc/bloc.dart';

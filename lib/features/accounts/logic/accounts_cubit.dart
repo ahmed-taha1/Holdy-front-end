@@ -1,11 +1,11 @@
 import 'dart:math';
 import 'package:accounts_protector/core/di/get_it.dart';
-import 'package:accounts_protector/core/helper/encryption_helper.dart';
+import 'package:accounts_protector/core/services/encryption_service.dart';
 import 'package:accounts_protector/core/models/platform.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import '../../../core/errors/i_failure.dart';
+import '../../../core/failures/i_failure.dart';
 import '../../../core/models/account.dart';
 import '../data/i_accounts_repo.dart';
 import '../data/pair.dart';

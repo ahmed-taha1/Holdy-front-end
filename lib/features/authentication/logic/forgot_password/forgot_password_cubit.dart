@@ -1,9 +1,9 @@
 import 'package:accounts_protector/core/di/get_it.dart';
-import 'package:accounts_protector/core/helper/cache_helper.dart';
+import 'package:accounts_protector/core/services/cache_service.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../../core/errors/i_failure.dart';
+import '../../../../core/failures/i_failure.dart';
 import '../../data/repo/i_auth_repo.dart';
 part 'forgot_password_state.dart';
 
