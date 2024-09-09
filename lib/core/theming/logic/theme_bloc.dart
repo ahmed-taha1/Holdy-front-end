@@ -5,7 +5,6 @@ import 'package:accounts_protector/core/theming/app_theme.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-
 part 'theme_event.dart';
 
 part 'theme_state.dart';
@@ -30,16 +29,16 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
             isDark = false;
           }
           emit(LoadedThemeState(appThemeData[theme]!));
-          CacheHelper.putData(key: CacheHelperConstants.theme, value: theme.value);
+          await CacheService.putData(key: CacheServiceConstants.theme, value: theme.value);
         }
       },
     );
   }
 
   Future<String> getCachedTheme() async{
-    String? cachedTheme = await CacheHelper.getData(key: CacheHelperConstants.theme);
+    String? cachedTheme = await CacheService.getData(key: CacheServiceConstants.theme);
     cachedTheme ??= AppTheme.light.value;
-    CacheHelper.putData(key: CacheHelperConstants.theme, value: cachedTheme);
+    await CacheService.putData(key: CacheServiceConstants.theme, value: cachedTheme);
     return cachedTheme;
   }
 }

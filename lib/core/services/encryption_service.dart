@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 
-class EncryptionHelper {
+class EncryptionService {
   static encrypt_lib.Key? _key;
   static encrypt_lib.IV? _iv;
 

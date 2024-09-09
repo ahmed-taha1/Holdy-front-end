@@ -1,19 +1,19 @@
 import 'dart:convert';
-
 import 'package:accounts_protector/core/services/cache_service.dart';
 import 'package:accounts_protector/core/services/spam_detection_service.dart';
 import 'package:dio/dio.dart';
 import '../../failures/server_failure.dart';
-import 'dio_service.dart';
 
 class ApiService {
-  final Dio _dio = DioService.dio;
+  final Dio _dio;
+
+  ApiService(this._dio);
 
   // Method to perform GET request
   Future<Response> get({required String path, bool? addAuth, String? token}) async {
     _dio.options.method = 'GET';
     if(addAuth == true){
-      _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+      _dio.options.headers['Authorization'] = 'Bearer ${CacheService.getData(key: 'token')}';
     }
     if(token != null) {
       _dio.options.headers['Authorization'] = 'Bearer $token';
@@ -39,7 +39,7 @@ class ApiService {
       {required String path, dynamic body, bool? addAuth, String? token}) async {
     _dio.options.method = 'POST';
     if(addAuth == true){
-      _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+      _dio.options.headers['Authorization'] = 'Bearer ${CacheService.getData(key: 'token')}';
     }
     if(token != null) {
       _dio.options.headers['Authorization'] = 'Bearer $token';
@@ -66,7 +66,7 @@ class ApiService {
       {required String path, dynamic body, bool? addAuth, String? token}) async {
     _dio.options.method = 'PUT';
     if(addAuth == true){
-      _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+      _dio.options.headers['Authorization'] = 'Bearer ${CacheService.getData(key: 'token')}';
     }
     if(token != null) {
       _dio.options.headers['Authorization'] = 'Bearer $token';
@@ -92,7 +92,7 @@ class ApiService {
       {required String path, dynamic body, bool? addAuth, String? token}) async {
     _dio.options.method = 'DELETE';
     if(addAuth == true){
-      _dio.options.headers['Authorization'] = 'Bearer ${CacheHelper.getData(key: 'token')}';
+      _dio.options.headers['Authorization'] = 'Bearer ${CacheService.getData(key: 'token')}';
     }
     if(token != null) {
       _dio.options.headers['Authorization'] = 'Bearer $token';

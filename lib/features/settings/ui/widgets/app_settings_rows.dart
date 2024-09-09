@@ -153,6 +153,7 @@ class AppSettingsRows extends StatelessWidget {
           SettingRow(
             onTap: () {
               context.read<SettingsCubit>().logout();
+              context.go(Routes.loginView.path);
             },
             prefix: CircleAvatar(
               radius: 22.r,

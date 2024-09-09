@@ -1,30 +1,34 @@
-import 'package:accounts_protector/core/di/get_it.dart';
 import 'package:accounts_protector/core/failures/i_failure.dart';
 import 'package:accounts_protector/core/services/cache_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
+import '../../../core/models/user_model.dart';
 import '../data/i_settings_repo.dart';
 
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
   bool? isDark;
+  ISettingsRepo settingsRepo;
+  UserModel? userModel;
+  SettingsCubit(this.settingsRepo) : super(SettingsInitial());
 
-  SettingsCubit() : super(SettingsInitial()) {
-    isDark = CacheHelper.getData(key: CacheHelperConstants.isDark) ?? false;
+  Future<void> initialize() async {
+    userModel = settingsRepo.cloneUserData();
+    isDark = await CacheService.getData(key: CacheServiceConstants.isDark) ?? false;
   }
 
   void logout() {
     emit(LogoutSuccess(time: DateTime.now()));
-    CacheHelper.logout();
+    CacheService.logout();
+    settingsRepo.clearUserData();
   }
 
   void reportBug(String message) {
     emit(ReportBugLoading());
     try {
       if (message.isEmpty) throw const Failure('Message cannot be empty');
-      getIt<ISettingsRepo>().reportBug(message);
+      settingsRepo.reportBug(message);
       emit(ReportBugSuccess());
     } catch (e) {
       if (e is Failure) {

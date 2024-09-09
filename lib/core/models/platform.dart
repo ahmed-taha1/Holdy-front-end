@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'package:equatable/equatable.dart';
 import 'account.dart';
 
-class Platform extends Equatable {
+class Platform {
 	List<Account>? accounts;
 	final int? platformId;
 	String? platformName;
@@ -46,14 +45,4 @@ class Platform extends Equatable {
   /// Converts [Platform] to a JSON string.
 	String toJson() => json.encode(toMap());
 
-	@override
-	List<Object?> get props {
-		return [
-				accounts,
-				platformId,
-				platformName,
-				iconColor,
-				numOfAccounts,
-		];
-	}
 }

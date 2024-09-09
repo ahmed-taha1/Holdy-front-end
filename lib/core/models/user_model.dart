@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'package:equatable/equatable.dart';
 import 'platform.dart';
 
-class UserModel extends Equatable {
+class UserModel{
 	String? email;
-	final String? firstName;
-	final String? lastName;
-	final String? phoneNumber;
+	String? firstName;
+	String? lastName;
+	String? phoneNumber;
 	List<Platform>? platforms;
 
 	UserModel({
@@ -45,15 +44,4 @@ class UserModel extends Equatable {
   ///
   /// Converts [UserModel] to a JSON string.
 	String toJson() => json.encode(toMap());
-
-	@override
-	List<Object?> get props {
-		return [
-				platforms,
-				email,
-				firstName,
-				lastName,
-				phoneNumber,
-		];
-	}
 }

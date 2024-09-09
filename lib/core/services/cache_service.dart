@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CacheHelperConstants {
+class CacheServiceConstants {
   static const String token = 'token';
   static const String pinHash = 'pinHash';
   static const String key = 'key';
@@ -12,7 +12,7 @@ class CacheHelperConstants {
   static const String tempOtpToken = 'tempOtpToken';
 }
 
-class CacheHelper {
+class CacheService {
   static SharedPreferences? sharedPreferences;
 
   static init() async {
@@ -22,12 +22,12 @@ class CacheHelper {
   static Future<bool> putData({
     required String key,
     required dynamic value,
-  }) {
+  }) async {
 
-    if (value is String) return sharedPreferences!.setString(key, value);
-    if (value is int) return sharedPreferences!.setInt(key, value);
-    if (value is bool) return sharedPreferences!.setBool(key, value);
-    return sharedPreferences!.setDouble(key, value);
+    if (value is String) return await sharedPreferences!.setString(key, value);
+    if (value is int) return await sharedPreferences!.setInt(key, value);
+    if (value is bool) return await sharedPreferences!.setBool(key, value);
+    return await sharedPreferences!.setDouble(key, value);
   }
 
   static dynamic getData({
@@ -38,16 +38,16 @@ class CacheHelper {
 
   static Future<bool> removeData({
     required String key,
-  }) {
-    return sharedPreferences!.remove(key);
+  }) async {
+    return await sharedPreferences!.remove(key);
   }
 
-  static void logout() {
-    removeData(key: CacheHelperConstants.token);
-    removeData(key: CacheHelperConstants.pinHash);
-    removeData(key: CacheHelperConstants.isLogged);
-    removeData(key: CacheHelperConstants.tempPinToken);
-    removeData(key: CacheHelperConstants.tempOtpToken);
-    removeData(key: CacheHelperConstants.key);
+  static void logout() async {
+    await removeData(key: CacheServiceConstants.token);
+    await removeData(key: CacheServiceConstants.pinHash);
+    await removeData(key: CacheServiceConstants.isLogged);
+    await removeData(key: CacheServiceConstants.tempPinToken);
+    await removeData(key: CacheServiceConstants.tempOtpToken);
+    await removeData(key: CacheServiceConstants.key);
   }
 }

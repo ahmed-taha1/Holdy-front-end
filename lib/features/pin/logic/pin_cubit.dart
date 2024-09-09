@@ -8,7 +8,7 @@ import '../../../core/failures/i_failure.dart';
 
 class PinCubit extends Cubit<PinState> {
   PinCubit() : super(PinInitial()) {
-    userPinHash = CacheHelper.getData(key: CacheHelperConstants.pinHash);
+    userPinHash = CacheService.getData(key: CacheServiceConstants.pinHash);
   }
 
   String currentPin = '';
@@ -25,17 +25,17 @@ class PinCubit extends Cubit<PinState> {
         emit(AddNumberState(currentPinLength));
         if (currentPinLength == pinLength) {
           SpamDetector.isSpam(processName);
-          if (userPinHash == EncryptionHelper.hash(data: currentPin)) {
+          if (userPinHash == EncryptionService.hash(data: currentPin)) {
             emit(PinSuccessState());
-            String key = EncryptionHelper.generateKey(data: currentPin);
+            String key = EncryptionService.generateKey(data: currentPin);
             SpamDetector.clearSpam(processName);
-            if (CacheHelper.getData(key: CacheHelperConstants.key) != key) {
-              CacheHelper.putData(
+            if (CacheService.getData(key: CacheServiceConstants.key) != key) {
+              await CacheService.putData(
                 key: key,
-                value: EncryptionHelper.generateKey(data: currentPin),
+                value: EncryptionService.generateKey(data: currentPin),
               );
             }
-            EncryptionHelper.setKey(
+            EncryptionService.setKey(
               key,
             );
           } else {

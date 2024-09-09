@@ -19,7 +19,6 @@ class DarkModeChanged extends SettingsState {
   @override
   List<Object> get props => [isDark];
 }
-
 class ReportBugLoading extends SettingsState {}
 class ReportBugSuccess extends SettingsState {}
 class ReportBugFailed extends SettingsState {

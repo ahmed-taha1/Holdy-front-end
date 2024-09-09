@@ -29,47 +29,18 @@ class CustomInputField extends StatefulWidget {
 }
 
 class _CustomInputFieldState extends State<CustomInputField> {
-  late FocusNode _focusNode;
-  bool _isFocused = false;
   bool _isPasswordVisible = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode = FocusNode();
-    _focusNode.addListener(() {
-      setState(() {
-        _isFocused = _focusNode.hasFocus;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color:
-                _isFocused ? Colors.black.withOpacity(0.1) : Colors.transparent,
-            spreadRadius: 2,
-            blurRadius: 7.4,
-            offset: const Offset(0, 4),
-          ),
-        ],
         borderRadius: BorderRadius.circular(21.r),
       ),
       child: TextFormField(
         onChanged: widget.onChange,
         obscureText: widget.isPassword ? !_isPasswordVisible : false,
         controller: widget.controller,
-        focusNode: _focusNode,
         keyboardType: widget.keyboardType,
         style: TextStyles.font17BlackPurpleBold.copyWith(
             color: Theme.of(context).primaryColor,
@@ -77,7 +48,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
         decoration: InputDecoration(
           prefixIcon: widget.icon != null ? Icon(
             widget.icon,
-            color: _isFocused ? Theme.of(context).primaryColor : Theme.of(context).hintColor,
+            color: Theme.of(context).primaryColor/* : Theme.of(context).hintColor*/,
           ) : null,
           labelText: widget.hintText,
           labelStyle: TextStyles.font11LightGreyBold.copyWith(
@@ -87,7 +58,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             color: Theme.of(context).secondaryHeaderColor,
           ),
           filled: true,
-          fillColor: _isFocused ? Theme.of(context).hoverColor : Colors.transparent,
+          fillColor: Theme.of(context).scaffoldBackgroundColor,
           enabledBorder: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(21.r),
             borderSide: const BorderSide(color: Colors.transparent),
@@ -125,9 +96,9 @@ class _CustomInputFieldState extends State<CustomInputField> {
                         _isPasswordVisible
                             ? Icons.visibility
                             : Icons.visibility_off,
-                        color: _isFocused
-                            ? Theme.of(context).primaryColor
-                            : Theme.of(context).hintColor,
+                        color: /*_isFocused*/
+                            Theme.of(context).primaryColor
+                            // : Theme.of(context).hintColor,
                       ),
                     )
                   : null),

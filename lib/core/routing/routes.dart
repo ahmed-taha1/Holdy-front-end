@@ -4,18 +4,18 @@ enum Routes{
   registerView('/registerView'),
   otpValidationView('/otpValidationView'),
   resetPasswordView('/ResetPasswordView'),
-  platformsView('/Platforms'),
-  addPlatformView('/AddPlatformView'),
+  platformView('/PlatformView'),
+  createPlatformView('/CreatePlatformView'),
   createPinView('/CreatePinView'),
   pinView('/PinView'),
   splashView('/splashScreen'),
   settingsView('/settingsScreen'),
-  accountsView('/accounts'),
   accountView('/accountView'),
-  addAccountView('/addAccountView'),
-  editAccountView('/editAccountView'),
+  createAccountView('/addAccountView'),
+  updateAccountView('/editAccountView'),
   helpView('/helpView'),
-  editPlatformView('/editPlatformView');
+  homeView('/homeView'),
+  updatePlatformView('/editPlatformView');
   final String path;
   const Routes(this.path);
 }

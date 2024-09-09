@@ -2,18 +2,19 @@ import 'package:accounts_protector/core/services/encryption_service.dart';
 import 'package:accounts_protector/features/authentication/data/dto/dto_auth.dart';
 import 'package:accounts_protector/features/pin/logic/pin_state.dart';
 import 'package:bloc/bloc.dart';
-import '../../../core/di/get_it.dart';
 import '../../authentication/data/repo/i_auth_repo.dart';
 
 
 class CreatePinCubit extends Cubit<PinState> {
-  CreatePinCubit() : super(PinInitial());
   String pin = '';
   String confirmPin = '';
   int currentPinLength = 0;
   static const pinLength = 6;
   bool isConfirm = false;
   bool isReenter = false;
+  IAuthRepo authRepo;
+
+  CreatePinCubit(this.authRepo) : super(PinInitial());
 
   void addNumber(int number) {
     if (currentPinLength < pinLength) {
@@ -30,18 +31,17 @@ class CreatePinCubit extends Cubit<PinState> {
     }
   }
 
-  void addConfirmPinNumber(int number) {
+  Future<void> addConfirmPinNumber(int number) async{
     if (currentPinLength < pinLength) {
       pin += number.toString();
       currentPinLength++;
       emit(AddNumberState(currentPinLength));
       if (currentPinLength == pinLength && pin == confirmPin) {
         isConfirm = true;
-        // TODO maybe added here await
-        getIt<IAuthRepo>().setPin(
+        await authRepo.setPin(
           pinRequestDto: PinRequestDto(
-            pinHash: EncryptionHelper.hash(data: pin),
-            pinHashConfirmation: EncryptionHelper.hash(data: confirmPin),
+            pinHash: EncryptionService.hash(data: pin),
+            pinHashConfirmation: EncryptionService.hash(data: confirmPin),
           ),
         );
         emit(PinSuccessState());
