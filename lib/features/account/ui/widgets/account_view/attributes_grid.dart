@@ -12,7 +12,7 @@ class AttributesGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      // physics: const BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemCount: attributes.length,
       itemBuilder: (context, index) {
         return Padding(

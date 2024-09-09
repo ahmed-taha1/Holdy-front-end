@@ -23,6 +23,7 @@ class CreatePlatformView extends StatelessWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 42.w),
             child: SizedBox(

@@ -24,6 +24,7 @@ class UpdatePlatformView extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.symmetric(horizontal: 42.w),
           child: Column(
             children: [

@@ -26,7 +26,7 @@ class AccountsGrid extends StatelessWidget {
               }
               return ListView.builder(
                 // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                // physics: const BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: accounts.length,
                 itemBuilder: (context, index) {
                   return SizedBox(
