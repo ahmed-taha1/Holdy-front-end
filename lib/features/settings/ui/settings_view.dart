@@ -1,6 +1,7 @@
 import 'package:accounts_protector/features/settings/logic/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/theming/app_colors.dart';
 import '../../../core/theming/text_styles.dart';
 import '../../../core/widgets/custom_app_app_bar_with_back.dart';
@@ -22,8 +23,9 @@ class SettingsView extends StatelessWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
+            padding: EdgeInsets.symmetric(horizontal: 40.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

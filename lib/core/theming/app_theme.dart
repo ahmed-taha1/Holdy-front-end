@@ -16,7 +16,7 @@ final appThemeData = {
     primaryColor: AppColors.blackPurple,
     scaffoldBackgroundColor: AppColors.white,
     hintColor: const Color(0xFF697885),
-    hoverColor: const Color(0xFFD2F4FF),
+    hoverColor: const Color(0xFFEAE9FF),
     secondaryHeaderColor: const Color(0xFF515A62),
   ),
 
@@ -25,7 +25,7 @@ final appThemeData = {
     primaryColor: AppColors.white,
     scaffoldBackgroundColor: const Color(0xFF1F2128),
     hintColor: const Color(0xFFA3A3A3),
-    hoverColor: const Color(0xFF38304D),
+    hoverColor: const Color(0xFF2C2E36),
     secondaryHeaderColor: const Color(0xFFBEBEBE),
   ),
 };

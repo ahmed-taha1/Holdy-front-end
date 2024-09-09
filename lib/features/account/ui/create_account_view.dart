@@ -55,6 +55,7 @@ class CreateAccountView extends StatelessWidget {
             }
           },
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: 20.h),
             child: Column(
               mainAxisSize: MainAxisSize.min,

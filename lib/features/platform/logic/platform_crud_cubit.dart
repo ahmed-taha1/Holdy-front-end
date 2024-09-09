@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../core/events/events.dart';
 import '../../../core/failures/i_failure.dart';
 import '../../../core/models/platform.dart';
+import '../../../core/theming/app_colors.dart';
 import '../data/dto/platforms_dto.dart';
 import '../data/repo/i_platform_repo.dart';
 
@@ -12,7 +13,7 @@ part 'platform_crud_state.dart';
 class PlatformCrudCubit extends Cubit<PlatformCrudState> {
   final IPlatformRepo _platformRepo;
   late Platform platform;
-  Color selectedColor = Colors.blue;
+  Color selectedColor = AppColors.purple;
   TextEditingController platformNameController = TextEditingController();
 
   PlatformCrudCubit(this._platformRepo) : super(PlatformCrudInitial());

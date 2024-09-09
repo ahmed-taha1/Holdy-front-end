@@ -58,7 +58,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             color: Theme.of(context).secondaryHeaderColor,
           ),
           filled: true,
-          fillColor: Theme.of(context).scaffoldBackgroundColor,
+          fillColor: Theme.of(context).hoverColor,
           enabledBorder: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(21.r),
             borderSide: const BorderSide(color: Colors.transparent),

@@ -1,5 +1,7 @@
 import 'package:accounts_protector/core/failures/spam_failure.dart';
 
+import '../networking/urls.dart';
+
 class SpamDetector{
   static final Map<String, int> _spamMap = {};
   static const int _maxFailTimes = 5;
@@ -7,6 +9,9 @@ class SpamDetector{
   static final Map<String, DateTime> _blockMap = {};
 
   static void addFailure(String process){
+    if(process == Urls.getAllData){
+      return;
+    }
     if(_spamMap.containsKey(process)) {
       _spamMap[process] = _spamMap[process]! + 1;
     } else {
